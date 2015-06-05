@@ -1,0 +1,120 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="scotchTodo">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>Smarttec - transformadores inteligentes</title>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	
+
+	<link href="dashboard.css" rel="stylesheet">
+
+	<!-- SPELLS -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script><!-- load ui-router -->
+
+	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="js/services/todos.js"></script> <!-- load our todo service -->
+	<script src="js/core.js"></script> <!-- load our main application -->
+
+</head>
+<!-- SET THE CONTROLLER -->
+<body ng-controller="mainController">
+<!-- NAVIGATION -->
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">SmartTech</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Clientes</a></li>
+            <li><a href="/analises">Análises</a></li>
+            <li><a href="/diagnosticos">Diagnósticos</a></li>
+            <li><a href="/historico">Histórico</a></li>
+            <li><a href="/cadastrartransformadores">Transformadores</a></li>
+            <!-- <li><a href="#">Profile</a></li> -->
+            <li><a href="#">vinicius.nunes@smarttecheletrica.com.br<span class="caret"></span></a></li>
+          </ul>
+          
+        </div>
+      </div>
+    </nav>
+
+
+	<div class="container">
+
+		
+
+		<div id="logo-place" class="row">
+			<div class = "text-left col-sm-8">
+			<!-- <div class="jumbotron text-center"> -->
+				<h1>Diagnósticos</h1>
+				<!-- <img class = "center-block" src="http://codeboxr.com/wp-content/uploads/2012/06/8_official_googlelogo.jpg" class="img-responsive" alt="Cinque Terre"> -->
+			</div>
+		</div>
+
+
+<div role="tabpanel">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Doble</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Iec 60599</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Laborelec</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Pugh</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Iec 60599</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Rogers</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Duval</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Dornemburg</a></li>
+    
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <!-- <div role="tabpanel" class="tab-pane active" id="home">...</div>
+    <div role="tabpanel" class="tab-pane" id="profile">...</div>
+    <div role="tabpanel" class="tab-pane" id="messages">...</div>
+    <div role="tabpanel" class="tab-pane" id="settings">...</div> -->
+  </div>
+
+</div>
+
+
+	
+    
+    
+
+<div>
+
+		
+
+		
+
+
+		
+		
+
+	</div>
+
+</body>
+<footer>
+	<!-- <div class="text-center text-muted">
+			<p>Developed by <a href="results">Smarttech</a>.</p>
+	</div> -->
+</footer>
+</html>

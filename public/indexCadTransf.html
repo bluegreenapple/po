@@ -1,0 +1,135 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="scotchTodo">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>Smarttec - transformadores inteligentes</title>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	
+
+	<link href="dashboard.css" rel="stylesheet">
+
+	<!-- SPELLS -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script><!-- load ui-router -->
+
+	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="js/services/todos.js"></script> <!-- load our todo service -->
+	<script src="js/core.js"></script> <!-- load our main application -->
+
+</head>
+<!-- SET THE CONTROLLER -->
+<body ng-controller="mainController">
+<!-- NAVIGATION -->
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">SmartTech</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+          	<li><a href="#">Clientes</a></li>
+          	<li><a href="/analises">Análises</a></li>
+            <li><a href="/diagnosticos">Diagnósticos</a></li>
+            <li><a href="/historico">Histórico</a></li>
+            <li><a href="/cadastrartransformadores">Transformadores</a></li>
+            <!-- <li><a href="#">Profile</a></li> -->
+            <li><a href="#">vinicius.nunes@smarttecheletrica.com.br<span class="caret"></span></a></li>
+          </ul>
+          
+        </div>
+      </div>
+    </nav>
+
+
+	<div class="container">
+
+		
+
+		<div id="logo-place" class="row">
+			<div class = "text-left col-sm-8">
+			<!-- <div class="jumbotron text-center"> -->
+				<h1>Cadastrar Equipamento</h1>
+				<!-- <img class = "center-block" src="http://codeboxr.com/wp-content/uploads/2012/06/8_official_googlelogo.jpg" class="img-responsive" alt="Cinque Terre"> -->
+			</div>
+		</div>
+
+
+
+<div class="two-col">
+    <div class="col1">
+        <!-- <label for="field1">Field One:</label> -->
+        <div>
+	        <input type="text" class="form-control input-lg text-left" placeholder="Tag">
+			<input type="text" class="form-control input-lg text-left" placeholder="Equipamento">
+			<input type="text" class="form-control input-lg text-left" placeholder="Fabricante">
+		</div>
+		<div class = "formGroup"> 
+			<input type="text" class="form-control input-lg text-left" placeholder="Tensão">
+			<input type="text" class="form-control input-lg text-left" placeholder="Potência">
+			<input type="text" class="form-control input-lg text-left" placeholder="Volume de Óleo">
+			<input type="text" class="form-control input-lg text-left" placeholder="Tipo de Óleo">
+			<div class = "whiteLabel"><label > Lembre-se de mim</label></div>
+		</div>
+    </div>
+
+    <div class="col2">
+		<div>    	
+	        <!-- <label for="field2">Field Two:</label> -->
+	        <input type="text" class="form-control input-lg text-left" placeholder="Número de Série">
+			<input type="text" class="form-control input-lg text-left" placeholder="Local">
+			<input type="text" class="form-control input-lg text-left" placeholder="Sistema de Prevenção">
+		</div>
+		<div class = "formGroup"> 		
+			<input type="text" class="form-control input-lg text-left" placeholder="Comutação com Carga">
+			<input type="text" class="form-control input-lg text-left" placeholder="Tanque Separado">
+			<input type="text" class="form-control input-lg text-left" placeholder="Data de Fabricação">			
+
+	    </div>
+
+    </div>
+
+
+    </div class = "cadastrar">
+
+		<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Cadastrar</button>				
+	</div>
+<div>
+
+		
+
+		
+
+
+		<div class="text-center text-muted">
+			<p> 
+							
+			</p>
+
+		</div>
+		
+		
+
+	</div>
+
+</body>
+<footer>
+	<div class="text-center text-muted">
+			<p>Developed by <a href="results">Smarttech</a>.</p>
+		</div>
+</footer>
+</html>
