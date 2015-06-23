@@ -67,7 +67,18 @@ body {
   color: black;
   text-align: left;
   /*text-indent: 10px;*/
-  font-size: 300%;
+  font-size: 250%;
+  text-shadow: none;
+  width: 500px;
+}
+
+.chamada2{
+  /*margin-left: 100px;
+  margin-top:120px;*/
+  color: black;
+  text-align: left;
+  /*text-indent: 10px;*/
+  font-size: 150%;
   text-shadow: none;
 }
 

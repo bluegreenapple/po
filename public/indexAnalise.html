@@ -13,7 +13,9 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 	
+	<!-- Documentation extras -->
 
+	<link href="docs.min.css" rel="stylesheet">
 	<link href="dashboard.css" rel="stylesheet">
 
 	<!-- SPELLS -->
@@ -25,154 +27,214 @@
 	<script src="js/core.js"></script> <!-- load our main application -->
 
 </head>
+
+
+
 <!-- SET THE CONTROLLER -->
 <body ng-controller="mainController">
-<!-- NAVIGATION -->
 
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">SmartTech</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-          	<li><a href="#">Clientes</a></li>
-          	<li><a href="/alarmes">Alarmes</a></li>
-          	<li><a href="/analises">Análises</a></li>
-            <li><a href="/diagnosticos">Diagnósticos</a></li>
-            <li><a href="/historico">Histórico</a></li>
-            <li><a href="/cadastrartransformadores">Transformadores</a></li>
-            <!-- <li><a href="#">Profile</a></li> -->
-            <li><a href="#">vinicius.nunes@smarttecheletrica.com.br<span class="caret"></span></a></li>
-          </ul>
-          
-        </div>
-      </div>
-    </nav>
-
-
-	<div class="container">
-
-		
-
-		<div id="logo-place" class="row">
-			<div class = "text-left col-sm-8">
-			<!-- <div class="jumbotron text-center"> -->
-				<h1>Ensaio</h1>
-				<!-- <img class = "center-block" src="http://codeboxr.com/wp-content/uploads/2012/06/8_official_googlelogo.jpg" class="img-responsive" alt="Cinque Terre"> -->
-			</div>
-		</div>
-
-
-<div role="tabpanel">
-
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Cromatográfico</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Físico-Químico</a></li>
-    
-  </ul>
-
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <!-- <div role="tabpanel" class="tab-pane active" id="home">...</div>
-    <div role="tabpanel" class="tab-pane" id="profile">...</div>
-    <div role="tabpanel" class="tab-pane" id="messages">...</div>
-    <div role="tabpanel" class="tab-pane" id="settings">...</div> -->
+<!-- NAVBAR PRINCIPAL -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">SmartTech</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+      	<li><a href="#">Clientes</a></li>
+      	<li><a href="/alarmes">Alarmes</a></li>
+      	<li><a href="/analises">Análises</a></li>
+        <li><a href="/diagnosticos">Diagnósticos</a></li>
+        <li><a href="/historico">Histórico</a></li>
+        <li><a href="/cadastrartransformadores">Transformadores</a></li>
+        <!-- <li><a href="#">Profile</a></li> -->
+        <li><a href="#">vinicius.nunes@smarttecheletrica.com.br<span class="caret"></span></a></li>
+      </ul>
+      
+    </div>
   </div>
+</nav><!-- FIM NAVBAR PRINCIPAL -->
 
-</div>
+<!-- CONTAINER GERAL -->
+<div class="container">
 
-<div class="two-col">
-    <div class="col1">
-    	<label >Transformador</label>
-    	<input type="text" class="form-control input-lg text-left" placeholder="Tag">
-    </div>
-    <div class="col2">
-    	<label class="whiteLabel">Gases Analisados</label>
-		<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Ler QR Code</button>				
-    </div>
-</div>    
+	
+	<!-- TABS CROMA E FQ -->
+	<div class="bs-docs-section">
+	  <h1 id="tabs" class="page-header">Cadastrar Análise</h1>
 
-	<div class="two-col">
-    <div class="col1">
-        <!-- <label for="field1">Field One:</label> -->
-        <div>
-        	<label for="field2">Dados da Análise</label>
-	        <input type="text" class="form-control input-lg text-left" placeholder="Data de Amostragem">
-			<input type="text" class="form-control input-lg text-left" placeholder="Umidade Relativa do Ar">
-			<input type="text" class="form-control input-lg text-left" placeholder="Temperatura Ambiente">
-		</div>
-		<div class = "formGroup"> 
-			<label for="field2">Gases Analisados</label>
-			<input type="text" class="form-control input-lg text-left" placeholder="H2">
-			<input type="text" class="form-control input-lg text-left" placeholder="O2">
-			<input type="text" class="form-control input-lg text-left" placeholder="N2">
-			<input type="text" class="form-control input-lg text-left" placeholder="CH4">
-			<input type="text" class="form-control input-lg text-left" placeholder="CO">
-			<input type="text" class="form-control input-lg text-left" placeholder="CO2">
-			<div class = "whiteLabel"><label > Lembre-se de mim</label></div>
-		</div>
-		<div class="historico">
-	  <!-- <div class="jumbotron">
-	    <h1>My first Bootstrap website!</h1> 
-	    <p>This page will grow as we add more and more components from Bootstrap...</p>
-	  </div> -->
-		  	<label for="field2">Recomendações da Análise</label>
+	  <!-- TAG DO EQUIPAMENTO -->
+	  <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
+		  <label><strong>Tag do Equipamento:</strong></label>	
+		  <input type="text" class="form-control input-lg text-left "></input>
+		  <label><strong>Laboratório:</strong></label>	
+		  <input type="text" class="form-control input-lg text-left "></input>
+		  <label><strong>Número da Análise do Laboratório:</strong></label>	
+		  <input type="text" class="form-control input-lg text-left "></input>
 		  
-		  <p>Houve superaquecimento, ....</p> 
-	  
-		</div>
-    </div>
+	  </div><!-- FIM TAG DO EQUIPAMENTO -->
 
-    <div class="col2">
-		<div>    	
-			<label class="whiteLabel">Gases Analisados</label>
-	        <input type="text" class="form-control input-lg text-left" placeholder="Em Operação">
-			<input type="text" class="form-control input-lg text-left" placeholder="Ponto de Coleta">
-			<input type="text" class="form-control input-lg text-left" placeholder="Temperatura do Óleo">
-		</div>
-		<div class = "formGroup"> 		
-			<label class="whiteLabel">Gases Analisados</label>
-			<input type="text" class="form-control input-lg text-left" placeholder="C2H4">
-			<input type="text" class="form-control input-lg text-left" placeholder="C2H6">
-			<input type="text" class="form-control input-lg text-left" placeholder="C2H2">
-			<input type="text" class="form-control input-lg text-left" placeholder="TGC">
-			<input type="text" class="form-control input-lg text-left" placeholder="TGG">
 
+	  <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
+	    <ul id="myTabs" class="nav nav-tabs" role="tablist">
+	      <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Cromatográfico</a></li>
+	      <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Físico-Químico</a></li>
+	    </ul>
+
+	    <div id="myTabContent" class="tab-content"> 
+	      <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledBy="home-tab">
+	        <p>O Ensaio Cromatográfico consiste em...</p>
+
+			<!-- TABELA CROMA -->
+				<!-- <div class=" main"> -->
+					<!-- <div class="table-responsive col-sm-1 col-md-5 "> -->
+				        <table class="table table-striped">
+				          <thead>
+				            <tr>
+				              <th>Nome</th>
+				              <th>Fórmula</th>
+				              <th>Resultados (ppmv)</th>
+				              <th>Val. Referência (ppmv)</th>
+				            </tr>
+				          </thead>
+				          <tbody>
+				            <tr>
+				              <td>Hidrogênio</td>
+				              <td>H<sub>2</sub></td>
+				              <td><input type="text" class="form-control input-sm text-left"></td>
+				              <td>-</td>
+				            </tr>
+				            <tr>
+				              <td>Oxigênio</td>
+				              <td>O<sub>2</sub></td>
+				              <td><input type="text" class="form-control input-sm text-left"></td>
+				              <td>-</td>
+				              
+				            </tr>
+				            <tr>
+				              <td>Nitrogênio</td>
+				              <td>N<sub>2</sub></td>
+				              <td><input type="text" class="form-control input-sm text-left"></td>
+				              <td>-</td>
+				              
+				            </tr>
+				            
+				            <tr>
+				              <td>Metano</td>
+				              <td>CH<sub>4</sub></td>
+				              <td><input type="text" class="form-control input-sm text-left"></td>
+				              <td>-</td>
+				              
+				            </tr>
+				            <tr>
+				              <td>Monóxido de Carbono</td>
+				              <td>CO</td>
+				              <td><input type="text" class="form-control input-sm text-left"></td>
+				              <td>-</td>
+				             
+				            </tr>
+				            <tr>
+				              <td>Dióxido de Carbono</td>
+				              <td>CO<sub>2</sub></td>
+				              <td><input type="text" class="form-control input-sm text-left"></td>
+				              <td>-</td>
+				              
+				            </tr>
+				            <tr>
+				              <td>Etileno</td>
+				              <td>C<sub>2</sub>H<sub>4</sub></td>
+				              <td><input type="text" class="form-control input-sm text-left"></td>
+				              <td>-</td>
+				             
+				            </tr>
+				            <tr>
+				              <td>Etano</td>
+				              <td>C<sub>2</sub>H<sub>6</sub></td>
+				              <td><input type="text" class="form-control input-sm text-left"></td>
+				              <td>-</td>
+				              
+				            </tr>
+							<tr>
+				              <td>Acetileno</td>
+				              <td>C<sub>2</sub>H<sub>2</sub></td>
+				              <td><input type="text" class="form-control input-sm text-left"></td>
+				              <td>-</td>
+				              
+				            </tr>    
+				            <tr>
+				              <td>TOTAL DE GASES COMBUSTÍVEIS</td>
+				              <td>TGC</td>
+				              <td><input type="text" class="form-control input-sm text-left"></td>
+				              <td>-</td>
+				            </tr>   
+				           	<tr>
+				              <td>TOTAL GERAL DE GASES</td>
+				              <td>TGG</td>
+				              <td><input type="text" class="form-control input-sm text-left"></td>
+				              <td>-</td>
+				            </tr>              
+				            
+				          </tbody>
+				        </table>
+				    <!-- </div> -->
+				<!-- </div>FIM TABELA CROMA -->
+
+	        		<!-- CONCLUSÃO -->
+				<!-- <div class="form-group col-sm-10"> -->
+				  <label for="comment">Conclusões e Recomendações:</label>
+				  <textarea class="form-control " rows="5" placeholder="Coloque aqui as conslusões do laboratório..." id="comment">
+A presença de Acetileno (C2H2) é considerada atípica. O gás Acetileno está geralmente associado à falhas elétricas envolvendo descargas. Contudo, o histórico das análises mostra que o quadro cromatográfico vem se mantendo estável ao longo do tempo, ou apresentando variações consideradas normais. Isto sugere que o Acetileno encontrado possa não estar relacionado com falhas elétricas e seja residual, ou proveniente de contaminação pelo óleo do comutador. De qualquer modo, é importante um monitoramento cromatográfico frequente. Nova análise em um mês..
+				  </textarea>
+				<!-- </div>FIM CONCLUSÃO -->
+
+	      </div>
+	      <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledBy="profile-tab">
+	        <p>O Ensaio físico-químico consiste em...</p>
+	      </div>
 	    </div>
 
 
-
-    </div>
-
-
-
-    </div class = "cadastrar" >
-		<button type="submit" class="btn btn-primary btn-lg">Histórico</button>				
-	</div>
-<div>
-
-		
-
-		
+		<!-- BOTAO SALVAR -->
+	    </div class = "cadastrar" >
+			<button type="submit" class="btn btn-default btn-lg">Voltar</button>				
+			<button type="submit" class="btn btn-primary btn-lg">Salvar</button>				
+		</div><!-- FIM BOTAO SALVAR -->
 
 
-		
-		
+	  </div><!-- /example -->
+	</div><!-- FIM TABS CROMA E FQ -->
 
-	</div>
+
+
+	
+
+
+
+
+
+
+
+	
+	
+
+
+</div><!-- FIM CONTAINER GERAL -->
 
 </body>
+
+
 <footer>
 	<!-- <div class="text-center text-muted">
 			<p>Developed by <a href="results">Smarttech</a>.</p>
 	</div> -->
 </footer>
+
+
+
 </html>

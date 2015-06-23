@@ -9,7 +9,10 @@
 
 	<title>Smarttec - transformadores inteligentes</title>
 
+	
 	<!-- SCROLLS -->
+	<!-- Include Bootstrap-select CSS, JS -->
+
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 	
@@ -19,11 +22,18 @@
 	<!-- SPELLS -->
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script><!-- load ui-router -->
+	
 
 	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
 	<script src="js/services/todos.js"></script> <!-- load our todo service -->
 	<script src="js/core.js"></script> <!-- load our main application -->
 
+	<style type="text/css">
+#bootstrapSelectForm .selectContainer .form-control-feedback {
+    /* Adjust feedback icon position */
+    right: -15px;
+}
+</style>
 </head>
 <!-- SET THE CONTROLLER -->
 <body ng-controller="mainController">
@@ -41,13 +51,11 @@
           <a class="navbar-brand" href="#">SmartTech</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-          	<li><a href="#">Clientes</a></li>
-          	<li><a href="/alarmes">Alarmes</a></li>
-          	<li><a href="/analises">Análises</a></li>
-            <li><a href="/diagnosticos">Diagnósticos</a></li>
-            <li><a href="/historico">Histórico</a></li>
-            <li><a href="/cadastrartransformadores">Transformadores</a></li>
+             <ul class="nav navbar-nav navbar-right">
+            
+            <li><a href="/alarmes">Alarmes</a></li>
+            <li><a href="/cadastrartransformadores">Equipamentos</a></li>
+            <li><a href="/analises">Análises</a></li>
             <!-- <li><a href="#">Profile</a></li> -->
             <li><a href="#">vinicius.nunes@smarttecheletrica.com.br<span class="caret"></span></a></li>
           </ul>
@@ -75,15 +83,59 @@
     <div class="col1">
         <!-- <label for="field1">Field One:</label> -->
         <div>
-	        <input type="text" class="form-control input-lg text-left" placeholder="Tag">
-			<input type="text" class="form-control input-lg text-left" placeholder="Equipamento">
-			<input type="text" class="form-control input-lg text-left" placeholder="Fabricante">
+        	<label>Tag</label>
+	        <input type="text" class="form-control input-lg text-left" >
+	        
+			<div class="form-group">
+			  <label>Tipo</label>
+		 	  <select class="form-control" id="sel1">
+			   	<option>Escolha um Tipo de Equipamento</option>
+	  	          <option>Transformador</option>
+	  	          <option>Comutador</option>
+			  </select>
+			</div>
+			<label>Fabricante</label>
+			<input type="text" class="form-control input-lg text-left" >
 		</div>
 		<div class = "formGroup"> 
-			<input type="text" class="form-control input-lg text-left" placeholder="Tensão">
-			<input type="text" class="form-control input-lg text-left" placeholder="Potência">
-			<input type="text" class="form-control input-lg text-left" placeholder="Volume de Óleo">
-			<input type="text" class="form-control input-lg text-left" placeholder="Tipo de Óleo">
+			
+			<!-- <input type="text" class="form-control input-lg text-left" placeholder="Tensão"> -->
+
+
+		<div class="form-group">
+			  <label>Tensão (kV)</label>
+		 	  <select class="form-control" id="sel1">
+			   	<option>Escolha uma Tensão</option>
+	  	          <option>138/33</option>
+	  	          <option>138/23</option>
+	  	          <option>33/4.16</option>
+	  	          <option>33/13.8</option>
+	  	          <option>33/0.44</option>
+	  	          <option>33/0.38</option>
+	  	          <option>23/4.16</option>
+	  	          <option>23/13.8</option>
+	  	          <option>23/0.44</option>
+	  	          <option>23/0.38</option>    
+		          <option>Cadastrar Nova</option>
+		  </select>
+		</div>
+
+
+
+			<label>Potência (kVA)</label>
+			<input type="text" class="form-control input-lg text-left" >
+			<label>Volume de Óleo (m<sup>3</sup>)</label>
+			<input type="text" class="form-control input-lg text-left" >
+			
+			<div class="form-group">
+			  <label>Tipo de Óleo</label>
+		 	  <select class="form-control" id="sel1">
+			   	<option>Escolha um Tipo de Óleo</option>
+	  	          <option>Mineral</option>
+	  	          <option>Vegetal</option>
+			  </select>
+			</div>
+
 			<div class = "whiteLabel"><label > Lembre-se de mim</label></div>
 		</div>
     </div>
@@ -91,14 +143,62 @@
     <div class="col2">
 		<div>    	
 	        <!-- <label for="field2">Field Two:</label> -->
-	        <input type="text" class="form-control input-lg text-left" placeholder="Número de Série">
-			<input type="text" class="form-control input-lg text-left" placeholder="Local">
-			<input type="text" class="form-control input-lg text-left" placeholder="Sistema de Prevenção">
+	        <label>Número de Série</label>
+	        <input type="text" class="form-control input-lg text-left" >
+	        <div class="form-group">
+			  <label>Local</label>
+		 	  <select class="form-control" id="sel1">
+			   	<option>Escolha...</option>
+	  	          <option>SE-1A_ADMINISTRACAO</option>
+	  	          <option>SE-2A_OFICINA_MANUT</option>
+	  	          <option>SE-<3B_CAPTACAO class="drw"></3B_CAPTACAO></option>
+	  	          <option>SE-3A_PRINCIPAL</option>
+	  	          <option>SE-3C_CUT_1</option>
+	  	          <option>SE-3D_CUT_2</option>
+	  	          <option>SE-3E</option>
+	  	          <option>SE-3F</option>
+	  	          <option>SE-3G_STRA</option>
+	  	          <option>SE-5A_ACIARIA 1</option>
+	  	          <option>SE-5B_ACIARIA 2</option>
+	  	          <option>SE-5C-D_P SUC</option>
+	  	          <option>SE-5F_DESP</option>
+	  	          <option>SE-5G_SHREDDER</option>
+	  	          <option>SE-6A_LAMINACAO_1</option>
+	  	          <option>SE-6B_LAMINACAO_2</option>
+	  	          <option>SE-6D_ LAMINACAO_3</option>
+	  	          <option>SE-6E_ LAMINACAO_3</option>
+	  	          <option>SE-8A</option>
+	  	          <option>SE-8B_TREFILA_2</option>
+	  	          <option>SE-8C_TREFILA_2</option>
+	  	          <option>SE-8D_TREFILA_2</option>
+	  	          <option>SSE-8E_TREFILA_1</option>
+	  	          <option>Cadastrar Novo Local</option>
+			  </select>
+			</div>
+			<label>Sistema de Prevenção</label>
+			<input type="text" class="form-control input-lg text-left" >
 		</div>
 		<div class = "formGroup"> 		
-			<input type="text" class="form-control input-lg text-left" placeholder="Comutação com Carga">
-			<input type="text" class="form-control input-lg text-left" placeholder="Tanque Separado">
-			<input type="text" class="form-control input-lg text-left" placeholder="Data de Fabricação">			
+			<div class="form-group">
+			  <label>Comutação com Carga</label>
+		 	  <select class="form-control" id="sel1">
+			   	<option>Escolha...</option>
+	  	          <option>Sim</option>
+	  	          <option>Não</option>
+			  </select>
+			</div>
+			
+			<div class="form-group">
+			  <label>Tanque Separado</label>
+		 	  <select class="form-control" id="sel1">
+			   	<option>Escolha...</option>
+	  	          <option>Sim</option>
+	  	          <option>Não</option>
+			  </select>
+			</div>
+
+			<label>Data de Fabricação</label>
+			<input type="text" class="form-control input-lg text-left" >			
 
 	    </div>
 
@@ -106,22 +206,14 @@
 
 
     </div class = "cadastrar">
-
-		<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Cadastrar</button>				
+		<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Cancelar</button>				
+		<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Salvar</button>				
 	</div>
 <div>
 
 		
 
 		
-
-
-		<div class="text-center text-muted">
-			<p> 
-							
-			</p>
-
-		</div>
 		
 		
 

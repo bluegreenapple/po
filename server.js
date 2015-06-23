@@ -41,7 +41,7 @@ app.get('/diagnostico', function (req, res) {
 app.get('/cadastrartransformadores', function (req, res) {
   res.sendfile('./public/indexCadTransf.html');
 });
-app.get('/transformadores', function (req, res) {
+app.get('/equipamentos', function (req, res) {
   res.sendfile('./public/indexTransf.html');
 });
 app.get('/alarmes', function (req, res) {
