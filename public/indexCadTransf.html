@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 	
-
+	<link href="docs.min.css" rel="stylesheet">
 	<link href="dashboard.css" rel="stylesheet">
 
 	<!-- SPELLS -->
@@ -35,120 +35,78 @@
 }
 </style>
 </head>
+
 <!-- SET THE CONTROLLER -->
 <body ng-controller="mainController">
-<!-- NAVIGATION -->
-
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">SmartTech</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-             <ul class="nav navbar-nav navbar-right">
-            
-            <li><a href="/alarmes">Alarmes</a></li>
-            <li><a href="/cadastrartransformadores">Equipamentos</a></li>
-            <li><a href="/analises">Análises</a></li>
-            <!-- <li><a href="#">Profile</a></li> -->
-            <li><a href="#">vinicius.nunes@smarttecheletrica.com.br<span class="caret"></span></a></li>
-          </ul>
-          
-        </div>
-      </div>
-    </nav>
 
 
-	<div class="container">
+	<!-- NAVBAR PRINCIPAL -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Gestão de Transformadores (DGA)</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+         <ul class="nav navbar-nav navbar-right">
+        
+        <li><a href="/alarmes">Alarmes</a></li>
+        <li><a href="/cadastrartransformadores">Equipamentos</a></li>
+        <li><a href="/analises">Análises</a></li>
+        <!-- <li><a href="#">Profile</a></li> -->
+        <li><a href="#">vinicius.nunes@smarttecheletrica.com.br<span class="caret"></span></a></li>
+      </ul>
+      
+    </div>
+  </div>
+</nav><!-- FIM NAVBAR PRINCIPAL -->
+
+
+<!-- CONTAINER GERAL -->
+<div class="container">
+
+	
+	<!-- TABS CROMA E FQ -->
+	<div class="bs-docs-section">
+	  <h1 id="tabs" class="page-header">Cadastrar Equipamento</h1>
 
 		
 
-		<div id="logo-place" class="row">
-			<div class = "text-left col-sm-8">
-			<!-- <div class="jumbotron text-center"> -->
-				<h1>Cadastrar Equipamento</h1>
-				<!-- <img class = "center-block" src="http://codeboxr.com/wp-content/uploads/2012/06/8_official_googlelogo.jpg" class="img-responsive" alt="Cinque Terre"> -->
-			</div>
-		</div>
+	  <!-- CAIXA DADOS GERAIS -->
+	  
+	  <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
+		  <!-- <h2 id="tabs" class="bs-docs-after">Dados Gerais</h2> -->
 
+		  <label><strong>Tag do Equipamento:</strong></label>	
+		  <input type="text" class="form-control input-lg text-left "></input>
+		  
+		  <label><strong>Número de Série:</strong></label>	
+		  <input type="text" class="form-control input-lg text-left "></input>
+		  
+		  <label><strong>Fabricante:</strong></label>	
+		  <input type="text" class="form-control input-lg text-left "></input>
+		  
+		  <label><strong>Data de Fabricação:</strong></label>	
+		  <input type="text" class="form-control input-lg text-left "></input>
 
-
-<div class="two-col">
-    <div class="col1">
-        <!-- <label for="field1">Field One:</label> -->
-        <div>
-        	<label>Tag</label>
-	        <input type="text" class="form-control input-lg text-left" >
-	        
-			<div class="form-group">
+		  <div class="form-group">
 			  <label>Tipo</label>
 		 	  <select class="form-control" id="sel1">
-			   	<option>Escolha um Tipo de Equipamento</option>
+			   	<option>Escolha um Tipo de Equipamento...</option>
 	  	          <option>Transformador</option>
 	  	          <option>Comutador</option>
 			  </select>
-			</div>
-			<label>Fabricante</label>
-			<input type="text" class="form-control input-lg text-left" >
-		</div>
-		<div class = "formGroup"> 
-			
-			<!-- <input type="text" class="form-control input-lg text-left" placeholder="Tensão"> -->
+		  </div>
 
-
-		<div class="form-group">
-			  <label>Tensão (kV)</label>
-		 	  <select class="form-control" id="sel1">
-			   	<option>Escolha uma Tensão</option>
-	  	          <option>138/33</option>
-	  	          <option>138/23</option>
-	  	          <option>33/4.16</option>
-	  	          <option>33/13.8</option>
-	  	          <option>33/0.44</option>
-	  	          <option>33/0.38</option>
-	  	          <option>23/4.16</option>
-	  	          <option>23/13.8</option>
-	  	          <option>23/0.44</option>
-	  	          <option>23/0.38</option>    
-		          <option>Cadastrar Nova</option>
-		  </select>
-		</div>
-
-
-
-			<label>Potência (kVA)</label>
-			<input type="text" class="form-control input-lg text-left" >
-			<label>Volume de Óleo (m<sup>3</sup>)</label>
-			<input type="text" class="form-control input-lg text-left" >
-			
-			<div class="form-group">
-			  <label>Tipo de Óleo</label>
-		 	  <select class="form-control" id="sel1">
-			   	<option>Escolha um Tipo de Óleo</option>
-	  	          <option>Mineral</option>
-	  	          <option>Vegetal</option>
-			  </select>
-			</div>
-
-			<div class = "whiteLabel"><label > Lembre-se de mim</label></div>
-		</div>
-    </div>
-
-    <div class="col2">
-		<div>    	
-	        <!-- <label for="field2">Field Two:</label> -->
-	        <label>Número de Série</label>
-	        <input type="text" class="form-control input-lg text-left" >
-	        <div class="form-group">
+		  <div class="form-group">
 			  <label>Local</label>
 		 	  <select class="form-control" id="sel1">
-			   	<option>Escolha...</option>
+			   	<option>Escolha o Local...</option>
 	  	          <option>SE-1A_ADMINISTRACAO</option>
 	  	          <option>SE-2A_OFICINA_MANUT</option>
 	  	          <option>SE-<3B_CAPTACAO class="drw"></3B_CAPTACAO></option>
@@ -175,49 +133,86 @@
 	  	          <option>Cadastrar Novo Local</option>
 			  </select>
 			</div>
-			<label>Sistema de Prevenção</label>
-			<input type="text" class="form-control input-lg text-left" >
+
+	  </div><!-- FIM CAIXA DADOS GERAIS -->
+
+	  <!-- CAIXA DADOS TECNICOS-->
+	  <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
+		<!-- <h2 id="tabs" class="bs-docs-after">Dados Específicos</h2> -->
+
+		<label>Potência (kVA)</label>
+		<input type="text" class="form-control input-lg text-left" >
+
+	  	<div class="form-group">
+			  <label>Tensão (kV)</label>
+		 	  <select class="form-control" id="sel1">
+			   	<option>Escolha uma Tensão</option>
+	  	          <option>138/33</option>
+	  	          <option>138/23</option>
+	  	          <option>33/4.16</option>
+	  	          <option>33/13.8</option>
+	  	          <option>33/0.44</option>
+	  	          <option>33/0.38</option>
+	  	          <option>23/4.16</option>
+	  	          <option>23/13.8</option>
+	  	          <option>23/0.44</option>
+	  	          <option>23/0.38</option>    
+		          <option>Cadastrar Nova</option>
+		  </select>
 		</div>
-		<div class = "formGroup"> 		
-			<div class="form-group">
-			  <label>Comutação com Carga</label>
-		 	  <select class="form-control" id="sel1">
-			   	<option>Escolha...</option>
-	  	          <option>Sim</option>
-	  	          <option>Não</option>
-			  </select>
-			</div>
+
+		<div class="form-group">
+		  <label>Comutação com Carga</label>
+	 	  <select class="form-control" id="sel1">
+		   	<option>Escolha...</option>
+  	          <option>Sim</option>
+  	          <option>Não</option>
+		  </select>
+		</div>
+
+		<div class="form-group">
+		  <label>Tanque Separado</label>
+	 	  <select class="form-control" id="sel1">
+		   	<option>Escolha...</option>
+  	          <option>Sim</option>
+  	          <option>Não</option>
+		  </select>
+		</div>	    
+
+		
+		
+		<div class="form-group">
+		  <label>Tipo de Óleo</label>
+	 	  <select class="form-control" id="sel1">
+		   	<option>Escolha um Tipo de Óleo</option>
+  	          <option>Mineral</option>
+  	          <option>Vegetal</option>
+		  </select>
+		</div>
+
+		<label>Volume de Óleo (m<sup>3</sup>)</label>
+		<input type="text" class="form-control input-lg text-left" >
 			
-			<div class="form-group">
-			  <label>Tanque Separado</label>
-		 	  <select class="form-control" id="sel1">
-			   	<option>Escolha...</option>
-	  	          <option>Sim</option>
-	  	          <option>Não</option>
-			  </select>
-			</div>
-
-			<label>Data de Fabricação</label>
-			<input type="text" class="form-control input-lg text-left" >			
-
-	    </div>
-
-    </div>
-
-
-    </div class = "cadastrar">
-		<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Cancelar</button>				
-		<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Salvar</button>				
-	</div>
-<div>
-
+		<label>Sistema de Prevenção</label>
+		<input type="text" class="form-control input-lg text-left" >
+	    
 		
 
-		
-		
-		
 
-	</div>
+		<!-- BOTAO SALVAR -->
+	    </div class = "cadastrar" >
+			<button type="submit" class="btn btn-default btn-lg">Voltar</button>				
+			<button type="submit" class="btn btn-primary btn-lg">Salvar</button>				
+		</div><!-- FIM BOTAO SALVAR -->
+
+
+	  </div><!-- FIM CAIXA DADOS TECNICOS-->
+	</div><!-- FIM TABS CROMA E FQ -->
+
+
+</div><!-- FIM CONTAINER GERAL -->
+
+
 
 </body>
 <footer>
