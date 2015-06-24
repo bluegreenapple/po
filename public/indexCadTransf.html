@@ -1,7 +1,7 @@
 <!doctype html>
 
 <!-- ASSIGN OUR ANGULAR MODULE -->
-<html ng-app="scotchTodo">
+<html ng-app="angularApp">
 <head>
 	<!-- META -->
 	<meta charset="utf-8">
@@ -17,7 +17,7 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 	
 	<link href="docs.min.css" rel="stylesheet">
-	<link href="dashboard.css" rel="stylesheet">
+	<!-- <link href="dashboard.css" rel="stylesheet"> -->
 
 	<!-- SPELLS -->
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
@@ -25,7 +25,7 @@
 	
 
 	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
-	<script src="js/services/todos.js"></script> <!-- load our todo service -->
+	<script src="js/services/equipamentos.js"></script> <!-- load our todo service -->
 	<script src="js/core.js"></script> <!-- load our main application -->
 
 	<style type="text/css">
@@ -70,12 +70,11 @@
 <!-- CONTAINER GERAL -->
 <div class="container">
 
-	
+	<form>
 	<!-- TABS CROMA E FQ -->
 	<div class="bs-docs-section">
 	  <h1 id="tabs" class="page-header">Cadastrar Equipamento</h1>
 
-		
 
 	  <!-- CAIXA DADOS GERAIS -->
 	  
@@ -83,20 +82,20 @@
 		  <!-- <h2 id="tabs" class="bs-docs-after">Dados Gerais</h2> -->
 
 		  <label><strong>Tag do Equipamento:</strong></label>	
-		  <input type="text" class="form-control input-lg text-left "></input>
+		  <input type="text" class="form-control input-lg text-left " ng-model="formData.tag" required></input>
 		  
 		  <label><strong>Número de Série:</strong></label>	
-		  <input type="text" class="form-control input-lg text-left "></input>
+		  <input type="text" class="form-control input-lg text-left " ng-model="formData.nSerie" required></input>
 		  
 		  <label><strong>Fabricante:</strong></label>	
-		  <input type="text" class="form-control input-lg text-left "></input>
+		  <input type="text" class="form-control input-lg text-left " ng-model="formData.fabricante" required></input>
 		  
 		  <label><strong>Data de Fabricação:</strong></label>	
-		  <input type="text" class="form-control input-lg text-left "></input>
+		  <input type="text" class="form-control input-lg text-left " ng-model="formData.dataDeFabricacao" required></input>
 
 		  <div class="form-group">
 			  <label>Tipo</label>
-		 	  <select class="form-control" id="sel1">
+		 	  <select ng-model="formData.tipo" class="form-control" id="sel1">
 			   	<option>Escolha um Tipo de Equipamento...</option>
 	  	          <option>Transformador</option>
 	  	          <option>Comutador</option>
@@ -105,7 +104,7 @@
 
 		  <div class="form-group">
 			  <label>Local</label>
-		 	  <select class="form-control" id="sel1">
+		 	  <select ng-model="formData.local" class="form-control" id="sel1">
 			   	<option>Escolha o Local...</option>
 	  	          <option>SE-1A_ADMINISTRACAO</option>
 	  	          <option>SE-2A_OFICINA_MANUT</option>
@@ -141,11 +140,11 @@
 		<!-- <h2 id="tabs" class="bs-docs-after">Dados Específicos</h2> -->
 
 		<label>Potência (kVA)</label>
-		<input type="text" class="form-control input-lg text-left" >
+		<input type="text" class="form-control input-lg text-left"  ng-model="formData.potencia" required>
 
-	  	<div class="form-group">
+	  	 <div class="form-group">
 			  <label>Tensão (kV)</label>
-		 	  <select class="form-control" id="sel1">
+		 	  <select ng-model="formData.tensao" class="form-control" id="sel1">
 			   	<option>Escolha uma Tensão</option>
 	  	          <option>138/33</option>
 	  	          <option>138/23</option>
@@ -163,7 +162,7 @@
 
 		<div class="form-group">
 		  <label>Comutação com Carga</label>
-	 	  <select class="form-control" id="sel1">
+	 	  <select ng-model="formData.comutacaoComCarga" class="form-control" id="sel1">
 		   	<option>Escolha...</option>
   	          <option>Sim</option>
   	          <option>Não</option>
@@ -172,7 +171,7 @@
 
 		<div class="form-group">
 		  <label>Tanque Separado</label>
-	 	  <select class="form-control" id="sel1">
+	 	  <select ng-model="formData.tanqueSeparado" class="form-control" id="sel1">
 		   	<option>Escolha...</option>
   	          <option>Sim</option>
   	          <option>Não</option>
@@ -183,7 +182,7 @@
 		
 		<div class="form-group">
 		  <label>Tipo de Óleo</label>
-	 	  <select class="form-control" id="sel1">
+	 	  <select ng-model="formData.tipoDeOleo" class="form-control" id="sel1">
 		   	<option>Escolha um Tipo de Óleo</option>
   	          <option>Mineral</option>
   	          <option>Vegetal</option>
@@ -191,33 +190,35 @@
 		</div>
 
 		<label>Volume de Óleo (m<sup>3</sup>)</label>
-		<input type="text" class="form-control input-lg text-left" >
+		<input type="text" class="form-control input-lg text-left" ng-model="formData.volumeDeOleo" required>
 			
 		<label>Sistema de Prevenção</label>
-		<input type="text" class="form-control input-lg text-left" >
+		<input type="text" class="form-control input-lg text-left" ng-model="formData.sistemaDePrevencao" required> 
 	    
 		
 
 
 		<!-- BOTAO SALVAR -->
 	    </div class = "cadastrar" >
-			<button type="submit" class="btn btn-default btn-lg">Voltar</button>				
-			<button type="submit" class="btn btn-primary btn-lg">Salvar</button>				
+			<!-- <button type="submit" class="btn btn-default btn-lg">Voltar</button>				 -->
+			<button type="submit" class="btn btn-primary btn-lg" ng-click="createEquipamento()">Salvar</button>				
 		</div><!-- FIM BOTAO SALVAR -->
 
 
 	  </div><!-- FIM CAIXA DADOS TECNICOS-->
+
 	</div><!-- FIM TABS CROMA E FQ -->
+	</form>
 
 
 </div><!-- FIM CONTAINER GERAL -->
 
-
-
 </body>
+
 <footer>
 	<div class="text-center text-muted">
-			<p>Developed by <a href="results">Smarttech</a>.</p>
-		</div>
+		<p>Developed by <a href="results">Smarttech</a>.</p>
+	</div>
 </footer>
+
 </html>

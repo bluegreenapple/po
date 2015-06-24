@@ -20,12 +20,15 @@ app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-M
 
 
 // routes ======================================================================
-// require('./app/routes.js')(app);
+require('./app/routes.js')(app);
 
 // rony smarttec
 // app.get('', function (req, res) {
 // 	  res.sendfile('./public/indexAlarmes.html');
 // });
+app.get('/', function (req, res) {
+  res.sendfile('./public/indexCadTransf.html');
+});
 app.get('/login', function (req, res) {
   res.sendfile('./public/indexLogin.html');
 });
@@ -50,6 +53,11 @@ app.get('/alarmes', function (req, res) {
 app.get('/historico', function (req, res) {
   res.sendfile('./public/indexHistorico.html');
 });
+
+
+// read/write equipamentos
+
+
 
 // listen (start app with node server.js) ======================================
 app.listen(port);

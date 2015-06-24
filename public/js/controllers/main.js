@@ -1,50 +1,50 @@
-angular.module('todoController', [])
+angular.module('equipamentoController', [])
 
-	// inject the Todo service factory into our controller
-	.controller('mainController', ['$scope','$http','Todos', function($scope, $http, Todos) {
+	// inject the Equipamento service factory into our controller
+	.controller('mainController', ['$scope','$http','Equipamentos', function($scope, $http, Equipamentos) {
 		$scope.formData = {};
 		$scope.loading = true;
 
 		// GET =====================================================================
-		// when landing on the page, get all todos and show them
-		// use the service to get all the todos
-		Todos.get()
+		// when landing on the page, get all equipamentos and show them
+		// use the service to get all the equipamentos
+		Equipamentos.get()
 			.success(function(data) {
-				$scope.todos = data;
+				$scope.equipamentos = data;
 				$scope.loading = false;
 			});
 
 		// CREATE ==================================================================
 		// when submitting the add form, send the text to the node API
-		$scope.createTodo = function() {
-
+		$scope.createEquipamento = function() {
+			alert('I submit');
 			// validate the formData to make sure that something is there
 			// if form is empty, nothing will happen
-			if ($scope.formData.text != undefined) {
+			if ($scope.formData.tag != undefined) {
 				$scope.loading = true;
 
 				// call the create function from our service (returns a promise object)
-				Todos.create($scope.formData)
+				Equipamentos.create($scope.formData)
 
-					// if successful creation, call our get function to get all the new todos
+					// if successful creation, call our get function to get all the new equipamentos
 					.success(function(data) {
 						$scope.loading = false;
 						$scope.formData = {}; // clear the form so our user is ready to enter another
-						$scope.todos = data; // assign our new list of todos
+						$scope.equipamentos = data; // assign our new list of equipamentos
 					});
 			}
 		};
 
 		// DELETE ==================================================================
-		// delete a todo after checking it
-		$scope.deleteTodo = function(id) {
+		// delete a equipamento after checking it
+		$scope.deleteEquipamento = function(id) {
 			$scope.loading = true;
 
-			Todos.delete(id)
-				// if successful creation, call our get function to get all the new todos
+			Equipamentos.delete(id)
+				// if successful creation, call our get function to get all the new equipamentos
 				.success(function(data) {
 					$scope.loading = false;
-					$scope.todos = data; // assign our new list of todos
+					$scope.equipamentos = data; // assign our new list of equipamentos
 				});
 		};
 	}]);
