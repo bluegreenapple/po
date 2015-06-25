@@ -75,12 +75,34 @@
 		  <input type="text" class="form-control input-lg text-left " ng-model="formData.laboratorio"></input>
 		  <label><strong>Número da Análise do Laboratório:</strong></label>	
 		  <input type="text" class="form-control input-lg text-left " ng-model="formData.nDaAnaliseDoLaboratorio"></input>
-		  <label><strong>Data da Análise do Laboratório:</strong></label>	
+		  <label><strong>Data da Amostragem:</strong></label>	
 		  <input type="text" class="form-control input-lg text-left " ng-model="formData.dataDaAnalise"></input>
+
+		  <label><strong>Umidade Relativa do Ar (%):</strong></label>	
+		  <input type="text" class="form-control input-lg text-left " ng-model="formData.umidadeRelativaDoAr"></input>
+		  <label><strong>Temperatura Ambiente (<sup>o</sup>C:)</strong></label>	
+		  <input type="text" class="form-control input-lg text-left " ng-model="formData.temperaturaAmbiente"></input>
+  		
+		  <label>Em Operação</label>
+	 	  <select ng-model="formData.emOperacao" class="form-control" id="sel1">
+		   	<option>Escolha...</option>
+  	          <option>Sim</option>
+  	          <option>Não</option>
+		  </select>
+
+		  <label>Ponto de Coleta</label>
+	 	  <select ng-model="formData.pontoDeColeta" class="form-control" id="sel1">
+		   	<option>Escolha...</option>
+  	          <option>Inferior</option>
+  	          <option>Superior</option>
+		  </select>
+		  
+		  <label><strong>Temperatura Do Óleo (<sup>o</sup>C):</strong></label>	
+		  <input type="text" class="form-control input-lg text-left " ng-model="formData.temperaturaDoOleo"></input>
 		  
 	  </div><!-- FIM TAG DO EQUIPAMENTO -->
 
-
+	  
 	  <!-- CAIXA CROMATOGRAFICA E FISICO QUIMICA-->
 	  <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
 

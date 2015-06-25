@@ -16,14 +16,14 @@ module.exports = function(app) {
 	// analise
 	app.get('/api/analises/:analise_id', function(req, res) {
 
-		// use mongoose to get one specific todo in the database
+		// use mongoose to get one specific analise in the database
 		Analise.findOne({_id : req.params.analise_id}, function(err, analise) {
 
 			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
 			if (err)
 				res.send(err)
 
-			res.json(analise); // return the todo in JSON format
+			res.json(analise); // return the analise in JSON format
 		});
 	});
 
@@ -43,7 +43,11 @@ module.exports = function(app) {
 		    nDaAnaliseDoLaboratorio: req.body.nDaAnaliseDoLaboratorio,  
 		    laboratorio: req.body.laboratorio,  
 		    dataDaAnalise: req.body.dataDaAnalise,  
-		    // tipo: req.body.tipo,  
+		    umidadeRelativaDoAr: req.body.umidadeRelativaDoAr,  
+    		temperaturaAmbiente: req.body.temperaturaAmbiente,  
+		    emOperacao: req.body.emOperacao,  
+		    pontoDeColeta: req.body.pontoDeColeta,  
+		    temperaturaDoOleo   : req.body.temperaturaDoOleo,  
 
 		    //cromatográfico
 		    h2: req.body.h2,  
@@ -65,7 +69,7 @@ module.exports = function(app) {
 		}, function(err, analise) {
 			if (err)
 				res.send(err);
-
+			
 			// get and return all the analises after you create another
 			getAnalises(res);
 		});

@@ -3,13 +3,18 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;  
 
 var analiseSchema = new Schema({  
-    tagDoEquipamento: { type: String, required: true },  
+    tagDoEquipamento: { type: String, required: true },
     nDaAnaliseDoLaboratorio: { type: String, required: true },  
     laboratorio: { type: String, required: true },  
     dataDaAnalise: { type: Date, required: true },  
-    // tipo: { type: String, required: true },  
+    umidadeRelativaDoAr: { type: String, required: true },  
+    temperaturaAmbiente: { type: String, required: true },  
+    emOperacao: { type: String, required: true },  
+    pontoDeColeta: { type: String, required: true },  
+    temperaturaDoOleo   : { type: String, required: true },  
 
-    //cromatográfico
+
+    // cromatográfico
     h2: { type: String, required: true },  
     o2: { type: String, required: true },  
     n2: { type: String, required: true },  
