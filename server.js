@@ -28,7 +28,7 @@ require('./app/routes2.js')(app);
 // 	  res.sendfile('./public/indexAlarmes.html');
 // });
 app.get('/', function (req, res) {
-  res.sendfile('./public/indexTransf.html');
+  res.sendfile('./public/indexCadAnalise.html');
 });
 app.get('/login', function (req, res) {
   res.sendfile('./public/indexLogin.html');
@@ -45,7 +45,7 @@ app.get('/diagnosticos', function (req, res) {
 app.get('/diagnostico', function (req, res) {
   res.sendfile('./public/indexDiagnostico1.html');
 });
-app.get('/cadastrartransformadores', function (req, res) {
+app.get('/cadastrarequipamento', function (req, res) {
   res.sendfile('./public/indexCadTransf.html');
 });
 app.get('/equipamentos', function (req, res) {
