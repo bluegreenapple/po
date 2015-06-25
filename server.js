@@ -21,6 +21,7 @@ app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-M
 
 // routes ======================================================================
 require('./app/routes.js')(app);
+require('./app/routes2.js')(app);
 
 // rony smarttec
 // app.get('', function (req, res) {
