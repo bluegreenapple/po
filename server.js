@@ -33,8 +33,11 @@ app.get('/', function (req, res) {
 app.get('/login', function (req, res) {
   res.sendfile('./public/indexLogin.html');
 });
+app.get('/cadastraranalise', function (req, res) {
+  res.sendfile('./public/indexCadAnalise.html');
+});
 app.get('/analises', function (req, res) {
-  res.sendfile('./public/indexAnalise.html');
+  res.sendfile('./public/indexAnalises.html');
 });
 app.get('/diagnosticos', function (req, res) {
   res.sendfile('./public/indexDiag.html');
