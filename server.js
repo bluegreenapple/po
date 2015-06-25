@@ -28,13 +28,13 @@ require('./app/routes2.js')(app);
 // 	  res.sendfile('./public/indexAlarmes.html');
 // });
 app.get('/', function (req, res) {
-  res.sendfile('./public/indexCadAnalise.html');
+  res.sendfile('./public/indexAnalisesCadastro.html');
 });
 app.get('/login', function (req, res) {
   res.sendfile('./public/indexLogin.html');
 });
 app.get('/cadastraranalise', function (req, res) {
-  res.sendfile('./public/indexCadAnalise.html');
+  res.sendfile('./public/indexAnalisesCadastro.html');
 });
 app.get('/analises', function (req, res) {
   res.sendfile('./public/indexAnalises.html');
@@ -42,14 +42,14 @@ app.get('/analises', function (req, res) {
 app.get('/diagnosticos', function (req, res) {
   res.sendfile('./public/indexDiag.html');
 });
-app.get('/diagnostico', function (req, res) {
-  res.sendfile('./public/indexDiagnostico1.html');
-});
+// app.get('/diagnostico', function (req, res) {
+//   res.sendfile('./public/indexDiagnostico1.html');
+// });
 app.get('/cadastrarequipamento', function (req, res) {
-  res.sendfile('./public/indexCadTransf.html');
+  res.sendfile('./public/indexEquipamentosCadastro.html');
 });
 app.get('/equipamentos', function (req, res) {
-  res.sendfile('./public/indexTransf.html');
+  res.sendfile('./public/indexEquipamentos.html');
 });
 app.get('/alarmes', function (req, res) {
   res.sendfile('./public/indexAlarmes.html');
