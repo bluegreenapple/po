@@ -50,6 +50,7 @@ module.exports = function(app) {
     		nSerie: req.body.nSerie,  
     		fabricante: req.body.fabricante,  
     		dataDeFabricacao: req.body.dataDeFabricacao,  
+    		dataDoUltimoReparo: req.body.dataDoUltimoReparo,  
     		tipo: req.body.tipo,  
     		potencia: req.body.potencia,  
     		tensao: req.body.tensao,  

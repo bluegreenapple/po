@@ -7,6 +7,7 @@ var equipamentoSchema = new Schema({
     nSerie: { type: String, required: true },  
     fabricante: { type: String, required: true },  
     dataDeFabricacao: { type: Date, required: true },  
+    dataDoUltimoReparo: { type: Date, required: true },  
     tipo: { type: String, required: true },  
     potencia: { type: String, required: true },  
     tensao: { type: String, required: true },  
