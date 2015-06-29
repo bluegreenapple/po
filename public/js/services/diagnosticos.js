@@ -34,5 +34,9 @@ angular.module('diagnosticosServices', [])
                 return "-";
             }
         };
+
+        this.diagnostico2 = function(analise) {
+            return diagnostico(analise.ch4,analise.c2h2,analise.c2h4);
+        };
      
 });
