@@ -1,8 +1,6 @@
-var app = angular.module('app', []);
+var app = angular.module('appDiag', ['ui.bootstrap']);
 
-// .controller('mainController', ['$scope','$http','Equipamentos', function($scope, $http, Equipamentos) {
-// app.controller('TextController', ['$scope' ,function ($scope) {
-app.controller('TextController', ['$scope','DuvalService' ,function ($scope, DuvalService) {
+app.controller('DuvalController', ['$scope','DuvalService' ,function ($scope, DuvalService) {
     $scope.formData = {
         ch4: 0,
         c2h2: 0,
@@ -11,7 +9,7 @@ app.controller('TextController', ['$scope','DuvalService' ,function ($scope, Duv
     $scope.m = 0;
     $scope.a = 0;
     $scope.y = 0;
-    $scope.diagnostico = 'lolo';
+    $scope.diagnostico = '';
     $scope.calculaM = function() {
         alert('I submit1');
         $scope.m = DuvalService.m($scope.formData.ch4, $scope.formData.c2h2, $scope.formData.c2h4);
@@ -22,6 +20,16 @@ app.controller('TextController', ['$scope','DuvalService' ,function ($scope, Duv
 
 
 }]);
+
+app.controller('TabsDemoCtrl', function ($scope, $window) {
+    // $scope.curAnalise;
+    // $scope.formData = {};
+    $scope.createAnalise = function() {
+        alert('I submit1');
+        
+    };
+});
+
 
 
 app.controller('ItemController', function ($scope) {

@@ -4,58 +4,55 @@
 
     <!-- SPELLS -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
-
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
     <script src="/js/controllers/controllers.js"></script>
     
 </head>
 
-<div ng-app='app'>
+<div ng-app='appDiag'>
 
-    <div ng-controller='ItemController'>
-        	<h1>Your Orders</h1>
+    
+    <tabset>
+        <tab heading="Duval"><!-- DUVAL TAB -->
+            <div ng-controller='DuvalController'><!-- DUVAL CONTROLLER --> 
+                <form>
+                    <h2>ch4: {{formData.ch4}}</h2>
+                    <input type='number' ng-model='formData.ch4'>
+                    <h2>c2h2: {{formData.c2h2}}</h2>
+                    <input type='number' ng-model='formData.c2h2'>
+                    <h2>c2h4: {{formData.c2h4}}</h2>
+                    <input type='number' ng-model='formData.c2h4'>
+                    <button type="submit" class="btn btn-primary btn-lg" ng-click="calculaM()">Calcular</button> 
+                </form>
 
-        <div ng-repeat='item in items'>	<span>{{item.title}}</span>
-            <input type="text" ng-model="item.quantity"><span>{{item.price}}</span>&nbsp;|&nbsp;<span>{{item.price *
-				item.quantity | currency}}</span>
+                <table class = 'table table-striped'>
+                <tr>
+                    <th>m</th>
+                    <th>a</th>
+                    <th>y</th>
+                    <th>Tipo de Falha</th>   
+                </tr>
+                <tr>
+                    <td>{{ m | number:1}}</td>
+                    <td>{{ a | number:1}}</td>
+                    <td>{{ y | number:1}}</td>
+                    <td>{{ diagnostico }}</td>
+                </tr>
+                </table>
+                
+            </div> <!-- FIM DUVAL CONTROLLER --> 
+        </tab><!-- FIM DUVAL TAB --> 
+        <tab heading="Doble">Under Construction...</tab>
+        <tab heading="Iec 60599">Under Construction...</tab>
+        <tab heading="Laborelec">Under Construction...</tab>
+        <tab heading="Pugh">Under Construction...</tab>
+        <tab heading="Rogers">Under Construction...</tab>
+        <tab heading="Dornemburg">Under Construction...</tab>
+    
+    </tabset>
 
-        </div>
-    </div>
 
-    <hr/>
 
-    <div ng-controller='TextController'>
-        <form>
-            <h2>ch4: {{formData.ch4}}</h2>
-            <input type='number' ng-model='formData.ch4'>
-            <h2>c2h2: {{formData.c2h2}}</h2>
-            <input type='number' ng-model='formData.c2h2'>
-            <h2>c2h4: {{formData.c2h4}}</h2>
-            <input type='number' ng-model='formData.c2h4'>
-            <button type="submit" class="btn btn-primary btn-lg" ng-click="calculaM()">Calcular</button> 
-        </form>
-
-        <div>
-          <!-- TABELA DE DUVAL-->
-          <table class = 'table table-striped'>
-          
-          <tr>
-            <th>m</th>
-            <th>a</th>
-            <th>y</th>
-            <th>Tipo de Falha</th>   
-          </tr>
-          
-          <tr>
-            <td>{{m}}</td>
-            <td>{{ a }}</td>
-            <td>{{ y }}</td>
-             <td>{{ diagnostico }}</td>
-
-          </tr>
-
-          </table><!-- FIM TABELA DE DUVAL
-        </div>
-
-    </div>
+    
 
 </div>

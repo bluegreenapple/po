@@ -1,7 +1,7 @@
 angular.module('diagnosticosServices', [])
 
     //simple service for creating Duval diagnostics
-    .factory('Duval', function() {
+    .service('Duval', function() {
 
 
         this.m = function(ch4, c2h2, c2h4) {
@@ -17,9 +17,10 @@ angular.module('diagnosticosServices', [])
         };
         
         this.diagnostico = function(ch4, c2h2, c2h4) {
-            var duval_m = m(ch4,c2h2,c2h4);
-            var duval_a = a(ch4,c2h2,c2h4);
-            var duval_y = y(ch4,c2h2,c2h4);
+            
+            var duval_m = this.m(ch4,c2h2,c2h4);
+            var duval_a = this.a(ch4,c2h2,c2h4);
+            var duval_y = this.y(ch4,c2h2,c2h4);
             if ((duval_m >=0 && duval_m <=96) && (duval_a >=0 && duval_a <=16) && (duval_y >=0 && duval_y <=100)) {
                 return "Pontos Quentes";
             }
