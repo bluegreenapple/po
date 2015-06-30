@@ -1,4 +1,4 @@
-angular.module('equipamentoController', [])
+angular.module('equipamentoController', ['ui.bootstrap'])
 
 	// inject the Equipamento service factory into our controller
 	.controller('mainController', ['$scope','$http','Equipamentos', function($scope, $http, Equipamentos) {
