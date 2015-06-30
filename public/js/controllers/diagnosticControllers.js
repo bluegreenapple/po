@@ -7,7 +7,11 @@ angular.module('diagnosticController', [])
 
 		// CALCULATE DUVAL DIAGNOSTIC ===============================================
 		$scope.analise;
-		$scope.duval = '';
+		
+		$scope.calculaDuval = function(analise) {
+
+			$scope.duval_m = Duval.diagnostico2(analise);
+		};
 		
 		$scope.calculaDuval_m = function(ch4,c2h2,c2h4) {
 

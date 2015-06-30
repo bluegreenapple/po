@@ -1,0 +1,61 @@
+<head>
+    
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+
+    <!-- SPELLS -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+
+    <script src="/js/controllers/controllers.js"></script>
+    
+</head>
+
+<div ng-app='app'>
+
+    <div ng-controller='ItemController'>
+        	<h1>Your Orders</h1>
+
+        <div ng-repeat='item in items'>	<span>{{item.title}}</span>
+            <input type="text" ng-model="item.quantity"><span>{{item.price}}</span>&nbsp;|&nbsp;<span>{{item.price *
+				item.quantity | currency}}</span>
+
+        </div>
+    </div>
+
+    <hr/>
+
+    <div ng-controller='TextController'>
+        <form>
+            <h2>ch4: {{formData.ch4}}</h2>
+            <input type='number' ng-model='formData.ch4'>
+            <h2>c2h2: {{formData.c2h2}}</h2>
+            <input type='number' ng-model='formData.c2h2'>
+            <h2>c2h4: {{formData.c2h4}}</h2>
+            <input type='number' ng-model='formData.c2h4'>
+            <button type="submit" class="btn btn-primary btn-lg" ng-click="calculaM()">Calcular</button> 
+        </form>
+
+        <div>
+          <!-- TABELA DE DUVAL-->
+          <table class = 'table table-striped'>
+          
+          <tr>
+            <th>m</th>
+            <th>a</th>
+            <th>y</th>
+            <th>Tipo de Falha</th>   
+          </tr>
+          
+          <tr>
+            <td>{{m}}</td>
+            <td>{{ a }}</td>
+            <td>{{ y }}</td>
+             <td>{{ diagnostico }}</td>
+
+          </tr>
+
+          </table><!-- FIM TABELA DE DUVAL
+        </div>
+
+    </div>
+
+</div>

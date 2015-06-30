@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="ui.bootstrap.demo">
+<html ng-app="appDiag">
   <head>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.js"></script>
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
@@ -8,9 +8,25 @@
   </head>
   <body>
 
+<!-- TABS CONTROLLER -->
 <div ng-controller="TabsDemoCtrl">
-  
 
+  
+  <form>
+    <label><strong>ch4:</strong></label> 
+    <input type="text" class="form-control  text-left " ng-model="ch4" required></input>
+
+    <label><strong>c2h2:</strong></label> 
+    <input type="text" class="form-control text-left " ng-model="c2h2" required></input>
+
+    <label><strong>c2h4:</strong></label> 
+    <input type="text" class="form-control  text-left " ng-model="c2h4" required></input>
+
+    <label><strong>{{ch4}}</strong></label> 
+    <label><strong>{{c2h2}}</strong></label> 
+    <label><strong>{{c2h4}}</strong></label> 
+  </form>
+  
 
   <tabset>
     <tab heading="Duval">
@@ -25,12 +41,13 @@
             <th>Tipo de Falha</th>   
            </tr>
           <tr>
-            <!-- <td>{{ analise._id }}</td> -->
-            <!-- <td>{{ analise.tagDoEquipamento }}</td>
-            <td>{{ analise.laboratorio }}</td>
-            <td>{{ analise.nDaAnaliseDoLaboratorio }}</td> -->
+
+            <td>{{ m }}</td>
+            <td>{{ a }}</td>
+            <td>{{ y }}</td>
+            <!-- <td>{{ diagnosticoDuval }}</td> -->
           </tr>
-          </table><!-- FIM TABELA DE ANALISES-->
+          </table><!-- FIM TABELA DE DUVAL-->
       </div>
 
     </tab>
@@ -45,9 +62,20 @@
     </tab> -->
   </tabset>
 
-  <hr />
+
+</div><!-- FIM TABS CONTROLLER -->
 
 
-</div>
-  </body>
+<!-- DUVAL CONTROLLER -->
+  <div ng-controler="DuvalController">
+    <button type="submit" class="btn btn-primary btn-lg" ng-click="createAnalise()">Calcular</button> 
+  </div><!-- END OF DUVAL CONTROLLER -->
+
+  
+
+
+
+
+</body>
+
 </html>
