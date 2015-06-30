@@ -1,7 +1,7 @@
 angular.module('diagnosticosServices', [])
 
     //simple service for creating Duval diagnostics
-    .service('Duval', function() {
+    .service('DuvalService', function() {
 
 
         this.m = function(ch4, c2h2, c2h4) {
