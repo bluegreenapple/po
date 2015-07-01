@@ -40,7 +40,7 @@ app.get('/analises', function (req, res) {
   res.sendfile('./public/indexAnalises.html');
 });
 app.get('/diagnosticos', function (req, res) {
-  res.sendfile('./public/indexDiag.html');
+  res.sendfile('./public/indexDiagnostico1.html');
 });
 // app.get('/diagnostico', function (req, res) {
 //   res.sendfile('./public/indexDiagnostico1.html');
@@ -49,7 +49,7 @@ app.get('/cadastrarequipamento', function (req, res) {
   res.sendfile('./public/indexEquipamentosCadastro.html');
 });
 app.get('/equipamentos', function (req, res) {
-  res.sendfile('./public/indexEquipamentos.html');
+  res.sendfile('./public/index.html');
 });
 app.get('/alarmes', function (req, res) {
   res.sendfile('./public/indexAlarmes.html');

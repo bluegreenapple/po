@@ -11,3 +11,11 @@
 	width: 95%;
 	padding: 1%;
 }
+.mainContainer{
+	padding-top: 30px;
+}
+table {
+  display: block;
+  height: 250px;
+  overflow-y: scroll;
+}

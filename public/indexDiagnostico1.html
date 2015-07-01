@@ -15,7 +15,46 @@
     
     <tabset>
         <tab heading="Duval"><!-- DUVAL TAB -->
-            <div ng-controller='DuvalController'><!-- DUVAL CONTROLLER --> 
+            <div ng-controller='DuvalController'><!-- DUVAL CONTROLLER -->
+                <!-- <br> -->
+                <h2>Descrição</h2>
+                <div>
+        Este critério é um método especial para diagnóstico de falhas já que está
+    baseado na visualização da localização dos gases dissolvidos em um mapa
+    triangular. Unicamente três gases dissolvidos são necessários CH4, C2H4 e C2H2.
+    Este critério permite diagnosticar quatro tipos de falhas que são descargas
+    parciais, arco de alta e baixa energia e pontos quentes de várias faixas de
+    temperatura, relacionando os percentuais obtidos para os gases
+    característicos utilizando as seguintes relações: 
+                </div>
+                <table class = 'table table-striped'>
+                    <tr>
+                        <th>m</th>
+                        <th>a</th>
+                        <th>y</th>
+                        <th>Tipo de Falha</th>   
+                    </tr>
+                    <tr>
+                        <td>0-96</td>
+                        <td>0-16</td>
+                        <td>0-100</td>
+                        <td>Pontos Quentes</td>
+                    </tr>
+                    <tr>
+                        <td>0-59</td>
+                        <td>16-75</td>
+                        <td>25-84</td>
+                        <td>Arco de Alta Energia</td>
+                    </tr>
+                    <tr>
+                        <td>0-84</td>
+                        <td>16-100</td>
+                        <td>0-25</td>
+                        <td>Descargas Internas</td>
+                    </tr>
+                </table>
+
+                <h2>Cálculo</h2>
                 <form>
                     <h2>ch4: {{formData.ch4}}</h2>
                     <input type='number' ng-model='formData.ch4'>
