@@ -1,8 +1,32 @@
-angular.module('ui.bootstrap.demo', ['ui.bootstrap','equipamentoService']);
-angular.module('ui.bootstrap.demo').controller('ModalDemoCtrl', function ($scope, $modal, $log) {
+var app = angular.module('ui.bootstrap.demo', ['ui.bootstrap','equipamentoService']);
+app.controller('ModalDemoCtrl', ['$scope','$http','Equipamentos', '$modal', '$log',function ($scope,$http,Equipamentos, $modal, $log) {
+
+  $scope.formData = {};
+  $scope.loading = true;
+
+  // GET =====================================================================
+  // when landing on the page, get all equipamentos and show them
+  // use the service to get all the equipamentos
+  Equipamentos.get()
+    .success(function(data) {
+      $scope.equipamentos = data;
+      $scope.loading = false;
+    });
+
+  // DELETE ==================================================================
+  // delete a equipamento after checking it
+  $scope.deleteEquipamento = function(id) {
+    $scope.loading = true;
+
+    Equipamentos.delete(id)
+      // if successful creation, call our get function to get all the new equipamentos
+      .success(function(data) {
+        $scope.loading = false;
+        $scope.equipamentos = data; // assign our new list of equipamentos
+      });
+  };
 
   $scope.items = ['item1', 'item2', 'item3'];
-
   $scope.animationsEnabled = true;
 
   $scope.open = function (size) {
@@ -11,6 +35,7 @@ angular.module('ui.bootstrap.demo').controller('ModalDemoCtrl', function ($scope
       animation: $scope.animationsEnabled,
       templateUrl: 'myModalContent.html',
       controller: 'ModalInstanceCtrl',
+      windowClass: 'center-modal',
       size: size,
       resolve: {
         items: function () {
@@ -20,34 +45,17 @@ angular.module('ui.bootstrap.demo').controller('ModalDemoCtrl', function ($scope
     });
 
     modalInstance.result.then(function (selectedItem) {
-      $scope.selected = selectedItem;
+      // $scope.selected = selectedItem;
+      $scope.equipamentos = selectedItem;
     }, function () {
       $log.info('Modal dismissed at: ' + new Date());
     });
   };
 
 
-});
+}]);
 
-// Please note that $modalInstance represents a modal window (instance) dependency.
-// It is not the same as the $modal service used above.
-
-// angular.module('ui.bootstrap.demo').controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
-
-//   $scope.items = items;
-//   $scope.selected = {
-//     item: $scope.items[0]
-//   };
-
-//   $scope.ok = function () {
-//     $modalInstance.close($scope.selected.item);
-//   };
-
-//   $scope.cancel = function () {
-//     $modalInstance.dismiss('cancel');
-//   };
-// });
-angular.module('ui.bootstrap.demo').controller('ModalInstanceCtrl',['$scope','$http','Equipamentos', '$modalInstance', 'items', function ($scope,$http,Equipamentos, $modalInstance, items) {
+app.controller('ModalInstanceCtrl',['$scope','$http','Equipamentos', '$modalInstance', 'items', function ($scope,$http,Equipamentos, $modalInstance, items) {
 
   $scope.formData = {};
   $scope.loading = true;
@@ -68,17 +76,15 @@ angular.module('ui.bootstrap.demo').controller('ModalInstanceCtrl',['$scope','$h
           $scope.loading = false;
           $scope.formData = {}; // clear the form so our user is ready to enter another
           $scope.equipamentos = data; // assign our new list of equipamentos
+          $modalInstance.close($scope.equipamentos);
         });
     }
   };
 
-  $scope.items = items;
-  $scope.selected = {
-    item: $scope.items[0]
-  };
+ 
 
   $scope.ok = function () {
-    $modalInstance.close($scope.selected.item);
+    $modalInstance.close($scope.equipamentos);
   };
 
   $scope.cancel = function () {

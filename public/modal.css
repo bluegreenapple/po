@@ -1,0 +1,13 @@
+.center-modal .modal-dialog{
+    /*position: fixed;*/
+    top: 10%;
+    left: 18.5%;
+    z-index: 1050;
+    width: 80%;
+    height: 100%;
+    margin-left: -10%;
+}
+.form-control{
+	width: 95%;
+	padding: 1%;
+}
