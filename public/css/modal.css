@@ -14,8 +14,15 @@
 .mainContainer{
 	padding-top: 30px;
 }
+.imageButton{
+    margin-left: 10px;
+    /*margin-right: 10px;*/
+    height:35px;
+    width: 25px;
+}
 table {
   display: block;
   height: 250px;
   overflow-y: scroll;
 }
+

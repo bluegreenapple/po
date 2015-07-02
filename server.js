@@ -28,7 +28,7 @@ require('./app/routes2.js')(app);
 // 	  res.sendfile('./public/indexAlarmes.html');
 // });
 app.get('/', function (req, res) {
-  res.sendfile('./public/index.html');
+  res.sendfile('./public/index2.html');
 });
 app.get('/login', function (req, res) {
   res.sendfile('./public/indexLogin.html');
@@ -37,7 +37,7 @@ app.get('/cadastraranalise', function (req, res) {
   res.sendfile('./public/indexAnalisesCadastro.html');
 });
 app.get('/analises', function (req, res) {
-  res.sendfile('./public/indexAnalises.html');
+  res.sendfile('./public/index2.html');
 });
 app.get('/diagnosticos', function (req, res) {
   res.sendfile('./public/indexDiagnostico1.html');

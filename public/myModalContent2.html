@@ -1,0 +1,188 @@
+<!-- CONTAINER GERAL -->
+<div class="container">
+
+	<form>	
+	<!-- TABS CROMA E FQ -->
+	<div class="bs-docs-section">
+	  <h1 id="tabs" class="page-header">Cadastrar Análise</h1>
+
+	  <!-- TAG DO EQUIPAMENTO -->
+	  <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
+		  <label><strong>Tag do Equipamento:</strong></label>	
+		  <input type="text" class="form-control input-lg text-left " ng-model="formData.tagDoEquipamento"></input>
+		  <label><strong>Laboratório:</strong></label>	
+		  <input type="text" class="form-control input-lg text-left " ng-model="formData.laboratorio"></input>
+		  <label><strong>Número da Análise do Laboratório:</strong></label>	
+		  <input type="text" class="form-control input-lg text-left " ng-model="formData.nDaAnaliseDoLaboratorio"></input>
+		  <label><strong>Data da Amostragem:</strong></label>	
+		  <input type="text" class="form-control input-lg text-left " ng-model="formData.dataDaAnalise"></input>
+
+		  <label><strong>Umidade Relativa do Ar (%):</strong></label>	
+		  <input type="text" class="form-control input-lg text-left " ng-model="formData.umidadeRelativaDoAr"></input>
+		  <label><strong>Temperatura Ambiente (<sup>o</sup>C:)</strong></label>	
+		  <input type="text" class="form-control input-lg text-left " ng-model="formData.temperaturaAmbiente"></input>
+  		
+		  <label>Em Operação</label>
+	 	  <select ng-model="formData.emOperacao" class="form-control" id="sel1">
+		   	<option>Escolha...</option>
+  	          <option>Sim</option>
+  	          <option>Não</option>
+		  </select>
+
+		  <label>Ponto de Coleta</label>
+	 	  <select ng-model="formData.pontoDeColeta" class="form-control" id="sel1">
+		   	<option>Escolha...</option>
+  	          <option>Inferior</option>
+  	          <option>Superior</option>
+		  </select>
+		  
+		  <label><strong>Temperatura Do Óleo (<sup>o</sup>C):</strong></label>	
+		  <input type="text" class="form-control input-lg text-left " ng-model="formData.temperaturaDoOleo"></input>
+		  
+	  </div><!-- FIM TAG DO EQUIPAMENTO -->
+
+	  
+	  <!-- CAIXA CROMATOGRAFICA E FISICO QUIMICA-->
+	  <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
+
+	  	<!-- TABS CROMATOGRAFICA E FISICO QUIMICA -->
+	    <ul id="myTabs" class="nav nav-tabs" role="tablist">
+	      <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Cromatográfico</a></li>
+	      <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Físico-Químico</a></li>
+	    </ul><!-- FIM DAS TABS CROMATOGRATICA E FISICO QUIMICA -->
+
+	    <!-- TABELA CROMA -->
+	    <div id="myTabContent" class="tab-content"> 
+	      	<div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledBy="home-tab">
+	        	<p>O Ensaio Cromatográfico consiste em...</p>
+
+		        <table class="table table-striped">
+		          <thead>
+		            <tr>
+		              <th>Nome</th>
+		              <th>Fórmula</th>
+		              <th>Resultados (ppmv)</th>
+		              <th>Val. Referência (ppmv)</th>
+		            </tr>
+		          </thead>
+		          <tbody>
+		            <tr>
+		              <td>Hidrogênio</td>
+		              <td>H<sub>2</sub></td>
+		              <td><input type="text" class="form-control input-sm text-left " ng-model="formData.h2"></td>
+		              <td>-</td>
+		            </tr>
+		            <tr>
+		              <td>Oxigênio</td>
+		              <td>O<sub>2</sub></td>
+		              <td><input type="text" class="form-control input-sm text-left" ng-model="formData.o2"></td>
+		              <td>-</td>
+		              
+		            </tr>
+		            <tr>
+		              <td>Nitrogênio</td>
+		              <td>N<sub>2</sub></td>
+		              <td><input type="text" class="form-control input-sm text-left" ng-model="formData.n2"></td>
+		              <td>-</td>
+		              
+		            </tr>
+		            
+		            <tr>
+		              <td>Metano</td>
+		              <td>CH<sub>4</sub></td>
+		              <td><input type="text" class="form-control input-sm text-left" ng-model="formData.ch4"></td>
+		              <td>-</td>
+		              
+		            </tr>
+		            <tr>
+		              <td>Monóxido de Carbono</td>
+		              <td>CO</td>
+		              <td><input type="text" class="form-control input-sm text-left" ng-model="formData.co"></td>
+		              <td>-</td>
+		             
+		            </tr>
+		            <tr>
+		              <td>Dióxido de Carbono</td>
+		              <td>CO<sub>2</sub></td>
+		              <td><input type="text" class="form-control input-sm text-left" ng-model="formData.co2"></td>
+		              <td>-</td>
+		              
+		            </tr>
+		            <tr>
+		              <td>Etileno</td>
+		              <td>C<sub>2</sub>H<sub>4</sub></td>
+		              <td><input type="text" class="form-control input-sm text-left" ng-model="formData.c2h4"></td>
+		              <td>-</td>
+		             
+		            </tr>
+		            <tr>
+		              <td>Etano</td>
+		              <td>C<sub>2</sub>H<sub>6</sub></td>
+		              <td><input type="text" class="form-control input-sm text-left" ng-model="formData.c2h6"></td>
+		              <td>-</td>
+		              
+		            </tr>
+					<tr>
+		              <td>Acetileno</td>
+		              <td>C<sub>2</sub>H<sub>2</sub></td>
+		              <td><input type="text" class="form-control input-sm text-left" ng-model="formData.c2h2"></td>
+		              <td>-</td>
+		              
+		            </tr>    
+		            <tr>
+		              <td>TOTAL DE GASES COMBUSTÍVEIS</td>
+		              <td>TGC</td>
+		              <td><input type="text" class="form-control input-sm text-left" ng-model="formData.tgc"></td>
+		              <td>-</td>
+		            </tr>   
+		           	<tr>
+		              <td>TOTAL GERAL DE GASES</td>
+		              <td>TGG</td>
+		              <td><input type="text" class="form-control input-sm text-left" ng-model="formData.tgg"></td>
+		              <td>-</td>
+		            </tr>              
+		            
+		          </tbody>
+		        </table>
+				    
+				
+
+	        	  <!-- CONCLUSÃO -->
+				  <label for="comment">Conclusões e Recomendações:</label>
+				  <textarea ng-model="formData.conclusoesCroma" class="form-control " rows="5" placeholder="Coloque aqui as conslusões do laboratório..." id="comment" >
+					A presença de Acetileno (C2H2) é considerada atípica. O gás Acetileno está geralmente associado à falhas elétricas envolvendo descargas. Contudo, o histórico das análises mostra que o quadro cromatográfico vem se mantendo estável ao longo do tempo, ou apresentando variações consideradas normais. Isto sugere que o Acetileno encontrado possa não estar relacionado com falhas elétricas e seja residual, ou proveniente de contaminação pelo óleo do comutador. De qualquer modo, é importante um monitoramento cromatográfico frequente. Nova análise em um mês..
+				  </textarea>
+				  <!-- FIM CONCLUSÃO -->
+
+		      <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledBy="profile-tab">
+		        <p>O Ensaio físico-químico consiste em...</p>
+		      </div>
+
+	    	</div>
+		</div><!-- FIM TABELA CROMA -->
+
+		
+		
+
+
+	  </div><!-- CAIXA CROMATOGRAFICA E FISICO QUIMICA-->
+
+
+	</div><!-- FIM TABS CROMA E FQ -->
+<!-- BOTAO SALVAR -->
+	    </div class = "cadastrar" >
+			<!-- <button type="submit" class="btn btn-default btn-lg">Voltar</button>				 -->
+			<button type="submit" class="btn btn-primary btn-lg" ng-click="createAnalise()">Salvar</button>				
+		</div><!-- FIM BOTAO SALVAR -->
+	</form>
+
+</div><!-- FIM CONTAINER GERAL -->
+
+
+<footer>
+	<!-- <div class="text-center text-muted">
+			<p>Developed by <a href="results">Smarttech</a>.</p>
+	</div> -->
+</footer>
+
+
