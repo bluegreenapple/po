@@ -1,9 +1,8 @@
-var Qs = require('qs');
-angular.module('equipamentoService', [])
+var equipService = angular.module('equipamentoService', []);
 
 	// super simple service
 	// each function returns a promise object 
-	.factory('Equipamentos', ['$http',function($http) {
+equipService.factory('Equipamentos', ['$http',function($http) {
 		var equipamentos = [];
 
 		return {
