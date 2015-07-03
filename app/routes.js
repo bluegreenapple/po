@@ -1,4 +1,5 @@
 var Equipamento = require('./models/equipamento');
+var Qs = require('qs');
 
 function getEquipamentos(res){
 	Equipamento.find(function(err, equipamentos) {
@@ -11,8 +12,6 @@ function getEquipamentos(res){
 		});
 };
 
-var Analise = require('./models/analise');
-
 
 module.exports = function(app) {
 
@@ -20,6 +19,41 @@ module.exports = function(app) {
 	// app.get('*', function(req, res) {
 	// 	res.sendfile('./public/indexCadTransf.html'); // load the single view file (angular will handle the page changes on the front-end)
 	// });
+	app.get('/api/equipamentos/tags/:equipamento_tags_queryString', function(req, res) {
+
+		// use mongoose to get one specific todo in the database
+		var queryObj = Qs.parse(req.params.equipamento_tags_queryString);
+
+		// console.log('equipamento_tags_queryString: '+req.params.equipamento_tags_queryString);
+		// console.log('queryObj: '+queryObj.tag);
+
+		Equipamento.find({"tag":{"$in":queryObj.tag}}, function(err, equipamento) {
+
+			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
+			if (err)
+				res.send(err)
+
+			res.json(equipamento); // return the todo in JSON format
+		});
+	});
+
+	app.get('/api/equipamentos/tag/:equipamento_tag', function(req, res) {
+
+		// use mongoose to get one specific todo in the database
+		var queryObj = Qs.parse(req.params.equipamento_tag);
+
+		// console.log('equipamentoTag: '+req.params.equipamento_tag);
+		// console.log('queryObj: '+queryObj.tag);
+
+		Equipamento.findOne({tag : queryObj.tag}, function(err, equipamento) {
+
+			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
+			if (err)
+				res.send(err)
+
+			res.json(equipamento); // return the todo in JSON format
+		});
+	});
 
 	app.get('/api/equipamentos/:equipamento_id', function(req, res) {
 

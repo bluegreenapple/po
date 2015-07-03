@@ -14,6 +14,20 @@ function getAnalises(res){
 module.exports = function(app) {
 
 	// analise
+	app.get('/api/analises/tag/:aTagDoEquipamento', function(req, res) {
+
+		// use mongoose to get all analises with a tag
+		Analise.find({tagDoEquipamento : req.params.aTagDoEquipamento}, function(err, analise) {
+
+			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
+			if (err)
+				res.send(err)
+
+			res.json(analise); // return the analise in JSON format
+		});
+	});
+
+
 	app.get('/api/analises/:analise_id', function(req, res) {
 
 		// use mongoose to get one specific analise in the database

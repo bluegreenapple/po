@@ -28,7 +28,7 @@ require('./app/routes2.js')(app);
 // 	  res.sendfile('./public/indexAlarmes.html');
 // });
 app.get('/', function (req, res) {
-  res.sendfile('./public/index2.html');
+  res.sendfile('./public/index3.html');
 });
 app.get('/login', function (req, res) {
   res.sendfile('./public/indexLogin.html');
@@ -52,7 +52,7 @@ app.get('/equipamentos', function (req, res) {
   res.sendfile('./public/index.html');
 });
 app.get('/alarmes', function (req, res) {
-  res.sendfile('./public/indexAlarmes.html');
+  res.sendfile('./public/index3.html');
 });
 app.get('/historico', function (req, res) {
   res.sendfile('./public/indexHistorico.html');

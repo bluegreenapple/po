@@ -1,3 +1,4 @@
+var Qs = require('qs');
 angular.module('equipamentoService', [])
 
 	// super simple service
@@ -23,10 +24,18 @@ angular.module('equipamentoService', [])
 				throw "Couldn't find equipamento with tag: " + tag;
 		    },
 			all: function() {
-		      	return analises;
+		      	return equipamentos;
 		    },
 			get : function() {
 				return $http.get('/api/equipamentos');
+			},
+			getByTag : function(aTag) {
+				var queryString = Qs.stringify(aTag);
+				return $http.get('/api/equipamentos/tag/' + queryString);
+			},
+			getByTags : function(aTags) {
+				var queryString = Qs.stringify(aTags);
+				return $http.get('/api/equipamentos/tags/' + queryString);
 			},
 			create : function(equipamentoData) {
 				return $http.post('/api/equipamentos', equipamentoData);

@@ -1,0 +1,141 @@
+<!doctype html>
+<html ng-app="ui.bootstrap.demo3">
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
+    <script src="js/controllers/example3.js"></script>
+    <script src="js/services/analises.js"></script>
+    <script src="js/services/equipamentos.js"></script>
+    <script src="js/services/diagnosticos.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/modal.css" rel="stylesheet">
+  </head>
+
+
+
+
+
+  <body>
+
+<!-- NAVBAR PRINCIPAL -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Gestão de Transformadores (DGA)</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+         <ul class="nav navbar-nav navbar-right">
+        
+        <li><a href="/alarmes">Alarmes</a></li>
+        <li><a href="/equipamentos">Equipamentos</a></li>
+        <li><a href="/analises">Análises</a></li>
+        <!-- <li><a href="#">Profile</a></li> -->
+        <li><a href="#">vinicius.nunes@smarttecheletrica.com.br<span class="caret"></span></a></li>
+      </ul>
+      
+    </div>
+  </div>
+</nav><!-- FIM NAVBAR PRINCIPAL -->	
+
+<div ng-controller="ModalDemoCtrl3" class = "mainContainer">
+	<!-- CONTAINER GERAL -->
+	<div class="container">
+
+		<form>
+		<!-- TABS CROMA E FQ -->
+		<div class="bs-docs-section">
+		  <h1 id="tabs" class="page-header">Alarmes</h1>
+
+		  
+
+		  <!-- CAIXA DADOS GERAIS -->
+		  <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
+			  
+
+			<ul class="navbar-right list-unstyled">   
+			    <img ng-src="images/xls.png" class="imageButton" ng-click="open(lg)">
+			    <img ng-src="images/pdf.png" class="imageButton" ng-click="open(lg)">
+			</ul>  
+		  
+	        <!-- <ul class="navbar-right list-unstyled">   
+	        <li><button type="submit" class="btn btn-primary" ng-click="open(lg)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>	</li>
+	        </ul>   -->
+	      
+	        <ul class="navbar-right list-unstyled">   
+	          <li><input type="text" class="form-control" placeholder="Buscar..."></li>
+	        </ul>  
+	      
+
+	      
+		  
+	         
+	      
+
+
+			  <!-- TABELA DE AnaliseS-->
+			  <table class = 'table table-striped'>
+				<tr>
+					<!-- <th>id</th> -->
+					<th>Data (mais recentes)</th>
+					<th>Modelo</th>
+					<th>Tag do Equipamento</th>
+					<th>Local</th>
+					<th>Evento</th>
+
+
+					<th>Data da Análise</th>
+					<th>Número da Análise</th>
+					<th>Laboratório</th>
+					
+					
+				   	
+				   	
+				 </tr>
+				  <tr ng-repeat="analise in analises">
+				  	<td>{{ analise.dataDaAnalise | date: "dd/MM/yyyy"}}</td>
+				  	<td>{{ analise.tagDoEquipamento }}</td>
+				  	<td>{{ analise.ch4}}</td>
+				  	<td>{{ analise.c2h4}}</td>
+				  	<td>{{ analise.c2h6}}</td>
+				  	<td>{{ diagnosticoDuval(analise)}}</td>
+				    
+				  	<td>{{ analise.nDaAnaliseDoLaboratorio }}</td>
+				    <td>{{ analise.laboratorio }}</td>
+				    
+				    
+				    
+				    
+				   <!--  <th><button type="submit" class="btn btn-primary" ng-click="test()"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button><button type="submit" class="btn btn-primary" ng-click="deleteAnalise(analise._id)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></th> -->
+
+				  </tr>
+				</table><!-- FIM TABELA DE AnaliseS-->
+
+
+		  </div><!-- FIM CAIXA DADOS GERAIS -->
+
+		 
+
+		</div><!-- FIM TABS CROMA E FQ -->
+		</form>
+
+
+	</div><!-- FIM CONTAINER GERAL -->
+
+
+
+	    <!-- <button class="btn btn-default" ng-click="open('lg')">Open me!</button> -->
+	    <!-- <div ng-show="selected">Selection from a modal: {{ selected }}</div> -->
+
+
+	</div>
+  </body>
+</html>
+
+
+

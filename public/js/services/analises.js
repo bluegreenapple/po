@@ -33,13 +33,8 @@ angular.module('analiseService', [])
 						analises = data;
 					});
 			},
-			getForEquipamentoTag : function(aEquipamentoTag) {
-				var config = {
-					headers: {
-				        "tagDoEquipamento" : "aEquipamentoTag"
-				    }
-				};
-				return $http.get('/api/analises',config);
+			getAllByTag : function(aEquipamentoTag) {
+				return $http.get('/api/analises/tag/' + aEquipamentoTag);
 			},
 			create : function(analiseData) {
 				return $http.post('/api/analises', analiseData);
