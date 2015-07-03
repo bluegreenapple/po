@@ -100,10 +100,8 @@
 				  <tr ng-repeat="analise in analises">
 				  	<td>{{ analise.dataDaAnalise | date: "dd/MM/yyyy"}}</td>
 				  	<td>{{ analise.tagDoEquipamento }}</td>
-				  	<td>{{ analise.ch4}}</td>
-				  	<td>{{ analise.c2h4}}</td>
-				  	<td>{{ analise.c2h6}}</td>
 				  	<td>{{ diagnosticoDuval(analise)}}</td>
+				  	<!-- <td>{{ equipamentos[$index]}}</td> -->
 				    
 				  	<td>{{ analise.nDaAnaliseDoLaboratorio }}</td>
 				    <td>{{ analise.laboratorio }}</td>

@@ -8,17 +8,19 @@ app.controller('ModalDemoCtrl3', ['$scope','$http','Analises','DuvalService', '$
   // when landing on the page, get all analises and show them
   // use the service to get all the analises
   Analises.get()
-    .success(function(data1) {
-      $scope.analises = data1;
+    .success(function(data) {
+      $scope.analises = data;
 
-      // Equipamentos.get()
-      // .success(function(data2) {
-      //   $scope.todosEquipamentos = data2;
-      //   // $scope.equipamentos = Equipamentos.equipamentoForTagDoEquipamento($scope.todosEquipamentos,analises.tagDoEquipamento);
-      //   $scope.loading = false;
-
-      // });
+      Equipamentos.getBytags(analises.tag)
+        .success(function(data) {
+          $scope.equipamentos = data;
+          $scope.loading = false;
+        });
     });
+  
+  // $scope.getTableN = function() {
+  //   return analises.length;
+  // };
 
   $scope.diagnosticoDuval = function(aAnalise) {
       return "Duval: " + DuvalService.diagnostico(aAnalise.ch4,aAnalise.c2h2,aAnalise.c2h6);
