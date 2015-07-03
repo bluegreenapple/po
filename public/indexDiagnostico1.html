@@ -3,16 +3,18 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
 
     <!-- SPELLS -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
     <script src="/js/controllers/controllers.js"></script>
     <script src="/js/services/diagnosticos.js"></script> 
+    <script src="/js/services/analises.js"></script> 
     
 </head>
 
 <div ng-app='appDiag'>
 
     <h1>Diagnósticos</h1>
+    
     <br>
     
     <tabset>
@@ -29,6 +31,7 @@
     temperatura, relacionando os percentuais obtidos para os gases
     característicos utilizando as seguintes relações: 
                 </div>
+
                 <table class = 'table table-striped'>
                     <tr>
                         <th>m</th>
@@ -58,8 +61,11 @@
                 <div>
         Visto que neste critério não é indicada nenhuma condição de envelhecimento normal, a implementação cuidadosa deste critério resulta sempre em diagnóstico de uma das três falhas. Devido a este problema, antes de aplicar este método deve ser verificado se a evolução dos gases está dentro dos limites considerados normais pela empresa.
                 </div>
-                <h2>Cálculo</h2>
-                <form>
+                <h2>Tag do Equipamento: {{equipamento.tag}}</h2>
+
+
+                <!-- <form>
+                  
                     <h2>ch4: {{formData.ch4}}</h2>
                     <input type='number' ng-model='formData.ch4'>
                     <h2>c2h2: {{formData.c2h2}}</h2>
@@ -67,7 +73,7 @@
                     <h2>c2h4: {{formData.c2h4}}</h2>
                     <input type='number' ng-model='formData.c2h4'>
                     <button type="submit" class="btn btn-primary btn-lg" ng-click="calculaM()">Calcular</button> 
-                </form>
+                </form> -->
 
                 <table class = 'table table-striped'>
                 <tr>

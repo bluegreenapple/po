@@ -1,4 +1,4 @@
-var app = angular.module('ui.bootstrap.demo', ['ui.bootstrap','equipamentoService']);
+var app = angular.module('ui.bootstrap.demo', ['ui.bootstrap','equipamentoService','diagnosticosServices']);
 app.controller('ModalDemoCtrl', ['$scope','$http','Equipamentos', '$modal', '$log',function ($scope,$http,Equipamentos, $modal, $log) {
 
   $scope.formData = {};
@@ -50,6 +50,15 @@ app.controller('ModalDemoCtrl', ['$scope','$http','Equipamentos', '$modal', '$lo
     }, function () {
       $log.info('Modal dismissed at: ' + new Date());
     });
+  };
+
+  
+  $scope.openDiagnostico = function (aEquipamento) {
+      
+      var url = '/diagnosticos';   
+      var newTab = window.open(url, '_blank'); // in new tab
+      newTab.equipamento = aEquipamento;
+            
   };
 
 
