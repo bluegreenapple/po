@@ -18,6 +18,8 @@
   },
   "scripts": {
     "build-js": "browserify public/js/services/equipamentos.js > public/js/bundle.js -d",
-    "watch-js": "watchify public/js/services/equipamentos.js -o public/js/bundle.js -dv"
+    "watch-js1": "watchify public/js/services/equipamentos.js -o public/js/bundle.js -dv",
+    "watch-js_example3": "watchify public/js/controllers/example3.js -o public/js/bundle3.js -dv",
+    "watch": "npm run watch-js1 | npm run watch-js_example3"
   }
 }

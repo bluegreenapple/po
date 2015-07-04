@@ -1,4 +1,5 @@
 var app = angular.module('ui.bootstrap.demo', ['ui.bootstrap','equipamentoService','diagnosticosServices']);
+
 app.controller('ModalDemoCtrl', ['$scope','$http','Equipamentos', '$modal', '$log',function ($scope,$http,Equipamentos, $modal, $log) {
 
   $scope.formData = {};

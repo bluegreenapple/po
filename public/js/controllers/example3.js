@@ -1,5 +1,7 @@
 var app = angular.module('ui.bootstrap.demo3', ['ui.bootstrap','analiseService','equipamentoService','diagnosticosServices']);
 
+var _ = require('underscore');
+
 app.controller('ModalDemoCtrl3', ['$scope','$http','Analises','Equipamentos','DuvalService', '$modal', '$log',function ($scope,$http,Analises,Equipamentos,DuvalService, $modal, $log) {
 
   $scope.loading = true;
@@ -11,30 +13,32 @@ app.controller('ModalDemoCtrl3', ['$scope','$http','Analises','Equipamentos','Du
   
   Analises.get()
     .success(function(data) {
-      $scope.analises = data;
+      // console.log('data: '+ data);
+      //first sort data by most recent date (descending order)
+      $scope.analises = _.sortBy(data, 'dataDaAnalise').reverse();
 
-      $scope.tags = [];
-      for (i = 0; i < data.length; i++) {
-        $scope.tags.push(data[i].tagDoEquipamento);
-      }
-      $scope.tags = { "tag":$scope.tags};
+      //(optional) second only take the first (most recent) Analise for each tagDoEquipamento
+      $scope.analises = _.uniq($scope.analises,true, function(analise){ return analise.tagDoEquipamento; });
+      // console.log('analises: '+ $scope.analises);
+
+      //third get the tags array for requesting the equipamentos,then create an object with it for stringify
+      var tags = _.pluck($scope.analises, 'tagDoEquipamento');
+      tags = { "tag": tags};
+      // console.log('obj: '+ tags);
       
-      console.log($scope.tags);
-      // alert($scope.tags[0]);
-      console.log('obj: '+ $scope.tags);
-      // $log.log('sss');
-      Equipamentos.getByTags($scope.tags)
+      //get equipamentos
+      Equipamentos.getByTags(tags)
         .success(function(data2) {
-          alert(data2[0].tag);
+          // alert(data2[0].tag);
           $scope.equipamentos = data2;
           $scope.loading = false;
           // console.log('equipamentos: '+ data2);
         });
     });
   
-  // $scope.getTableN = function() {
-  //   return analises.length;
-  // };
+  $scope.equipamento = function(aAnalise) {
+      return _.findWhere($scope.equipamentos, {tag: aAnalise.tagDoEquipamento});
+  };
 
   $scope.diagnosticoDuval = function(aAnalise) {
       return "Duval: " + DuvalService.diagnostico(aAnalise.ch4,aAnalise.c2h2,aAnalise.c2h6);

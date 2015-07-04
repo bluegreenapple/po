@@ -1,4 +1,5 @@
 var Analise = require('./models/analise');
+var Qs = require('qs');
 
 function getAnalises(res){
 	Analise.find(function(err, analises) {
