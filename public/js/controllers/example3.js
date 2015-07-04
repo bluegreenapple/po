@@ -7,14 +7,25 @@ app.controller('ModalDemoCtrl3', ['$scope','$http','Analises','DuvalService', '$
   // GET =====================================================================
   // when landing on the page, get all analises and show them
   // use the service to get all the analises
+  
+  
   Analises.get()
     .success(function(data) {
       $scope.analises = data;
 
-      Equipamentos.getBytags(analises.tag)
-        .success(function(data) {
-          $scope.equipamentos = data;
+      $scope.tags = [];
+      for (i = 0; i < data.length; i++) {
+        $scope.tags.push(data[i].tagDoEquipamento);
+      }
+      // alert($scope.tags[0]);
+      // console.log('analises: '+ data);
+
+      Equipamentos.getBytags($scope.tags)
+        .success(function(data2) {
+          alert(data2);
+          $scope.equipamentos = data2;
           $scope.loading = false;
+          console.log('equipamentos: '+ data2);
         });
     });
   

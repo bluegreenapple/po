@@ -34,6 +34,7 @@ equipService.factory('Equipamentos', ['$http',function($http) {
 			},
 			getByTags : function(aTags) {
 				var queryString = Qs.stringify(aTags);
+				console.log(queryString);
 				return $http.get('/api/equipamentos/tags/' + queryString);
 			},
 			create : function(equipamentoData) {
