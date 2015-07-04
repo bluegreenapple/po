@@ -1,4 +1,5 @@
 var equipService = angular.module('equipamentoService', []);
+var Qs = require('qs');
 
 	// super simple service
 	// each function returns a promise object 

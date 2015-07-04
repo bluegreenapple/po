@@ -11,5 +11,13 @@
     "morgan"          : "~1.1.1",
     "body-parser"     : "~1.4.3",
     "method-override" : "~2.1.1"
+  },
+   "devDependencies": {
+    "browserify": "latest",
+    "watchify": "latest"
+  },
+  "scripts": {
+    "build-js": "browserify public/js/services/equipamentos.js > public/js/bundle.js -d",
+    "watch-js": "watchify public/js/services/equipamentos.js -o public/js/bundle.js -dv"
   }
 }

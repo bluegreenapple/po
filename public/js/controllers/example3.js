@@ -1,6 +1,6 @@
 var app = angular.module('ui.bootstrap.demo3', ['ui.bootstrap','analiseService','equipamentoService','diagnosticosServices']);
 
-app.controller('ModalDemoCtrl3', ['$scope','$http','Analises','DuvalService', '$modal', '$log',function ($scope,$http,Analises,DuvalService, $modal, $log) {
+app.controller('ModalDemoCtrl3', ['$scope','$http','Analises','Equipamentos','DuvalService', '$modal', '$log',function ($scope,$http,Analises,Equipamentos,DuvalService, $modal, $log) {
 
   $scope.loading = true;
 
@@ -17,15 +17,18 @@ app.controller('ModalDemoCtrl3', ['$scope','$http','Analises','DuvalService', '$
       for (i = 0; i < data.length; i++) {
         $scope.tags.push(data[i].tagDoEquipamento);
       }
+      $scope.tags = { "tag":$scope.tags};
+      
+      console.log($scope.tags);
       // alert($scope.tags[0]);
-      // console.log('analises: '+ data);
-
-      Equipamentos.getBytags($scope.tags)
+      console.log('obj: '+ $scope.tags);
+      // $log.log('sss');
+      Equipamentos.getByTags($scope.tags)
         .success(function(data2) {
-          alert(data2);
+          alert(data2[0].tag);
           $scope.equipamentos = data2;
           $scope.loading = false;
-          console.log('equipamentos: '+ data2);
+          // console.log('equipamentos: '+ data2);
         });
     });
   
