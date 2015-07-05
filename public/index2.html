@@ -67,7 +67,7 @@
 	        </ul>  
 	      
 	        <ul class="navbar-right list-unstyled">   
-	          <li><input type="text" class="form-control" placeholder="Buscar..."></li>
+	          <li><input type="text" class="form-control" placeholder="Buscar..." ng-model='searchString' autofocus></li>
 	        </ul>  
 	      
 
@@ -92,7 +92,7 @@
 				   	<th>Opções</th>
 				   	
 				 </tr>
-				  <tr ng-repeat="analise in analises">
+				  <tr ng-repeat="analise in analises | filter: searchString" >
 				  	<td>{{ analise.tagDoEquipamento }}</td>
 				    <td>{{ analise.dataDaAnalise | date: "dd/MM/yyyy"}}</td>
 				  	<td>{{ analise.nDaAnaliseDoLaboratorio }}</td>
