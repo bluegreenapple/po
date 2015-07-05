@@ -2,22 +2,6 @@ var app = angular.module('ui.bootstrap.demo3', ['ui.bootstrap','analiseService',
 
 var _ = require('underscore');
 
-app.filter('searchFor', function(){
-    return function(arr, searchString){
-        if(!searchString){
-            return arr;
-        }
-        var result = [];
-        searchString = searchString.toLowerCase();
-        angular.forEach(arr, function(item){
-            if(item.title.toLowerCase().indexOf(searchString) !== -1){
-            result.push(item);
-        }
-        });
-        return result;
-    };
-});
-
 app.controller('ModalDemoCtrl3', ['$scope','$http','Analises','Equipamentos','DuvalService', '$modal', '$log',function ($scope,$http,Analises,Equipamentos,DuvalService, $modal, $log) {
 
   $scope.loading = true;
@@ -52,6 +36,7 @@ app.controller('ModalDemoCtrl3', ['$scope','$http','Analises','Equipamentos','Du
         });
     });
   
+
   $scope.equipamento = function(aAnalise) {
       return _.findWhere($scope.equipamentos, {tag: aAnalise.tagDoEquipamento});
   };
@@ -61,11 +46,7 @@ app.controller('ModalDemoCtrl3', ['$scope','$http','Analises','Equipamentos','Du
   };
 
   
-  $scope.customFilter = function(element) {
-  return element.name.match() $scope.equipamento(element).tipo  
 
-  return element.name.match(/^Ma/) ? true : false;
-};
 
 
   // DELETE ==================================================================
