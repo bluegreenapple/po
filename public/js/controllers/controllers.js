@@ -1,4 +1,5 @@
 var app = angular.module('appDiag', ['ui.bootstrap','diagnosticosServices','analiseService']);
+var _ = require('underscore');
 
 app.filter('getById', function() {
   return function(input, id) {
@@ -60,3 +61,12 @@ app.controller('DuvalController', ['$scope','$filter','DuvalService','Analises' 
 
 }]);
 
+app.controller('DiagController', ['$scope','Analises' ,function ($scope, Analises) {
+  $scope.equipamento = window.equipamento;
+
+  Analises.get()
+      .success(function(data) {
+        $scope.analise =   last(_.sortBy(data, 'dataDaAnalise'));
+      });
+
+}]);
