@@ -1,6 +1,7 @@
 <head>
     
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/diagnostico.css">
 
     <!-- SPELLS -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
@@ -11,9 +12,10 @@
     
 </head>
 
-<div ng-app='appDiag'>
+<div ng-app='appDiag' class = "mainContainer">
 
-    <h1>Diagnósticos</h1>
+    
+    <h1>Tag: </h1>
     
     <br>
     
@@ -21,7 +23,11 @@
         <tab heading="Duval"><!-- DUVAL TAB -->
             <div ng-controller='DuvalController'><!-- DUVAL CONTROLLER -->
                 <!-- <br> -->
-                <h2>Descrição</h2>
+                <ul class="navbar-right list-unstyled">   
+                    <img ng-src="images/xls.png" class="imageButton" ng-click="open(lg)">
+                    <img ng-src="images/pdf.png" class="imageButton" ng-click="open(lg)">
+                </ul>  
+                <h2>Descrição:</h2>
                 <div>
         Este critério é um método especial para diagnóstico de falhas já que está
     baseado na visualização da localização dos gases dissolvidos em um mapa
@@ -61,7 +67,7 @@
                 <div>
         Visto que neste critério não é indicada nenhuma condição de envelhecimento normal, a implementação cuidadosa deste critério resulta sempre em diagnóstico de uma das três falhas. Devido a este problema, antes de aplicar este método deve ser verificado se a evolução dos gases está dentro dos limites considerados normais pela empresa.
                 </div>
-                <h2>Tag do Equipamento: {{equipamento.tag}}</h2>
+                <h2>Diagnostico Duval:</h2>
 
 
                 <!-- <form>
