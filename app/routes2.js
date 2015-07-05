@@ -41,7 +41,7 @@ app.get('/api/analises/tags/:analise_tags_queryString', function(req, res) {
 		// console.log('analiseTag: '+req.params.analise_tag);
 		// console.log('queryObj: '+queryObj.tag);
 
-		Analise.findOne({tagDoEquipamento : queryObj.tag}, function(err, analise) {
+		Analise.find({tagDoEquipamento : queryObj.tag}, function(err, analise) {
 
 			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
 			if (err)

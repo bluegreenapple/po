@@ -17,11 +17,12 @@ analService.factory('Analises', ['$http',function($http) {
 					});
 			},
 			getByTag : function(aTag) {
-				var queryString = Qs.stringify(aTag);
+				var queryString = Qs.stringify({"tag": aTag});
+				console.log("queryString: /api/analises/tag/" + queryString);
 				return $http.get('/api/analises/tag/' + queryString);
 			},
 			getByTags : function(aTags) {
-				var queryString = Qs.stringify(aTags);
+				var queryString = Qs.stringify({"tag": aTags});
 				console.log(queryString);
 				return $http.get('/api/analises/tags/' + queryString);
 			},

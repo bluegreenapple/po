@@ -16,7 +16,7 @@
 
     <div ng-controller='DiagController'><!-- DIAG CONTROLLER -->
         <h1>Tag: {{equipamento.tag}}</h1>
-    </div><!-- FIM DIAG CONTROLLER -->    
+    
 
     <br>
     
@@ -90,10 +90,10 @@
                     <th>Tipo de Falha</th>   
                 </tr>
                 <tr>
-                    <td>{{ m | number:1}}</td>
-                    <td>{{ a | number:1}}</td>
-                    <td>{{ y | number:1}}</td>
-                    <td>{{ diagnostico }}</td>
+                    <td>{{ m(analise) | number:1}}</td>
+                    <td>{{ a(analise) | number:1}}</td>
+                    <td>{{ y(analise) | number:1}}</td>
+                    <td>{{ diagnostico(analise) }}</td>
                 </tr>
                 </table>
                 
@@ -109,7 +109,7 @@
     </tabset>
 
 
-
+    </div><!-- FIM DIAG CONTROLLER -->    
     
 
 </div>
