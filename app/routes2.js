@@ -15,16 +15,39 @@ function getAnalises(res){
 module.exports = function(app) {
 
 	// analise
-	app.get('/api/analises/tag/:aTagDoEquipamento', function(req, res) {
+app.get('/api/analises/tags/:analise_tags_queryString', function(req, res) {
 
-		// use mongoose to get all analises with a tag
-		Analise.find({tagDoEquipamento : req.params.aTagDoEquipamento}, function(err, analise) {
+		// use mongoose to get one specific todo in the database
+		var queryObj = Qs.parse(req.params.analise_tags_queryString);
+
+		// console.log('analise_tags_queryString: '+req.params.analise_tags_queryString);
+		// console.log('queryObj: '+queryObj.tag);
+
+		Analise.find({"tagDoEquipamento":{"$in":queryObj.tag}}, function(err, analise) {
 
 			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
 			if (err)
 				res.send(err)
 
-			res.json(analise); // return the analise in JSON format
+			res.json(analise); // return the todo in JSON format
+		});
+	});
+
+	app.get('/api/analises/tag/:analise_tag', function(req, res) {
+
+		// use mongoose to get one specific todo in the database
+		var queryObj = Qs.parse(req.params.analise_tag);
+
+		// console.log('analiseTag: '+req.params.analise_tag);
+		// console.log('queryObj: '+queryObj.tag);
+
+		Analise.findOne({tagDoEquipamento : queryObj.tag}, function(err, analise) {
+
+			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
+			if (err)
+				res.send(err)
+
+			res.json(analise); // return the todo in JSON format
 		});
 	});
 

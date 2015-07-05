@@ -1,28 +1,11 @@
-angular.module('analiseService', [])
-
+var analService = angular.module('analiseService', []);
+var Qs = require('qs');
 	// super simple service
 	// each function returns a promise object 
-	.factory('Analises', ['$http',function($http) {
-		var analises = [];
+analService.factory('Analises', ['$http',function($http) {
 		
 		return {
-			lastAnaliseForTagDoEquipamento: function(aTagDoEquipamento) {
-				for (var i = analises.length -1; i >= 0; i--) {
-					if (analises[i].tagDoEquipamento === aTagDoEquipamento) {
-					  return analises[i];
-					}
-				}
-				throw "Couldn't find any analise with tagDoEquipamento: " + aTagDoEquipamento;
-		    },
-			analisesForTagDoEquipamento: function(source,aTagDoEquipamento) {
-				var list = [];
-				for (var i = 0; i < source.length; i++) {
-					if (source[i].tagDoEquipamento === aTagDoEquipamento) {
-					   list.push(source[i]);
-					}
-				}
-				return list;
-		    },
+			
 			all: function() {
 		      	return analises;
 		    },
@@ -33,8 +16,14 @@ angular.module('analiseService', [])
 						analises = data;
 					});
 			},
-			getAllByTag : function(aEquipamentoTag) {
-				return $http.get('/api/analises/tag/' + aEquipamentoTag);
+			getByTag : function(aTag) {
+				var queryString = Qs.stringify(aTag);
+				return $http.get('/api/analises/tag/' + queryString);
+			},
+			getByTags : function(aTags) {
+				var queryString = Qs.stringify(aTags);
+				console.log(queryString);
+				return $http.get('/api/analises/tags/' + queryString);
 			},
 			create : function(analiseData) {
 				return $http.post('/api/analises', analiseData);

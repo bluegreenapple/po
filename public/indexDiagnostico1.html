@@ -8,15 +8,16 @@
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
     <script src="/js/bundleDiag.js"></script>
     <script src="/js/services/diagnosticos.js"></script> 
-    <script src="/js/services/analises.js"></script> 
+    <script src="/js/bundleAnalises.js"></script> 
     
 </head>
 
 <div ng-app='appDiag' class = "mainContainer">
 
-    
-    <h1>Tag: </h1>
-    
+    <div ng-controller='DiagController'><!-- DIAG CONTROLLER -->
+        <h1>Tag: {{equipamento.tag}}</h1>
+    </div><!-- FIM DIAG CONTROLLER -->    
+
     <br>
     
     <tabset>
