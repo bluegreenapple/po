@@ -10,7 +10,8 @@
     "mongoose"        : "~3.8.13",
     "morgan"          : "~1.1.1",
     "body-parser"     : "~1.4.3",
-    "method-override" : "~2.1.1"
+    "method-override" : "~2.1.1",
+    "qs" : "latest"
   },
    "devDependencies": {
     "browserify": "latest",
