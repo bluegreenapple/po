@@ -49,7 +49,7 @@ app.get('/cadastrarequipamento', function (req, res) {
   res.sendfile('./public/indexEquipamentosCadastro.html');
 });
 app.get('/equipamentos', function (req, res) {
-  res.sendfile('./public/index.html');
+  res.sendfile('./public/indexE.html');
 });
 app.get('/alarmes', function (req, res) {
   res.sendfile('./public/index3.html');

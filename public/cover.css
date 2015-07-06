@@ -27,7 +27,7 @@ a:hover {
 html,
 body {
   height: 100%;
-  background-image: url("Muuto_E27-9.jpg");
+  background-image: url("/images/Muuto_E27-9.jpg");
   background-size: cover;
   /*background-color: #333;*/
 }
