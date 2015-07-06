@@ -22,6 +22,7 @@
     "watch-js_Anal": "watchify public/js/services/analises.js -o public/js/bundleAnalises.js -dv",
     "watch-js_example3": "watchify public/js/controllers/example3.js -o public/js/bundle3.js -dv",
     "watch-js_Diag": "watchify public/js/controllers/controllers.js -o public/js/bundleDiag.js -dv",
-    "watch": "npm run watch-js1 | npm run watch-js_example3 | npm run watch-js_Diag | npm run watch-js_Anal"
+    "watch": "npm run watch-js1 | npm run watch-js_example3 | npm run watch-js_Diag | npm run watch-js_Anal",
+    "postinstall": watch
   }
 }
