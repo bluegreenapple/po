@@ -101,7 +101,19 @@
 				    
 				    
 				    
-				    <th><button type="submit" class="btn btn-primary" ng-click="createAnalise()"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button><button type="submit" class="btn btn-primary" ng-click="deleteAnalise(analise._id)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></th>
+				    <th>
+				    			    <!-- Single button -->
+						<div class="btn-group" dropdown is-open="status.isopen">
+						  <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled"><span class="glyphicon glyphicon-list"></span>
+						  </button>
+						  <ul class="dropdown-menu" role="menu">
+						    <li><a href="#">Editar</a></li>
+						    <li><a href="#">Diagnóstico</a></li>
+						    <li class="divider"></li>
+						    <li><a href="" ng-click = "deleteAnalise(analise._id)">Deletar</a></li>
+						  </ul>
+						</div>
+				    </th>
 
 				  </tr>
 				</table><!-- FIM TABELA DE AnaliseS-->
