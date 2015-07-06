@@ -10,11 +10,11 @@
     "mongoose"        : "~3.8.13",
     "morgan"          : "~1.1.1",
     "body-parser"     : "~1.4.3",
-    "method-override" : "~2.1.1",
-    "watchify": "latest"
+    "method-override" : "~2.1.1"
   },
    "devDependencies": {
-    "browserify": "latest" 
+    "browserify": "latest",
+    "watchify": "latest" 
   },
   "scripts": {
     "build-js": "browserify public/js/services/equipamentos.js > public/js/bundle.js -d",
@@ -22,7 +22,6 @@
     "watch-js_Anal": "watchify public/js/services/analises.js -o public/js/bundleAnalises.js -dv",
     "watch-js_example3": "watchify public/js/controllers/example3.js -o public/js/bundle3.js -dv",
     "watch-js_Diag": "watchify public/js/controllers/controllers.js -o public/js/bundleDiag.js -dv",
-    "watch": "npm run watch-js1 | npm run watch-js_example3 | npm run watch-js_Diag | npm run watch-js_Anal",
-    "postinstall": "watch"
+    "watch": "npm run watch-js1 | npm run watch-js_example3 | npm run watch-js_Diag | npm run watch-js_Anal"
   }
 }
