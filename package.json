@@ -14,7 +14,7 @@
     "watchify": "latest"
   },
    "devDependencies": {
-    "browserify": "latest",
+    "browserify": "latest" 
   },
   "scripts": {
     "build-js": "browserify public/js/services/equipamentos.js > public/js/bundle.js -d",
