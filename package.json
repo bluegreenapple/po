@@ -1,10 +1,10 @@
 {
-  "name"         : "node-todo",
+  "name"         : "smarttech",
   "version"      : "0.0.0",
   "private": true,
-  "description"  : "Simple todo application.",
+  "description"  : "Smarttech App",
   "main"         : "server.js",
-  "author"       : "Scotch",
+  "author"       : "Rony",
   "dependencies" : {
     "express"         : "~4.6.1",
     "mongoose"        : "~3.8.13",
