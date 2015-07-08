@@ -21,15 +21,15 @@
           <input type="text" class="form-control input-lg text-left " ng-model="formData.fabricante" required></input>
           
           <label><strong>Data de Fabricação:</strong></label>   
-          <input type="text" class="form-control input-lg text-left " ng-model="formData.dataDeFabricacao" required></input>
+          <input type="date" class="form-control input-lg text-left " ng-model="formData.dataDeFabricacao" required></input>
 
-          <label><strong>Data de Fabricação:</strong></label>   
-          <input type="text" class="form-control input-lg text-left " ng-model="formData.dataDoUltimoReparo" required></input>
+          <label><strong>Data do Último Reparo:</strong></label>   
+          <input type="date" class="form-control input-lg text-left " ng-model="formData.dataDoUltimoReparo" required></input>
 
           <div class="form-group">
-              <label>Tipo</label>
+              <label>Modelo</label>
               <select ng-model="formData.tipo" class="form-control" id="sel1">
-                <option>Escolha um Tipo de Equipamento...</option>
+                <option>Escolha um Modelo de Equipamento...</option>
                   <option>Transformador</option>
                   <option>Comutador</option>
               </select>
