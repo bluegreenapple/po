@@ -21,10 +21,10 @@
           <input type="text" class="form-control input-lg text-left " ng-model="formData.fabricante" required></input>
           
           <label><strong>Data de Fabricação:</strong></label>   
-          <input type="date" class="form-control input-lg text-left " ng-model="formData.dataDeFabricacao" required></input>
+          <input type="date" class="form-control input-lg text-left " ng-model="formData.dataDeFabricacao" ng-model-options="{ timezone: 'UTC' }" required></input>
 
           <label><strong>Data do Último Reparo:</strong></label>   
-          <input type="date" class="form-control input-lg text-left " ng-model="formData.dataDoUltimoReparo" required></input>
+          <input type="date" class="form-control input-lg text-left " ng-model="formData.dataDoUltimoReparo" ng-model-options="{ timezone: 'UTC' }" required></input>
 
           <div >
               <label>Modelo</label>

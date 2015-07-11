@@ -1,28 +1,30 @@
 {
-  "name"         : "smarttech",
-  "version"      : "0.0.0",
+  "name": "smarttech",
+  "version": "0.0.0",
   "private": true,
-  "description"  : "Smarttech App",
-  "main"         : "server.js",
-  "author"       : "Rony",
-  "dependencies" : {
-    "express"         : "~4.6.1",
-    "mongoose"        : "~3.8.13",
-    "morgan"          : "~1.1.1",
-    "body-parser"     : "~1.4.3",
-    "method-override" : "~2.1.1",
-    "qs" : "latest"
+  "description": "Smarttech App",
+  "main": "server.js",
+  "author": "Rony",
+  "dependencies": {
+    "body-parser": "~1.4.3",
+    "express": "~4.6.1",
+    "method-override": "~2.1.1",
+    "moment": "^2.10.3",
+    "mongoose": "~3.8.13",
+    "morgan": "~1.1.1",
+    "qs": "latest"
   },
-   "devDependencies": {
+  "devDependencies": {
     "browserify": "latest",
-    "watchify": "latest" 
+    "watchify": "latest"
   },
   "scripts": {
     "build-js": "browserify public/js/services/equipamentos.js > public/js/bundle.js -d",
     "watch-js1": "watchify public/js/services/equipamentos.js -o public/js/bundle.js -dv",
     "watch-js_Anal": "watchify public/js/services/analises.js -o public/js/bundleAnalises.js -dv",
+    "watch-js_example1": "watchify public/js/controllers/example.js -o public/js/bundle1.js -dv",
     "watch-js_example3": "watchify public/js/controllers/example3.js -o public/js/bundle3.js -dv",
     "watch-js_Diag": "watchify public/js/controllers/controllers.js -o public/js/bundleDiag.js -dv",
-    "watch": "npm run watch-js1 | npm run watch-js_example3 | npm run watch-js_Diag | npm run watch-js_Anal"
+    "watch": "npm run watch-js1 | npm run watch-js_example1 | npm run watch-js_example3 | npm run watch-js_Diag | npm run watch-js_Anal"
   }
 }

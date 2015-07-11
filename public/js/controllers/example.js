@@ -1,4 +1,6 @@
 var app = angular.module('ui.bootstrap.demo', ['ui.bootstrap','equipamentoService','diagnosticosServices']);
+var moment = require('moment');
+
 
 app.controller('ModalDemoCtrl', ['$scope','$http','Equipamentos', '$modal', '$log',function ($scope,$http,Equipamentos, $modal, $log) {
 
@@ -130,11 +132,10 @@ app.controller('ModalInstanceCtrl',['$scope','$http','Equipamentos', '$modalInst
 app.controller('ModalInstanceCtrlUpdate',['$scope','$http','Equipamentos', '$modalInstance', 'equipamentoData', function ($scope,$http,Equipamentos, $modalInstance, equipamentoData) {
 
   $scope.formData = equipamentoData;
+  $scope.formData.dataDeFabricacao = new Date(equipamentoData.dataDeFabricacao);
+  $scope.formData.dataDoUltimoReparo = new Date(equipamentoData.dataDoUltimoReparo);
   $scope.loading = true;
   
-  console.log("dataDeFab1 " + $scope.formData.dataDeFabricacao);
-  console.log("dataDeFab2 " + equipamentoData.dataDeFabricacao);
-  console.log("id " + equipamentoData._id);
 // CREATE ==================================================================
   // when submitting the add form, send the text to the node API
   $scope.update = function() {
