@@ -16,9 +16,9 @@ function getEquipamentos(res){
 module.exports = function(app) {
 
 	// // application -------------------------------------------------------------
-	// app.get('*', function(req, res) {
-	// 	res.sendfile('./public/indexCadTransf.html'); // load the single view file (angular will handle the page changes on the front-end)
-	// });
+	
+
+
 	app.get('/api/equipamentos/tags/:equipamento_tags_queryString', function(req, res) {
 
 		// use mongoose to get one specific todo in the database
@@ -104,6 +104,46 @@ module.exports = function(app) {
 		});
 
 	});
+
+	//update a equipamento
+	// create equipamento and send back all equipamentos after creation
+	app.put('/api/equipamentos/update/:equipamentos_id', function(req, res) {
+
+		// use our equipamento model to find the bear we want
+        Equipamento.findById(req.params.equipamentos_id, function(err, equipamento) {
+
+            if (err)
+                res.send(err);
+
+            // bear.name = req.body.name;  // update the bears info
+            equipamento.tag= req.body.tag;  
+    		equipamento.nSerie= req.body.nSerie;  
+    		equipamento.fabricante= req.body.fabricante;  
+    		equipamento.dataDeFabricacao= req.body.dataDeFabricacao;  
+    		equipamento.dataDoUltimoReparo= req.body.dataDoUltimoReparo;  
+    		equipamento.tipo= req.body.tipo;  
+    		equipamento.potencia= req.body.potencia;  
+    		equipamento.tensao= req.body.tensao;  
+    		equipamento.comutacaoComCarga= req.body.comutacaoComCarga;  
+    		equipamento.local= req.body.local;  
+    		equipamento.tanqueSeparado= req.body.tanqueSeparado;  
+    		equipamento.tipoDeOleo= req.body.tipoDeOleo;  
+    		equipamento.volumeDeOleo= req.body.volumeDeOleo;  
+    		equipamento.sistemaDePrevencao= req.body.sistemaDePrevencao;
+
+            // save the bear
+            equipamento.save(function(err) {
+                if (err)
+                    res.send(err);
+
+                res.json({ message: 'Equipamento updated!' });
+                // getEquipamentos(res);
+            });
+
+        });
+
+	});
+	
 
 	// delete a equipamento
 	app.delete('/api/equipamentos/:equipamentos_id', function(req, res) {

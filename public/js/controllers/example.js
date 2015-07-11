@@ -63,6 +63,29 @@ app.controller('ModalDemoCtrl', ['$scope','$http','Equipamentos', '$modal', '$lo
   };
 
 
+  $scope.openUpdate = function (aEquipamentoData) {
+
+    var modalInstance = $modal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'myModalContent.html',
+      controller: 'ModalInstanceCtrlUpdate',
+      windowClass: 'center-modal',
+      resolve: {
+        equipamentoData: function () {
+          return aEquipamentoData;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+      $scope.selected = selectedItem;
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+  
+
+
 }]);
 
 app.controller('ModalInstanceCtrl',['$scope','$http','Equipamentos', '$modalInstance', 'items', function ($scope,$http,Equipamentos, $modalInstance, items) {
@@ -100,4 +123,48 @@ app.controller('ModalInstanceCtrl',['$scope','$http','Equipamentos', '$modalInst
   $scope.cancel = function () {
     $modalInstance.dismiss('cancel');
   };
+
+
 }]);
+
+app.controller('ModalInstanceCtrlUpdate',['$scope','$http','Equipamentos', '$modalInstance', 'equipamentoData', function ($scope,$http,Equipamentos, $modalInstance, equipamentoData) {
+
+  $scope.formData = equipamentoData;
+  $scope.loading = true;
+  
+  console.log("dataDeFab1 " + $scope.formData.dataDeFabricacao);
+  console.log("dataDeFab2 " + equipamentoData.dataDeFabricacao);
+  console.log("id " + equipamentoData._id);
+// CREATE ==================================================================
+  // when submitting the add form, send the text to the node API
+  $scope.update = function() {
+    alert('I update');
+    // validate the formData to make sure that something is there
+    // if form is empty, nothing will happen
+    if ($scope.formData.tag != undefined) {
+      $scope.loading = true;
+
+      // call the create function from our service (returns a promise object)
+      Equipamentos.update(equipamentoData._id,$scope.formData)
+
+        // if successful creation, call our get function to get all the new equipamentos
+        .success(function(data) {
+          $scope.loading = false;
+          $scope.formData = {}; // clear the form so our user is ready to enter another
+          $scope.equipamen,tos = data; // assign our new list of equipamentos
+          $modalInstance.close($scope.equipamentos);
+        });
+    }
+  };
+
+ 
+
+  $scope.ok = function () {
+    $modalInstance.close($scope.equipamentos);
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+}]);
+
