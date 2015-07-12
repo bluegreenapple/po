@@ -41,8 +41,8 @@ equipService.factory('Equipamentos', ['$http',function($http) {
 			create : function(equipamentoData) {
 				return $http.post('/api/equipamentos', equipamentoData);
 			},
-			update : function(id,equipamentoData) {
-				return $http.put('/api/equipamentos/update/' + id);
+			update : function(equipamentoData) {
+				return $http.put('/api/equipamentos/',equipamentoData);
 			},
 			delete : function(id) {
 				return $http.delete('/api/equipamentos/' + id);

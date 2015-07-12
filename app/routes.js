@@ -106,16 +106,14 @@ module.exports = function(app) {
 	});
 
 	//update a equipamento
-	// create equipamento and send back all equipamentos after creation
-	app.put('/api/equipamentos/update/:equipamentos_id', function(req, res) {
+	app.put('/api/equipamentos/', function(req, res) {
 
-		// use our equipamento model to find the bear we want
-        Equipamento.findById(req.params.equipamentos_id, function(err, equipamento) {
-
+		// use our equipamento model to find the equipamento we want
+        Equipamento.findById(req.body._id, function(err, equipamento) {
+        	
             if (err)
                 res.send(err);
 
-            // bear.name = req.body.name;  // update the bears info
             equipamento.tag= req.body.tag;  
     		equipamento.nSerie= req.body.nSerie;  
     		equipamento.fabricante= req.body.fabricante;  
@@ -131,13 +129,12 @@ module.exports = function(app) {
     		equipamento.volumeDeOleo= req.body.volumeDeOleo;  
     		equipamento.sistemaDePrevencao= req.body.sistemaDePrevencao;
 
-            // save the bear
+            // save the equipamento
             equipamento.save(function(err) {
                 if (err)
                     res.send(err);
 
-                res.json({ message: 'Equipamento updated!' });
-                // getEquipamentos(res);
+                getEquipamentos(res);
             });
 
         });

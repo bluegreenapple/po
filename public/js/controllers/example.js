@@ -75,7 +75,10 @@ app.controller('ModalDemoCtrl', ['$scope','$http','Equipamentos', '$modal', '$lo
       resolve: {
         equipamentoData: function () {
           return aEquipamentoData;
-        }
+        },
+        equipamentoData: function () {
+          return aEquipamentoData;
+        },
       }
     });
 
@@ -138,21 +141,21 @@ app.controller('ModalInstanceCtrlUpdate',['$scope','$http','Equipamentos', '$mod
   
 // CREATE ==================================================================
   // when submitting the add form, send the text to the node API
-  $scope.update = function() {
+  $scope.updateEquipamento = function() {
     alert('I update');
     // validate the formData to make sure that something is there
     // if form is empty, nothing will happen
     if ($scope.formData.tag != undefined) {
       $scope.loading = true;
-
+      
       // call the create function from our service (returns a promise object)
-      Equipamentos.update(equipamentoData._id,$scope.formData)
+      Equipamentos.update($scope.formData)
 
         // if successful creation, call our get function to get all the new equipamentos
         .success(function(data) {
           $scope.loading = false;
           $scope.formData = {}; // clear the form so our user is ready to enter another
-          $scope.equipamen,tos = data; // assign our new list of equipamentos
+          $scope.equipamentos = data; // assign our new list of equipamentos
           $modalInstance.close($scope.equipamentos);
         });
     }
