@@ -29,6 +29,9 @@ analService.factory('Analises', ['$http',function($http) {
 			create : function(analiseData) {
 				return $http.post('/api/analises', analiseData);
 			},
+			update : function(analiseData) {
+				return $http.put('/api/analises/',analiseData);
+			},
 			delete : function(id) {
 				return $http.delete('/api/analises/' + id);
 			}

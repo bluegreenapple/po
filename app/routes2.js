@@ -114,6 +114,37 @@ app.get('/api/analises/tags/:analise_tags_queryString', function(req, res) {
 
 	});
 
+	//update a analise
+	app.put('/api/analises/', function(req, res) {
+
+		// use our analise model to find the analise we want
+        Analise.findById(req.body._id, function(err, analise) {
+        	
+            if (err)
+                res.send(err);
+
+            analise.tagDoEquipamento = req.body.tagDoEquipamento;  
+		    analise.nDaAnaliseDoLaboratorio = req.body.nDaAnaliseDoLaboratorio;    
+		    analise.laboratorio = req.body.laboratorio;    
+		    analise.dataDaAnalise = req.body.dataDaAnalise;    
+		    analise.umidadeRelativaDoAr = req.body.umidadeRelativaDoAr;    
+		    analise.temperaturaAmbiente = req.body.temperaturaAmbiente;    
+		    analise.emOperacao = req.body.emOperacao;    
+		    analise.pontoDeColeta = req.body.pontoDeColeta;    
+		    analise.temperaturaDoOleo = req.body.temperaturaDoOleo;   
+
+            // save the analise
+            analise.save(function(err) {
+                if (err)
+                    res.send(err);
+
+                getAnalises(res);
+            });
+
+        });
+
+	});
+
 	// delete a analise
 	app.delete('/api/analises/:analises_id', function(req, res) {
 		Analise.remove({

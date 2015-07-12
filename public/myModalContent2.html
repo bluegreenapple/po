@@ -15,7 +15,7 @@
 		  <label><strong>Número da Análise do Laboratório:</strong></label>	
 		  <input type="text" class="form-control input-lg text-left " ng-model="formData.nDaAnaliseDoLaboratorio" ng-required=true></input>
 		  <label><strong>Data da Amostragem:</strong></label>	
-		  <input type="date" class="form-control input-lg text-left " ng-model="formData.dataDaAnalise" ng-required=true></input>
+		  <input type="date" class="form-control input-lg text-left " ng-model="formData.dataDaAnalise" ng-model-options="{ timezone: 'UTC' }" ng-required=true></input>
 
 		  <label><strong>Umidade Relativa do Ar (%):</strong></label>	
 		  <input type="text" class="form-control input-lg text-left " ng-model="formData.umidadeRelativaDoAr" ng-required=true></input>
@@ -177,7 +177,8 @@
         </div class = "cadastrar" >
             <!-- <button type="submit" class="btn btn-default btn-lg">Voltar</button>                -->
             <button type="cancelar" class="btn btn-default btn-lg" ng-click="cancel()">Cancelar</button>
-            <button type="submit" class="btn btn-primary btn-lg" ng-click="createAnalise()">Salvar</button>                 
+            <button type="submit" class="btn btn-primary btn-lg" ng-click="createAnalise()">Salvar</button>
+            <button type="submit" class="btn btn-primary btn-lg" ng-click="updateAnalise()">Update</button>                 
 
         </div><!-- FIM BOTAO SALVAR -->
       </div><!-- FIM CAIXA DADOS TECNICOS-->
