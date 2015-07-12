@@ -77,7 +77,7 @@ app.controller('ModalDemoCtrl2', ['$scope','$http','Analises', '$modal', '$log',
 }]);
 
 app.controller('ModalInstanceCtrl2',['$scope','$http','Analises', '$modalInstance', 'items', function ($scope,$http,Analises, $modalInstance, items) {
-
+  $scope.verbo = 'Cadastrar';
   $scope.formData = {};
   $scope.loading = true;
 // CREATE ==================================================================
@@ -114,7 +114,7 @@ app.controller('ModalInstanceCtrl2',['$scope','$http','Analises', '$modalInstanc
 }]);
 
 app.controller('ModalInstanceCtrlUpdate2',['$scope','$http','Analises', '$modalInstance', 'analiseData', function ($scope,$http,Analises, $modalInstance, analiseData) {
-
+  $scope.verbo = 'Editar';
   $scope.formData = analiseData;
   $scope.formData.dataDaAnalise = new Date(analiseData.dataDaAnalise);
   $scope.loading = true;
