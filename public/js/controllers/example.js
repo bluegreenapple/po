@@ -94,7 +94,7 @@ app.controller('ModalDemoCtrl', ['$scope','$http','Equipamentos', '$modal', '$lo
 }]);
 
 app.controller('ModalInstanceCtrl',['$scope','$http','Equipamentos', '$modalInstance', 'items', function ($scope,$http,Equipamentos, $modalInstance, items) {
-
+  $scope.verbo = 'Cadastrar';
   $scope.formData = {};
   $scope.loading = true;
 // CREATE ==================================================================
@@ -133,7 +133,7 @@ app.controller('ModalInstanceCtrl',['$scope','$http','Equipamentos', '$modalInst
 }]);
 
 app.controller('ModalInstanceCtrlUpdate',['$scope','$http','Equipamentos', '$modalInstance', 'equipamentoData', function ($scope,$http,Equipamentos, $modalInstance, equipamentoData) {
-
+  $scope.verbo = 'Editar';
   $scope.formData = equipamentoData;
   $scope.formData.dataDeFabricacao = new Date(equipamentoData.dataDeFabricacao);
   $scope.formData.dataDoUltimoReparo = new Date(equipamentoData.dataDoUltimoReparo);
