@@ -38,7 +38,85 @@ diagServ.service('DuvalService', function() {
     };     
 });
 
-//simple service for creating Duval diagnostics
+//simple service for creating Dornemburg diagnostics
+diagServ.service('DornemburgService', function() {
+
+    this.w = function(ch4, h2) {
+        return +ch4 / +h2;
+    };
+
+    this.x = function(c2h2, c2h4) {
+        return +c2h2 / +c2h4;
+    };
+
+    this.y = function(c2h6, c2h2) {
+        return +c2h6 / +c2h2;
+    };
+
+    this.z = function(c2h2, ch4) {
+        return +c2h2 / +ch4;
+    };
+
+    this.wMod = function(ch4, h2) {
+        return this.w(ch4,h2)*0.127;
+    };
+
+    this.xMod = function(c2h2, c2h4) {
+        return this.x(c2h2,c2h4)*1.44;
+    };
+
+    this.yMod = function(c2h6, c2h2) {
+        return this.y(c2h6,c2h2)*0.44;
+    };
+
+    this.zMod = function(c2h2, ch4) {
+        return this.z(c2h2, ch4)*0.359;
+    };
+    
+    this.diagnostico = function(h2, ch4, c2h2, c2h4, c2h6) {
+        
+        var dornemburg_w = this.w(ch4, h2);
+        var dornemburg_x = this.x(c2h2, c2h4);
+        var dornemburg_y = this.y(c2h6, c2h2);
+        var dornemburg_z = this.z(c2h2, ch4);
+
+        if (dornemburg_w >1 && dornemburg_x <0.75 && dornemburg_y >0.4 && dornemburg_z <0.3) {
+            return "Pontos Quentes";
+        }
+        else if (dornemburg_w >1 && dornemburg_y >0.4 && dornemburg_z <0.3) {
+            return "Descarga Parcial";
+        }
+        else if ((dornemburg_w >0.1 && dornemburg_w <1) && dornemburg_x >0.75 && dornemburg_y <0.4 && dornemburg_z >0.3) {
+            return "Outros tipos de descarga";
+        }
+        else{
+            return "-";
+        }
+    };     
+
+    this.diagnosticoMod = function(h2, ch4, c2h2, c2h4, c2h6) {
+        
+        var dornemburg_w = this.wMod(ch4, h2);
+        var dornemburg_x = this.xMod(c2h2, c2h4);
+        var dornemburg_y = this.yMod(c2h6, c2h2);
+        var dornemburg_z = this.zMod(c2h2, ch4);
+
+        if (dornemburg_w >0.1 && dornemburg_x <1.0 && dornemburg_y >0.2 && dornemburg_z <0.1) {
+            return "Pontos Quentes";
+        }
+        else if (dornemburg_w <0.01 && dornemburg_y >0.2 && dornemburg_z <0.1) {
+            return "Descarga Internas";
+        }
+        else if ((dornemburg_w >0.01 && dornemburg_w <0.1) && dornemburg_x >1 && dornemburg_y <0.2 && dornemburg_z <0.1) {
+            return "Descargas Elétricas (exceto descargas internas)";
+        }
+        else{
+            return "-";
+        }
+    }; 
+});
+
+//simple service for creating Rogers diagnostics
 diagServ.service('RogersService', function() {
 
     this.w = function(ch4, h2) {

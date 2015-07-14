@@ -22,6 +22,52 @@ app.controller('DuvalController', ['$scope','$filter','DuvalService','Analises' 
 
 }]);
 
+app.controller('DornemburgController', ['$scope','$filter','DornemburgService','Analises' ,function ($scope,$filter, DornemburgService, Analises) {
+    
+    $scope.w = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return DornemburgService.w(analise.ch4, analise.h2);
+    };
+    $scope.x = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return DornemburgService.x(analise.c2h2, analise.c2h4);
+    };
+    $scope.y = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return DornemburgService.y(analise.c2h6, analise.c2h2);
+    };
+    $scope.z = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return DornemburgService.z(analise.c2h2, analise.ch4);
+    };
+
+    $scope.wMod = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return DornemburgService.wMod(analise.ch4, analise.h2);
+    };
+    $scope.xMod = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return DornemburgService.xMod(analise.c2h2, analise.c2h4);
+    };
+    $scope.yMod = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return DornemburgService.yMod(analise.c2h6, analise.c2h2);
+    };
+    $scope.zMod = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return DornemburgService.zMod(analise.c2h2, analise.ch4);
+    };
+
+    $scope.diagnostico = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return DornemburgService.diagnostico(analise.h2,analise.ch4, analise.c2h2, analise.c2h4, analise.c2h6);
+    };
+    $scope.diagnosticoMod = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return DornemburgService.diagnosticoMod(analise.h2,analise.ch4, analise.c2h2, analise.c2h4, analise.c2h6);
+    };
+}]);
+
 app.controller('RogersController', ['$scope','$filter','RogersService','Analises' ,function ($scope,$filter, RogersService, Analises) {
   
     $scope.rogersCodigos = 
