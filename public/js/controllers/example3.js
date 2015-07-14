@@ -18,7 +18,7 @@ app.controller('ModalDemoCtrl3', ['$scope','$http','Analises','Equipamentos','Du
       $scope.analises = _.sortBy(data, 'dataDaAnalise').reverse();
 
       //(optional) second only take the first (most recent) Analise for each tagDoEquipamento
-      $scope.analises = _.uniq($scope.analises,true, function(analise){ return analise.tagDoEquipamento; });
+      $scope.analises = _.uniq($scope.analises,false, function(analise){ return analise.tagDoEquipamento; });
       // console.log('analises: '+ $scope.analises);
 
       //third get the tags array for requesting the equipamentos,then create an object with it for stringify
