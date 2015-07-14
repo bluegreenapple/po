@@ -10,9 +10,16 @@
     height:35px;
     width: 25px;
 }
+.tabs{
+  margin-top: 50px;
+}
+.btn{
+  margin-top: 25px;
+}
 table {
   display: block;
   height: 100px;
   overflow-y: scroll;
 }
+
 

@@ -5,15 +5,15 @@ angular.module('diagnosticosServices', [])
 
 
         this.m = function(ch4, c2h2, c2h4) {
-            return (100. * ch4) / (ch4 + c2h2 + c2h4);
+            return (100. * +ch4) / (+ch4 + +c2h2 + +c2h4);
         };
 
         this.a = function(ch4, c2h2, c2h4) {
-            return (100. * c2h2) / (ch4 + c2h2 + c2h4);
+            return (100. * +c2h2) / (+ch4 + +c2h2 + +c2h4);
         };
 
         this.y = function(ch4, c2h2, c2h4) {
-            return (100. * c2h4) / (ch4 + c2h2 + c2h4);
+            return (100. * +c2h4) / (+ch4 + +c2h2 + +c2h4);
         };
         
         this.diagnostico = function(ch4, c2h2, c2h4) {

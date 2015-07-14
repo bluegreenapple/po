@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="css/diagnostico.css">
 
     <!-- SPELLS -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
     <script src="/js/bundleDiag.js"></script>
     <script src="/js/services/diagnosticos.js"></script> 
@@ -14,20 +14,83 @@
 
 <div ng-app='appDiag' class = "mainContainer">
 
+<!-- NAVBAR PRINCIPAL -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Gestão de Transformadores (DGA)</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+         <ul class="nav navbar-nav navbar-right">
+        
+        <li><a href="/alarmes">Alarmes</a></li>
+        <li><a href="/equipamentos">Equipamentos</a></li>
+        <li><a href="/analises">Análises</a></li>
+        <li><a href="/diagnosticos">Diagnóstico</a></li>
+        <li><a href="/historico">Histórico</a></li>
+        <!-- <li><a href="#">Profile</a></li> -->
+        <li><a href="#">vinicius.nunes@smarttecheletrica.com.br<span class="caret"></span></a></li>
+      </ul>
+      
+    </div>
+  </div>
+</nav><!-- FIM NAVBAR PRINCIPAL --> 
+
+<div class="container">
+
     <div ng-controller='DiagController'><!-- DIAG CONTROLLER -->
-        <h1>Tag: {{equipamento.tag}}</h1>
-        <!-- <label><strong>Laboratório:</strong></label>     -->
-        <input type="text" class="form-control input-lg text-left " ng-model="analise.tagDoEquipamento" ng-required=true></input>
-    <br>
     
-    <tabset>
+    <!-- EQUIPAMENTO -->
+    <div class="bs-docs-section">
+      <h1 class="page-header">Equipamento:</h1>
+
+        <div class = "">
+            <form class="form-inline" role="form">
+              <div class="form-group">
+                <h4>Tag:</h4>
+                
+                <input type="text" class="form-control input-lg" autofocus ng-model="selectedTag" ng-change = "changedValue()" typeahead="tag for tag in tags | filter:$viewValue | limitTo:8" class="form-control">
+                
+              </div>
+                
+            <!-- <button type="submit" class="btn btn-primary btn-lg" ng-click="findUltimaAnalise()">Procurar</button> -->
+                
+            </form>
+        </div>
+
+        
+    
+    
+
+   
+
+
+    </div><!-- FIM EQUIPAMENTO -->
+
+    <!-- DIAGNOSTICO -->
+    <div class="bs-docs-section">
+    <h1 class="page-header">Diagnóstico <small>tag: {{selectedTag}}</small>
+        </h1>
+
+    <div ng-show="loading">
+        <alert type='danger'>Nenhuma análise foi cadastrada para Tag...</alert>
+    </div>
+
+    <tabset class = "tabs" ng-show="!loading">
         <tab heading="Duval"><!-- DUVAL TAB -->
             <div ng-controller='DuvalController'><!-- DUVAL CONTROLLER -->
                 <!-- <br> -->
                 <ul class="navbar-right list-unstyled">   
                     <img ng-src="images/xls.png" class="imageButton" ng-click="open(lg)">
                     <img ng-src="images/pdf.png" class="imageButton" ng-click="open(lg)">
-                </ul>  
+                </ul> 
+
                 <h2>Descrição:</h2>
                 <div>
         Este critério é um método especial para diagnóstico de falhas já que está
@@ -68,7 +131,7 @@
                 <div>
         Visto que neste critério não é indicada nenhuma condição de envelhecimento normal, a implementação cuidadosa deste critério resulta sempre em diagnóstico de uma das três falhas. Devido a este problema, antes de aplicar este método deve ser verificado se a evolução dos gases está dentro dos limites considerados normais pela empresa.
                 </div>
-                <h2>Diagnostico Duval:</h2>
+                <h2>Diagnóstico Duval:</h2>
 
 
                 <!-- <form>
@@ -108,8 +171,8 @@
     
     </tabset>
 
-
+    </div><!-- FIM DIAGNOSTICO -->    
     </div><!-- FIM DIAG CONTROLLER -->    
     
-
+    
 </div>
