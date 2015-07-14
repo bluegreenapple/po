@@ -23,9 +23,8 @@ app.controller('DuvalController', ['$scope','$filter','DuvalService','Analises' 
 }]);
 
 app.controller('DiagController', ["limitToFilter", "$http", '$scope','Analises' ,function (limitToFilter,$http,$scope, Analises) {
-  // $scope.tag = window.equipamento.tag;
-  // console.log('equipamentoTag: ' + equipamento.tag);
-  alert('piro');
+
+
 
   // $scope.tag= "2313";
   $scope.loading = true;
@@ -48,7 +47,7 @@ app.controller('DiagController', ["limitToFilter", "$http", '$scope','Analises' 
   $scope.analises = [];
   Analises.get()
     .success(function(data) {
-      // console.log('data: '+ data);
+      
       //first sort data by most recent date (descending order)
       $scope.analises = _.sortBy(data, 'dataDaAnalise').reverse();
 
@@ -60,11 +59,12 @@ app.controller('DiagController', ["limitToFilter", "$http", '$scope','Analises' 
       $scope.tags =  _.pluck($scope.analises, 'tagDoEquipamento');
       $scope.tags = _.uniq($scope.tags,true);
       
+      $scope.changedValue();
     });
 
     
   $scope.changedValue = function() {
-    console.log("change");
+    
     $scope.analise = _.find($scope.analises, function(aAnalise){ return aAnalise.tagDoEquipamento == $scope.selectedTag;  });
     if ($scope.analise == undefined) {
       $scope.loading = true;
@@ -74,6 +74,12 @@ app.controller('DiagController', ["limitToFilter", "$http", '$scope','Analises' 
     }
   };   
 
+  if(!angular.isUndefined(window.equipamento)){
+    $scope.selectedTag = window.equipamento.tag;
+    
+    $scope.changedValue();
+  }
+  
   // Analises.getByTag($scope.tag)
   //     .success(function(data) {
   //       console.log('lalalal');
