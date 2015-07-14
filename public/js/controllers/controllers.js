@@ -53,22 +53,13 @@ app.controller('DiagController', ["limitToFilter", "$http", '$scope','Analises' 
       $scope.analises = _.sortBy(data, 'dataDaAnalise').reverse();
 
       //(optional) second only take the first (most recent) Analise for each tagDoEquipamento
-      console.log("pre: ");
-      console.log("pre: "+ $scope.analises.length);
-      $scope.analises = _.uniq($scope.analises,true, function(aAnalise){ return aAnalise.tagDoEquipamento; });
-      for (var i = $scope.analises.length - 1; i >= 0; i--) {
-        console.log($scope.analises[i].tagDoEquipamento);
-      };
-      console.log("pos: "+ $scope.analises.length);
-
-      // console.log('analises: '+ $scope.analises);
+      //there is a bug in underscore: when isSorted = true, it doesnt work at all!
+      $scope.analises = _.uniq($scope.analises,false, function(aAnalise){ return aAnalise.tagDoEquipamento; });
 
       //third get the tags array for requesting the equipamentos
       $scope.tags =  _.pluck($scope.analises, 'tagDoEquipamento');
-      console.log("pre: "+ $scope.tags);
       $scope.tags = _.uniq($scope.tags,true);
-      console.log("pos: "+ $scope.tags);
-      // console.log('obj: '+ tags);
+      
     });
 
     
