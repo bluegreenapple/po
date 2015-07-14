@@ -64,7 +64,7 @@ app.controller('DiagController', ["limitToFilter", "$http", '$scope','Analises' 
 
     
   $scope.changedValue = function() {
-    
+      
     $scope.analise = _.find($scope.analises, function(aAnalise){ return aAnalise.tagDoEquipamento == $scope.selectedTag;  });
     if ($scope.analise == undefined) {
       $scope.loading = true;
