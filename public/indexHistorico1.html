@@ -75,7 +75,7 @@
 
     <!-- DIAGNOSTICO -->
     <div class="bs-docs-section">
-    <h1 class="page-header">Diagnóstico <small>tag: {{selectedTag}}</small>
+    <h1 class="page-header">Histórico das Análises <small>tag: {{selectedTag}}</small>
         </h1>
 
     <div ng-show="loading">
@@ -166,101 +166,7 @@
         <tab heading="Iec 60599">Under Construction...</tab>
         <tab heading="Laborelec">Under Construction...</tab>
         <tab heading="Pugh">Under Construction...</tab>
-        
-        <tab heading="Rogers"><!-- ROGERS TAB -->
-            <div ng-controller='RogersController'><!-- ROGERS CONTROLLER -->
-                <ul class="navbar-right list-unstyled">   
-                    <img ng-src="images/xls.png" class="imageButton" ng-click="open(lg)">
-                    <img ng-src="images/pdf.png" class="imageButton" ng-click="open(lg)">
-                </ul> 
-
-                <h2>Descrição:</h2>
-                <div>
-                    Este critério utiliza as seguintes relações: CH4/H2, C2H4/C2H6, C2H2/C2H4 e C2H6/CH4. O diagnóstico de falhas é emitido por meio de um esquema de codificações simples baseado em faixas de relações. Por este critério são detectáveis quatro condições que são o envelhecimento normal, descargas parciais, falhas térmicas e falhas elétricas de vários graus de severidade. Este método é melhor do que o método de Dörnemburg, já que abrange uma faixa maior de combinações de razões, reduzindo significativamente o número de casos sem interpretação; todavia que nenhuma consideração seja dada para gases dissolvidos abaixo das concentrações normais. Portanto a utilização unicamente deste método pode levar a interpretações erradas. Este critério está baseado em duas tabelas (4.2 e 4.3.) que fornecem as relações entre os gases característicos e os diagnósticos.
-                </div>
-
-                <table class = 'table table-striped'>
-                    <tr>
-                        <th>Relação de Gases</th>
-                        <th>Faixa de Variação</th> 
-                        <th>Código</th>   
-                          
-                    </tr>
-
-                    
-
-                    <tr ng-repeat="rogersCodigo in rogersCodigos">
-                        <td>{{ rogersCodigo.relacao }}</td>
-                        <td>
-                            <ul class="list-unstyled">
-                                <li ng-repeat="rogersFaixa in rogersCodigo.faixas">
-                                    {{rogersFaixa.faixa}}
-                                </li>
-                            </ul>
-                        </td>  
-                        <td>
-                            <ul class="list-unstyled">
-                                <li ng-repeat="rogersFaixa in rogersCodigo.faixas">
-                                    {{rogersFaixa.codigo}}
-                                </li>
-                            </ul>
-                        </td>    
-                    </tr>
-
-                    
-
-                </table>
-
-
-                <table class = 'table table-striped'>
-                    <tr>
-                        <th>w</th>
-                        <th>x</th>
-                        <th>y</th>
-                        <th>z</th>
-                        <th>Diagnóstico</th>
-                    </tr>
-                    <tr ng-repeat="diag in rogersDiags">
-                        <td>{{ diag.w }}</td>
-                        <td>{{ diag.x }}</td>
-                        <td>{{ diag.y }}</td>
-                        <td>{{ diag.z }}</td>
-                        <td>{{ diag.diagnostico }}</td>
-                    </tr>
-                </table>
-                
-
-                <h2>Diagnóstico Rogers:</h2>
-                <table class = 'table table-striped'>
-                    <tr>
-                        <th></th>
-                        <th>w</th>
-                        <th>x</th>
-                        <th>y</th>
-                        <th>z</th>
-                        <th>Diagnóstico</th>
-                    </tr>
-                    <tr>
-                        <th>valor</th>
-                        <td>{{ w(analise) | number:1}}</td>
-                        <td>{{ x(analise) | number:1}}</td>
-                        <td>{{ y(analise) | number:1}}</td>
-                        <td>{{ z(analise) | number:1}}</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th>código</th>
-                        <td>{{ nw(analise) }}</td>
-                        <td>{{ nx(analise) }}</td>
-                        <td>{{ ny(analise) }}</td>
-                        <td>{{ nz(analise) }}</td>
-                        <td>{{ diagnostico(analise) }}</td>
-                    </tr>
-                </table>
-
-            </div><!-- FIM ROGERS CONTROLLER -->
-        </tab><!-- FIM ROGERS TAB -->
-
+        <tab heading="Rogers">Under Construction...</tab>
         <tab heading="Dornemburg">Under Construction...</tab>
     
     </tabset>
