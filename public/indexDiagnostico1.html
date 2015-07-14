@@ -261,7 +261,91 @@
             </div><!-- FIM ROGERS CONTROLLER -->
         </tab><!-- FIM ROGERS TAB -->
 
-        <tab heading="Dornemburg">Under Construction...</tab>
+        <tab heading="Dornemburg">Under Construction...
+            <ul class="navbar-right list-unstyled">   
+                <img ng-src="images/xls.png" class="imageButton" ng-click="open(lg)">
+                <img ng-src="images/pdf.png" class="imageButton" ng-click="open(lg)">
+            </ul> 
+
+            <h2>Descrição:</h2>
+
+            <div>
+                
+            </div>
+
+            <table class = 'table table-striped'>
+                <tr>
+                    <th rowspan="2"> TIPO DE FALHA </th>
+                    <th colspan="2">Relações Principais</th> 
+                    <th colspan="2">Relações Auxiliares</th>   
+                </tr>
+                <tr>
+                    <th>CH4/H2</th> 
+                    <th>C2H2/C2H4</th>   
+                    <th>C2H6/C2H2</th>
+                    <th>C2H2/CH4</th>   
+                </tr>
+                <tr>
+                    <td>Ponto quente</td> 
+                    <td>&gt1</td>   
+                    <td>&lt0.75</td>
+                    <td>&gt0.4</td> 
+                    <td>&lt0.3</td>  
+                </tr>
+                <tr>
+                    <td>Descarga Parcial</td> 
+                    <td>&lt0.1</td>   
+                    <td>Não signif.</td>
+                    <td>&gt0.4</td> 
+                    <td>&lt0.3</td>  
+                </tr>
+                <tr>
+                    <td>Outros tipos de descarga</td> 
+                    <td>&lt1 e &gt0.1</td>   
+                    <td>&gt0.75</td>
+                    <td>&lt0.4</td> 
+                    <td>&gt0.3</td>  
+                </tr>
+                    
+            </table>
+
+            <table class = 'table table-striped'>
+                <tr>
+                    <th rowspan="2"> TIPO DE FALHA </th>
+                    <th colspan="2">Relações Principais</th> 
+                    <th colspan="2">Relações Auxiliares</th>   
+                </tr>
+                <tr>
+                    <th>CH4/H2*0.127</th> 
+                    <th>C2H2/C2H4*1.44</th>   
+                    <th>C2H6/C2H2*0.47</th>
+                    <th>C2H2/CH4*0.359</th>   
+                </tr>
+                <tr>
+                    <td>Pontos quentes</td> 
+                    <td>&gt0.1</td>   
+                    <td>&lt1</td>
+                    <td>&gt0.2</td> 
+                    <td>&lt0.1</td>  
+                </tr>
+                <tr>
+                    <td>Descargas internas(**)</td> 
+                    <td>&lt0.01</td>   
+                    <td>-</td>
+                    <td>&gt0.2</td> 
+                    <td>&lt0.1</td>  
+                </tr>
+                <tr>
+                    <td>Descargas Elétricas (exceto descargas internas)</td> 
+                    <td>&lt0.1 e &gt0.01(*)</td>   
+                    <td>&gt1.</td>
+                    <td>&lt0.2</td> 
+                    <td>&gt0.1</td>  
+                </tr>
+                    
+            </table>
+
+        </tab>
     
     </tabset>
 
