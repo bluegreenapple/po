@@ -133,6 +133,20 @@ app.get('/api/analises/tags/:analise_tags_queryString', function(req, res) {
 		    analise.pontoDeColeta = req.body.pontoDeColeta;    
 		    analise.temperaturaDoOleo = req.body.temperaturaDoOleo;   
 
+			// cromatográfico
+		    analise.h2 = req.body.h2;  
+		    analise.o2 = req.body.o2;  
+		    analise.n2 = req.body.n2;  
+		    analise.ch4 = req.body.ch4;  
+		    analise.co = req.body.co;  
+		    analise.co2 = req.body.co2;  
+		    analise.c2h4 = req.body.c2h4;  
+		    analise.c2h6 = req.body.c2h6;
+		    analise.c2h2 = req.body.c2h2;
+		    analise.tgc = req.body.tgc;
+		    analise.tgg = req.body.tgg;
+		    analise.conclusoesCroma = req.body.conclusoesCroma;
+
             // save the analise
             analise.save(function(err) {
                 if (err)

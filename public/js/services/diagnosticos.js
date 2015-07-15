@@ -297,3 +297,84 @@ diagServ.service('Iec156Service', function() {
         
     };     
 });
+
+//simple service for creating Iec156 diagnostics
+diagServ.service('LaborelecService', function() {
+
+
+    this.ppm_h2 = function(h2, tgg) {
+        return +h2 / +tgg *1000000.;
+    };
+
+    // this.ppm_x = function(ch4, c2h4, c2h6, tgg) {
+    //     return (+ch4 + +c2h4 + +c2h6) / +tgg *1000000.;
+    // };
+
+    // this.ppm_y = function(ch4, h2, tgg) {
+    //     return +ch4 / +h2 / +tgg *1000000.;
+    // };
+
+    // this.ppm_c2h2 = function(c2h2, tgg) {
+    //     return +c2h2 / +tgg *1000000.;
+    // };
+
+    // this.ppm_co = function(co, tgg) {
+    //     return +co / +tgg *1000000.;
+    // };
+
+    
+    // this.diagnostico = function(h2, co, ch4, c2h2, c2h4, c2h6 ,tgg) {
+        
+    //     var ppm_h2 = this.ppm_h2(h2, tgg);
+    //     var ppm_x = this.ppm_x(ch4, c2h4, c2h6, tgg);
+    //     var ppm_y = this.ppm_y(ch4, h2, tgg);
+    //     var ppm_co = this.ppm_co(co, tgg);
+    //     var ppm_c2h2 = this.c2h2(c2h2, tgg);
+
+    //     if      (ppm_h2 <= 200 && ppm_x <= 300 && ppm_co <= 400) {return {"indice": "A", "diagnostico":"Normal"};}
+        
+    //     else if ((ppm_h2 >= 201 && ppm_h2 <= 300) && ppm_x <= 300 && ppm_y<=0.15) {return {"indice": "B1", "diagnostico":"Descargas parciais (óleo) - Média"};}
+    //     else if ((ppm_h2 >= 201 && ppm_h2 <= 300) && ppm_x <= 300 && (ppm_y>=0.16 && ppm_y<=1) && ppm_c2h2<=20) {return {"indice": "B2", "Centelhamento (óleo) - Média"};}
+    //     else if ((ppm_h2 >= 201 && ppm_h2 <= 300) && ppm_x <= 300 && (ppm_y>=0.16 && ppm_y<=1) && ppm_c2h2>20) {return {"indice": "B3", "diagnostico":"Centelhamento (óleo) ou Gás proveniente do comutador - Média"};}
+        
+    //     else if (ppm_h2 <= 200 && (ppm_x >= 301 && ppm_x <= 400) && ppm_y>=0.61 && ppm_co<=400) {return {"indice": "B4", "diagnostico":"Térmica (óleo) - Média"};}
+    //     else if (ppm_h2 <= 200 && (ppm_x >= 301 && ppm_x <= 400) && ppm_y>=0.61 && ppm_co>400) {return {"indice": "B5", "diagnostico":"Térmica (óleo + papel) - Média"};}
+    //     else if (ppm_h2 <= 200 && (ppm_x >= 301 && ppm_x <= 400) && ppm_y>=0.60 && ppm_c2h2>20 && ppm_co<=400) {return {"indice": "B6", "diagnostico":"Térmica (óleo) ou Gás proveniente do comutador - Média"};}
+    //     else if (ppm_h2 <= 200 && (ppm_x >= 301 && ppm_x <= 400) && ppm_y>=0.60 && ppm_c2h2>20 && ppm_co>400) {return {"indice": "B7", "diagnostico":"Térmica (óleo+papel) ou Gás proveniente do comutador - Média"};}
+        
+    //     else if ((ppm_h2 >= 201 && ppm_h2 <= 300) && ppm_x <= 300 && ppm_c2h2>20) {return {"indice": "B3", "diagnostico":"Centelhamento (óleo) ou Gás proveniente do comutador - Média"};}
+    //     else if ((ppm_h2 >= 201 && ppm_h2 <= 300) && ppm_x <= 300 && ppm_c2h2<=20) {return {"indice": "B4", "diagnostico":"Térmica (óleo) - Média"};}
+        
+    //     else if (ppm_h2 <= 200 && ppm_x <= 300 && ppm_co > 400) {return {"indice": "B9", "diagnostico":"Térmica (papel) - Média"};}
+        
+    //     else if ((ppm_h2 >= 301 && ppm_h2 <= 600) && ppm_x <= 400 && ppm_y<=0.15) {return {"indice": "C1", "diagnostico":"Descargas parciais (óleo) – Importante"};}
+    //     else if ((ppm_h2 >= 301 && ppm_h2 <= 600) && ppm_x <= 400 && (ppm_y>=0.16 && ppm_y<=1) && ppm_c2h2 <=50) {return {"indice": "C2", "diagnostico":"Centelhamento (óleo) – Importante"};}
+    //     else if ((ppm_h2 >= 301 && ppm_h2 <= 600) && ppm_x <= 400 && (ppm_y>=0.16 && ppm_y<=1) && ppm_c2h2 >50) {return {"indice": "C3", "diagnostico":"Centelhamento (óleo) ou Gás proveniente do comutador – Importante"};}
+        
+    //     else if (ppm_h2 <= 300 && (ppm_x >= 401 && ppm_x <= 800) && ppm_y>=0.61 && ppm_co<=500) {return {"indice": "C4", "diagnostico":"Térmica (óleo) – Importante"};}
+    //     else if (ppm_h2 <= 300 && (ppm_x >= 401 && ppm_x <= 800) && ppm_y>=0.61 && ppm_co>500) {return {"indice": "C5", "diagnostico":"Térmica (óleo + papel) – Importante"};}
+    //     else if (ppm_h2 <= 300 && (ppm_x >= 401 && ppm_x <= 800) && ppm_y>=0.60 && ppm_c2h2>50 && ppm_co<=500) {return {"indice": "C6", "diagnostico":"Térmica (óleo) ou Gás proveniente do comutador – Importante"};}
+    //     else if (ppm_h2 <= 300 && (ppm_x >= 401 && ppm_x <= 800) && ppm_y>=0.60 && ppm_c2h2>50 && ppm_co>500) {return {"indice": "C7", "diagnostico":"Térmica (óleo+papel) ou Gás proveniente do comutador – Importante"};}
+        
+    //     else if ((ppm_h2 >= 301 && ppm_h2 <= 600) && (ppm_x >= 401 && ppm_x <= 800) && ppm_c2h2>50) {return {"indice": "C8", "diagnostico":"Arco no óleo ou Gás proveniente do comutador – Importante"};}
+    //     else if ((ppm_h2 >= 301 && ppm_h2 <= 600) && (ppm_x >= 401 && ppm_x <= 800) && ppm_c2h2<=50 && ppm_co<=500) {return {"indice": "C4", "diagnostico":"Térmica (óleo) – Importante"};}
+    //     else if ((ppm_h2 >= 301 && ppm_h2 <= 600) && (ppm_x >= 401 && ppm_x <= 800) && ppm_c2h2<=50 && ppm_co>500) {return {"indice": "C5", "diagnostico":"Térmica (óleo + papel) – Importante"};}
+        
+    //     else if (ppm_h2 >= 601 && ppm_x <= 800 && ppm_y<=0.15) {return {"indice": "D1", "diagnostico":"Descargas parciais (óleo) – Muito"};}
+    //     else if (ppm_h2 >= 601 && ppm_x <= 800 && (ppm_y>=0.16 && ppm_y<=1) && ppm_c2h2<=50) {return {"indice": "D2", "Centelhamento (óleo) – Muito"};}
+    //     else if (ppm_h2 >= 601 && ppm_x <= 800 && (ppm_y>=0.16 && ppm_y<=1) && ppm_c2h2>50) {return {"indice": "D3", "diagnostico":"Centelhamento (óleo) ou Gás proveniente do comutador – Muito"};}
+
+    //     else if (ppm_h2 <= 600 && ppm_x >= 801 && ppm_y>=0.61 && ppm_co<=700) {return {"indice": "D4", "diagnostico":"Térmica (óleo) – Muito"};}
+    //     else if (ppm_h2 <= 600 && ppm_x >= 801 && ppm_y>=0.61 && ppm_co>700) {return {"indice": "D5", "diagnostico":"Térmica (óleo + papel) – Muito"};}
+    //     else if (ppm_h2 <= 600 && ppm_x >= 801 && ppm_y>=0.60 && ppm_c2h2>50 && ppm_co<=700) {return {"indice": "D6", "diagnostico":"Térmica (óleo) ou Gás proveniente do comutador – Muito"};}
+    //     else if (ppm_h2 <= 600 && ppm_x >= 801 && ppm_y>=0.60 && ppm_c2h2>50 && ppm_co>700) {return {"indice": "D7", "diagnostico":"Térmica (óleo+papel) ou Gás proveniente do comutador – Muito"};}
+
+    //     else if (ppm_h2 >= 601 && ppm_x >= 801 && ppm_c2h2>100) {return {"indice": "D8", "diagnostico":"Arco no óleo ou Gás proveniente do comutador – Muito"};}
+    //     else if (ppm_h2 >= 601 && ppm_x >= 801 && ppm_c2h2<=100 && ppm_co<=700) {return {"indice": "D4", "Térmica (óleo) – Muito"};}
+    //     else if (ppm_h2 >= 601 && ppm_x >= 801 && ppm_c2h2<=100 && ppm_co>700) {return {"indice": "D5", "diagnostico":"Térmica (óleo + papel) – Muito"};}
+
+
+    //     else {return '-'};
+        
+    // };     
+});
