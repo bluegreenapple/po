@@ -311,7 +311,7 @@ diagServ.service('LaborelecService', function() {
     };
 
     this.ppm_y = function(ch4, h2, tgg) {
-        return +ch4 / +h2 / +tgg *1000000.;
+        return +ch4 / +h2 / +tgg;
     };
 
     this.ppm_c2h2 = function(c2h2, tgg) {
