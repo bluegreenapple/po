@@ -55,7 +55,7 @@ app.get('/alarmes', function (req, res) {
   res.sendfile('./public/index3.html');
 });
 app.get('/historico', function (req, res) {
-  res.sendfile('./public/indexHistorico.html');
+  res.sendfile('./public/indexHistorico1.html');
 });
 
 

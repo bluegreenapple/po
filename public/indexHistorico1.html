@@ -55,7 +55,7 @@
               <div class="form-group">
                 <h4>Tag:</h4>
                 
-                <input type="text" class="form-control input-lg" autofocus ng-model="selectedTag" ng-change = "changedValue()" typeahead="tag for tag in tags | filter:$viewValue | limitTo:8" class="form-control">
+                <select class="input-lg" ng-model="selectedTag" ng-options="tag for tag in tags track by tag"  ng-selected="changedValue()" ><option value="">-- escolha a tag --</option></select>
                 
               </div>
                 
@@ -79,7 +79,7 @@
         </h1>
 
     <div ng-show="loading">
-        <alert type='danger'>Nenhuma análise foi cadastrada para Tag...</alert>
+        <alert type='warning'>Escolha uma tag de equipamento para mostrar seu último diagnóstico aqui...</alert>
     </div>
 
     <tabset class = "tabs" ng-show="!loading">
