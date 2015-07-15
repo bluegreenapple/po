@@ -100,7 +100,7 @@ app.controller('ModalInstanceCtrl',['$scope','$http','Equipamentos', '$modalInst
 // CREATE ==================================================================
   // when submitting the add form, send the text to the node API
   $scope.createEquipamento = function() {
-    alert('I submit');
+    // alert('I submit');
     // validate the formData to make sure that something is there
     // if form is empty, nothing will happen
     if ($scope.formData.tag != undefined) {
@@ -142,7 +142,7 @@ app.controller('ModalInstanceCtrlUpdate',['$scope','$http','Equipamentos', '$mod
 // CREATE ==================================================================
   // when submitting the add form, send the text to the node API
   $scope.updateEquipamento = function() {
-    alert('I update');
+    // alert('I update');
     // validate the formData to make sure that something is there
     // if form is empty, nothing will happen
     if ($scope.formData.tag != undefined) {
