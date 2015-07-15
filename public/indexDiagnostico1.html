@@ -254,13 +254,7 @@
 
                 <h2>Descrição:</h2>
                 <div>
-        Este critério é um método especial para diagnóstico de falhas já que está
-    baseado na visualização da localização dos gases dissolvidos em um mapa
-    triangular. Unicamente três gases dissolvidos são necessários CH4, C2H4 e C2H2.
-    Este critério permite diagnosticar quatro tipos de falhas que são descargas
-    parciais, arco de alta e baixa energia e pontos quentes de várias faixas de
-    temperatura, relacionando os percentuais obtidos para os gases
-    característicos utilizando as seguintes relações: 
+        Os diagnósticos de falhas por este método são mostrados na Tabela 4.8 e as orientações com relação à freqüência da realização dos ensaios, assim como as ações a serem tomadas são fornecidas na Tabela 4.7.
                 </div>
 
                 <table class = 'table table-striped'>
@@ -270,30 +264,34 @@
                         <th>CH4/H2</th>
                         <th>C2H2</th>   
                         <th>CO</th>
-                        <th>Índice</th>   
+                        <th>Índice</th> 
+                        <th>Diagnóstico</th> 
+                        <th>Frequência de Ensaio/Ação a ser tomada</th>   
                     </tr>
-                    <tr>
-                        <td>0-96</td>
-                        <td>0-16</td>
-                        <td>0-100</td>
-                        <td>Pontos Quentes</td>
+                    <tr ng-repeat="row in laborelecData">
+                        <td>{{row.h2}}</td>
+                        <td>{{row.x}}</td>
+                        <td>{{row.y}}</td>
+                        <td>{{row.c2h2}}</td>
+                        <td>{{row.co}}</td>
+                        <td>{{row.indice}}</td>
+                        <td>{{row.diagnostico}}</td>
+                        <td>{{row.recomendacao}}</td>
                     </tr>
                 </table>
-                <div>
-        Visto que neste critério não é indicada nenhuma condição de envelhecimento normal, a implementação cuidadosa deste critério resulta sempre em diagnóstico de uma das três falhas. Devido a este problema, antes de aplicar este método deve ser verificado se a evolução dos gases está dentro dos limites considerados normais pela empresa.
-                </div>
+                
                 <h2>Diagnóstico Laborelec:</h2>
 
                 <table class = 'table table-striped'>
                 <tr>
-                    <th>Concentração [ppm]</th>
+                    <th rowspan="6">Concentração</th>
                 </tr>
                 <tr>
-                    <th>H2</th>
-                    <th>CH4+C2H4+C2H6</th>
+                    <th>H2 [ppm]</th>
+                    <th>CH4+C2H4+C2H6 [ppm]</th>
                     <th>CH4/H2</th>
-                    <th>C2H2</th>   
-                    <th>CO</th>
+                    <th>C2H2 [ppm]</th>   
+                    <th>CO [ppm]</th>
                     <th>Índice</th>   
                     <th>Diagnóstico</th>   
                 </tr>
@@ -305,6 +303,7 @@
                     <td>{{ ppm_co(analise) | number:1}}</td>
                     <td>{{ diagnostico(analise).indice}}</td>
                     <td>{{ diagnostico(analise).diagnostico}}</td>
+                    <td>{{ diagnostico(analise).recomendacao}}</td>
                 </tr>
                 </table>
                 

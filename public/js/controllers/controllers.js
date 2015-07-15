@@ -246,6 +246,41 @@ app.controller('Iec156Controller', ['$scope','$filter','Iec156Service','Analises
 
 app.controller('LaborelecController', ['$scope','$filter','LaborelecService','Analises' ,function ($scope,$filter, LaborelecService, Analises) {
     
+    $scope.laborelecData = 
+    [
+      {"h2":"<=200", "x":"<=300", "y":"", "c2h2":"", "co":"<=400", "indice":"A", "diagnostico":"-", "recomendacao":"Evolução Normal"},
+      {"h2":"201-300", "x":"<=300", "y":"<=0.15", "c2h2":"", "co":"", "indice":"B1", "diagnostico":"Descargas parciais (óleo)", "recomendacao":"Próximo controle: Entre 6 e 12 meses"},
+      {"h2":"201-300", "x":"<=300", "y":"0.16-1", "c2h2":"<=20", "co":"", "indice":"B2", "diagnostico":"Centelhamento (óleo)", "recomendacao":"Próximo controle: Entre 6 e 12 meses"},
+      {"h2":"201-300", "x":"<=300", "y":"0.16-1", "c2h2":">20", "co":"", "indice":"B3", "diagnostico":"Centelhamento (óleo) ou Gás proveniente do comutador", "recomendacao":"Próximo controle: Entre 6 e 12 meses"},
+      {"h2":"<=200", "x":"301-400", "y":">=0.61", "c2h2":"", "co":"<=400", "indice":"B4", "diagnostico":"Térmica (óleo)", "recomendacao":"Próximo controle: Entre 6 e 12 meses"},
+      {"h2":"<=200", "x":"301-400", "y":">=0.61", "c2h2":"", "co":">400", "indice":"B5", "diagnostico":"Térmica (óleo + papel)", "recomendacao":"Próximo controle: Entre 6 e 12 meses"},
+      {"h2":"<=200", "x":"301-400", "y":">=0.60", "c2h2":">20", "co":"<=400", "indice":"B6", "diagnostico":"Térmica (óleo) ou Gás proveniente do comutador", "recomendacao":"Próximo controle: Entre 6 e 12 meses"},
+      {"h2":"<=200", "x":"301-400", "y":">=0.60", "c2h2":">20", "co":">400", "indice":"B7", "diagnostico":"Térmica (óleo+papel) ou Gás proveniente do comutador", "recomendacao":"Próximo controle: Entre 6 e 12 meses"},
+      {"h2":"201-300", "x":"301-400", "y":"", "c2h2":">20", "co":"", "indice":"B3", "diagnostico":"", "recomendacao":"Próximo controle: Entre 6 e 12 meses"},
+      {"h2":"201-300", "x":"301-400", "y":"", "c2h2":"<=20", "co":"", "indice":"B4", "diagnostico":"Térmica (óleo)", "recomendacao":"Próximo controle: Entre 6 e 12 meses"},
+      {"h2":"<=200", "x":"<=300", "y":"", "c2h2":"", "co":">400", "indice":"B9", "diagnostico":"Térmica (papel)", "recomendacao":"Próximo controle: Entre 6 e 12 meses"},
+      {"h2":"301-600", "x":"<=400", "y":"<=0.15", "c2h2":"", "co":"", "indice":"C1", "diagnostico":"Descargas parciais (óleo)", "recomendacao":"Próximo controle: Entre 3 e 6 meses"},
+      {"h2":"301-600", "x":"<=400", "y":"0.16-1.0", "c2h2":"<=50", "co":"", "indice":"C2", "diagnostico":"Centelhamento (óleo)", "recomendacao":"Próximo controle: Entre 3 e 6 meses"},
+      {"h2":"301-600", "x":"<=400", "y":"0.16-1.0", "c2h2":">50", "co":"", "indice":"C3", "diagnostico":"Centelhamento (óleo) ou Gás proveniente do comutador", "recomendacao":"Próximo controle: Entre 3 e 6 meses"},
+      {"h2":"<=300", "x":"401-800", "y":">=0.61", "c2h2":"", "co":"<=500", "indice":"C4", "diagnostico":"Térmica (óleo)", "recomendacao":"Próximo controle: Entre 3 e 6 meses"},
+      {"h2":"<=<=300300", "x":"401-800", "y":">=0.61", "c2h2":"", "co":">500", "indice":"C5", "diagnostico":"Térmica (óleo + papel)", "recomendacao":"Próximo controle: Entre 3 e 6 meses"},
+      {"h2":"<=300", "x":"401-800", "y":"<=0.60", "c2h2":">50", "co":"<=500", "indice":"C6", "diagnostico":"Térmica (óleo) ou Gás proveniente do comutador", "recomendacao":""},
+      {"h2":"<=300", "x":"401-800", "y":"<=0.60", "c2h2":">50", "co":">500", "indice":"C7", "diagnostico":"Térmica (óleo+papel) ou Gás proveniente do comutador", "recomendacao":"Próximo controle: Entre 3 e 6 meses"},
+      {"h2":"301-600", "x":"401-800", "y":"", "c2h2":">50", "co":"", "indice":"C8", "diagnostico":"Arco no óleo ou Gás proveniente do comutador", "recomendacao":"Próximo controle: Entre 3 e 6 meses"},
+      {"h2":"301-600", "x":"401-800", "y":"", "c2h2":"<=50", "co":"<=500", "indice":"C4", "diagnostico":"Térmica (óleo)", "recomendacao":"Próximo controle: Entre 3 e 6 meses"},
+      {"h2":"301-600", "x":"401-800", "y":"", "c2h2":"<=50", "co":">500", "indice":"C5", "diagnostico":"Térmica (óleo + papel)", "recomendacao":"Próximo controle: Entre 3 e 6 meses"},
+      {"h2":">=601", "x":"<=800", "y":"<=0.15", "c2h2":"", "co":"", "indice":"D1", "diagnostico":"Descargas parciais (óleo)", "recomendacao":"Para todos os índices “D” – próximo controle entre 1 e 3 meses/Nova medição do nível de descargas parciais no transformador"},
+      {"h2":">=601", "x":"<=800", "y":"0.16-1.0", "c2h2":"<=50", "co":"", "indice":"D2", "diagnostico":"Centelhamento (óleo)", "recomendacao":"Para todos os índices “D” – próximo controle entre 1 e 3 meses/Possíveis gases formados no LTC, senão, inspecionar as conexões do transformador"},
+      {"h2":">=601", "x":"<=800", "y":"0.16-1.0", "c2h2":">50", "co":"", "indice":"D3", "diagnostico":"Centelhamento (óleo) ou Gás proveniente do comutador", "recomendacao":"Para todos os índices “D” – próximo controle entre 1 e 3 meses/Possíveis gases formados no LTC, senão, inspecionar as conexões do transformador"},
+      {"h2":"<=600", "x":">=801", "y":">=0.61", "c2h2":"", "co":"<=700", "indice":"D4", "diagnostico":"Térmica (óleo)", "recomendacao":"Para todos os índices “D” – próximo controle entre 1 e 3 meses/Possíveis gases formados no LTC, senão, inspecionar as conexões (pontos quentes) e revisão no sistema de resfriamento"},
+      {"h2":"<=600", "x":">=801", "y":">=0.61", "c2h2":"", "co":">700", "indice":"D5", "diagnostico":"Térmica (óleo + papel)", "recomendacao":"Para todos os índices “D” – próximo controle entre 1 e 3 meses/Possíveis gases formados no LTC, senão, inspecionar as conexões (pontos quentes) e revisão no sistema de resfriamento"},
+      {"h2":"<=600", "x":">=801", "y":"<=0.60", "c2h2":">50", "co":"<=700", "indice":"D6", "diagnostico":"Térmica (óleo) ou Gás proveniente do comutador", "recomendacao":"Para todos os índices “D” – próximo controle entre 1 e 3 meses/Possíveis gases formados no LTC, senão, inspecionar as conexões (pontos quentes) e revisão no sistema de resfriamento"},
+      {"h2":"<=600", "x":">=801", "y":"<=0.60", "c2h2":">50", "co":">700", "indice":"D7", "diagnostico":"Térmica (óleo+papel) ou Gás proveniente do comutador", "recomendacao":"Para todos os índices “D” – próximo controle entre 1 e 3 meses/Possíveis gases formados no LTC, senão, inspecionar as conexões (pontos quentes) e revisão no sistema de resfriamento"},
+      {"h2":">=601", "x":">=801", "y":"", "c2h2":">100", "co":"", "indice":"D8", "diagnostico":"Arco no óleo ou Gás proveniente do comutador", "recomendacao":"Para todos os índices “D” – próximo controle entre 1 e 3 meses/Inspeção nas conexões/determinação da resistência de isolamento (se valor baixo, considerar um reparo em oficina). Para o transformador reentrar em operação promover desgaseificação e retornar ao esquema de amostragem normal."},
+      {"h2":">=601", "x":">=801", "y":"", "c2h2":"<=100", "co":"<=700", "indice":"D4", "diagnostico":"Térmica (óleo)", "recomendacao":"Para todos os índices “D” – próximo controle entre 1 e 3 meses/Possíveis gases formados no LTC, senão, inspecionar as conexões (pontos quentes) e revisão no sistema de resfriamento"},
+      {"h2":">=601", "x":">=801", "y":"", "c2h2":"<=100", "co":">700", "indice":"D5", "diagnostico":"Térmica (óleo + papel)", "recomendacao":"Para todos os índices “D” – próximo controle entre 1 e 3 meses/Possíveis gases formados no LTC, senão, inspecionar as conexões (pontos quentes) e revisão no sistema de resfriamento"},
+    ];
+
     $scope.ppm_h2 = function(analise) {
       if (angular.isUndefined(analise)) {return '-'};
       return LaborelecService.ppm_h2(analise.h2, analise.tgg);
