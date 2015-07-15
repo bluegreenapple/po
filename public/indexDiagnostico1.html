@@ -55,7 +55,7 @@
               <div class="form-group">
                 <h4>Tag:</h4>
                 
-                <input type="text" class="form-control input-lg" autofocus ng-model="selectedTag" ng-change = "changedValue()" typeahead="tag for tag in tags | filter:$viewValue | limitTo:8" class="form-control">
+                <input type="text" class="form-control input-lg" autofocus ng-model="selectedTag" ng-change = "changedValue()" ng-selected="changedValue()" typeahead="tag for tag in tags | filter:$viewValue | limitTo:8" class="form-control">
                 
               </div>
                 
@@ -285,6 +285,9 @@
                 <h2>Diagnóstico Laborelec:</h2>
 
                 <table class = 'table table-striped'>
+                <tr>
+                    <th>Concentração [ppm]</th>
+                </tr>
                 <tr>
                     <th>H2</th>
                     <th>CH4+C2H4+C2H6</th>
