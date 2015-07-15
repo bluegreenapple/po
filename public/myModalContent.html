@@ -11,11 +11,11 @@
           <!-- <h2 id="tabs" class="bs-docs-after">Dados Gerais</h2> -->
           <div class = 'form-group'>
           <label><strong>Tag do Equipamento:</strong></label>   
-          <input type="text" class="form-control input-lg " ng-model="formData.tag" required autofocus></input>
+          <input type="text" class="form-control input-lg " ng-model="formData.tag" required ></input>
           
           
           <label><strong>Número de Série:</strong></label>  
-          <input type="text" class="form-control input-lg " ng-model="formData.nSerie" required></input>
+          <input type="text" class="form-control input-lg " ng-model="formData.nSerie" required autofocus></input>
           
           <label><strong>Fabricante:</strong></label>   
           <input type="text" class="form-control input-lg text-left " ng-model="formData.fabricante" required></input>
@@ -28,7 +28,7 @@
 
           <div >
               <label>Modelo</label>
-              <select ng-model="formData.tipo" class="form-control" id="sel1">
+              <select ng-model="formData.tipo" class="form-control input-lg" id="sel1">
                 <option>Escolha um Modelo de Equipamento...</option>
                   <option>Transformador</option>
                   <option>Comutador</option>
@@ -37,7 +37,7 @@
 
           <div class="form-group">
               <label>Local</label>
-              <select ng-model="formData.local" class="form-control" id="sel1">
+              <select ng-model="formData.local" class="form-control input-lg" id="sel1">
                 <option>Escolha o Local...</option>
                   <option>SE-1A (ADMINISTRAÇÃO)</option>
                   <option>SE-2A (OFICINA_MANUT)</option>
@@ -71,7 +71,7 @@
 
         <div class="form-group">
               <label>Tensão (kV)</label>
-              <select ng-model="formData.tensao" class="form-control" id="sel1">
+              <select ng-model="formData.tensao" class="form-control input-lg" id="sel1">
                 <option>Escolha uma Tensão</option>
                   <option>138/33</option>
                   <option>138/23</option>
@@ -89,7 +89,7 @@
 
         <div class="form-group">
           <label>Comutação com Carga</label>
-          <select ng-model="formData.comutacaoComCarga" class="form-control" id="sel1">
+          <select ng-model="formData.comutacaoComCarga" class="form-control input-lg" id="sel1">
             <option>Escolha...</option>
               <option>Sim</option>
               <option>Não</option>
@@ -98,7 +98,7 @@
 
         <div class="form-group">
           <label>Tanque Separado</label>
-          <select ng-model="formData.tanqueSeparado" class="form-control" id="sel1">
+          <select ng-model="formData.tanqueSeparado" class="form-control input-lg" id="sel1">
             <option>Escolha...</option>
               <option>Sim</option>
               <option>Não</option>
@@ -107,7 +107,7 @@
 
         <div class="form-group">
           <label>Tipo de Óleo</label>
-          <select ng-model="formData.tipoDeOleo" class="form-control" id="sel1">
+          <select ng-model="formData.tipoDeOleo" class="form-control input-lg" id="sel1">
             <option>Escolha um Tipo de Óleo</option>
               <option>Mineral</option>
               <option>Vegetal</option>

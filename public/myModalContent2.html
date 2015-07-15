@@ -12,7 +12,7 @@
 		  
 		  <!-- <input type="text" class="form-control input-lg text-left " ng-model="formData.tagDoEquipamento" autofocus ng-required=true></input> -->
 
-		  <select class="form-control text-left" ng-model="formData.tagDoEquipamento" ng-options="tag for tag in tags track by tag"><option value=""></option></select>
+		  <select class="form-control text-left input-lg" ng-model="formData.tagDoEquipamento" ng-options="tag for tag in tags track by tag"><option value="" autofocus></option></select>
 
 
 		  <label><strong>Laboratório:</strong></label>	
@@ -28,14 +28,14 @@
 		  <input type="text" class="form-control input-lg text-left " ng-model="formData.temperaturaAmbiente" ng-required=true></input>
   		
 		  <label>Em Operação</label>
-	 	  <select ng-model="formData.emOperacao" class="form-control" id="sel1" ng-required=true>
+	 	  <select ng-model="formData.emOperacao" class="form-control input-lg" id="sel1" ng-required=true>
 		   	<option>Escolha...</option>
   	          <option>Sim</option>
   	          <option>Não</option>
 		  </select>
 
 		  <label>Ponto de Coleta</label>
-	 	  <select ng-model="formData.pontoDeColeta" class="form-control" id="sel1" ng-required=true>
+	 	  <select ng-model="formData.pontoDeColeta" class="form-control input-lg" id="sel1" ng-required=true>
 		   	<option>Escolha...</option>
   	          <option>Inferior</option>
   	          <option>Superior</option>
