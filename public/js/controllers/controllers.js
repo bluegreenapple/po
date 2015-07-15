@@ -165,6 +165,85 @@ app.controller('RogersController', ['$scope','$filter','RogersService','Analises
 
 }]);
 
+app.controller('Iec156Controller', ['$scope','$filter','Iec156Service','Analises' ,function ($scope,$filter, Iec156Service, Analises) {
+  
+    $scope.iec156Codigos = 
+    [
+      {
+        "faixa": "0.1 > R",
+        "codigo1": 0,
+        "codigo2": 1,
+        "codigo3": 0,
+      },
+      {
+        "faixa": "0.1 < R < 1",
+        "codigo1": 1,
+        "codigo2": 0,
+        "codigo3": 0,
+      },
+      {
+        "faixa": "1 < R < 3",
+        "codigo1": 1,
+        "codigo2": 2,
+        "codigo3": 1,
+      },
+      {
+        "relacao": "Z = C2H4/C2H6",
+        "faixa": "3 < R",
+        "codigo1": 2,
+        "codigo2": 2,
+        "codigo3": 2,
+      },
+    ];
+    
+
+    $scope.iec156Diags = 
+    [
+      {"casoN": "A", "x": "0", "y": "0", "z": "0", "diagnostico": "Condição Normal Normal",},
+      {"casoN": "B", "x": "0", "y": "1", "z": "0", "diagnostico": "Descargas Parciais de pequena densidade de energia"},
+      {"casoN": "C", "x": "1", "y": "1", "z": "0", "diagnostico": "Descargas Parciais de alta densidade de energia"},
+      {"casoN": "D", "x": "1-2", "y": "0", "z": "1-2", "diagnostico": "Descargas elétricas de energia reduzida (Arco)"},
+      {"casoN": "E", "x": "1", "y": "0", "z": "2", "diagnostico": "Descargas elétricas de alta energia (Arco)"},
+      {"casoN": "F", "x": "0", "y": "0", "z": "1", "diagnostico": "Falha Técnica de Baixa Temperatura < 150oC"},
+      {"casoN": "G", "x": "0", "y": "2", "z": "0", "diagnostico": "Falha Técnica de Baixa Temperatura entre 150oC e 300oC"},
+      {"casoN": "H", "x": "0", "y": "2", "z": "1", "diagnostico": "Falha Técnica de Média Temperatura entre 300oC e 700oC"},
+      {"casoN": "I", "x": "0", "y": "2", "z": "2", "diagnostico": "Falha Técnica de Alta Temperatura > 700oC"},
+    ];
+
+    $scope.x = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return Iec156Service.x(analise.c2h2, analise.c2h4);
+    };
+    $scope.y = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return Iec156Service.y(analise.ch4, analise.h2);
+    };
+    $scope.z = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return Iec156Service.z(analise.c2h4, analise.c2h6);
+    };
+
+    
+    $scope.nx = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return Iec156Service.n_x(analise.c2h2, analise.c2h4);
+    };
+    $scope.ny = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return Iec156Service.n_y(analise.ch4, analise.h2);
+    };
+    $scope.nz = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return Iec156Service.n_z(analise.c2h4, analise.c2h6);
+    };
+    
+    $scope.diagnostico = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return Iec156Service.diagnostico(analise.h2, analise.ch4, analise.c2h2, analise.c2h4, analise.c2h6);
+    };
+
+}]);
+
 app.controller('DiagController', ["limitToFilter", "$http", '$scope','Analises' ,function (limitToFilter,$http,$scope, Analises) {
 
 

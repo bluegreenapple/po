@@ -163,7 +163,87 @@
             </div> <!-- FIM DUVAL CONTROLLER --> 
         </tab><!-- FIM DUVAL TAB --> 
         <tab heading="Doble">Under Construction...</tab>
-        <tab heading="Iec 60599">Under Construction...</tab>
+        
+        <tab heading="Iec 156"><!-- IEC 156 TAB -->
+            <div ng-controller='Iec156Controller'><!-- IEC 156 CONTROLLER -->
+                <ul class="navbar-right list-unstyled">   
+                    <img ng-src="images/xls.png" class="imageButton" ng-click="open(lg)">
+                    <img ng-src="images/pdf.png" class="imageButton" ng-click="open(lg)">
+                </ul> 
+
+                <h2>Descrição:</h2>
+                <div>
+                    Este critério utiliza as seguintes relações: CH4/H2, C2H4/C2H6, C2H2/C2H4 e C2H6/CH4. O diagnóstico de falhas é emitido por meio de um esquema de codificações simples baseado em faixas de relações. Por este critério são detectáveis quatro condições que são o envelhecimento normal, descargas parciais, falhas térmicas e falhas elétricas de vários graus de severidade. Este método é melhor do que o método de Dörnemburg, já que abrange uma faixa maior de combinações de razões, reduzindo significativamente o número de casos sem interpretação; todavia que nenhuma consideração seja dada para gases dissolvidos abaixo das concentrações normais. Portanto a utilização unicamente deste método pode levar a interpretações erradas. Este critério está baseado em duas tabelas (4.2 e 4.3.) que fornecem as relações entre os gases característicos e os diagnósticos.
+                </div>
+
+                <table class = 'table table-striped'>
+                    <tr>
+                        <th rowspan="2">Relação entre os gases característicos</th>
+                        <th colspan="3">Código</th> 
+                    </tr>
+                    <tr>
+                        <th>Rx = C2H2/C2H4</th>
+                        <th>Ry = CH4/H2</th>
+                        <th>Rz = C2H4/C2H6</th>
+                    </tr>
+                    
+
+                    <tr ng-repeat="iec156Codigo in iec156Codigos">
+                        <td>{{ iec156Codigo.faixa }}</td>
+                        <td>{{ iec156Codigo.codigo1 }}</td>
+                        <td>{{ iec156Codigo.codigo2 }}</td>
+                        <td>{{ iec156Codigo.codigo3 }}</td>
+                    </tr>
+
+                </table>
+
+
+                <table class = 'table table-striped'>
+                    <tr>
+                        <th>Caso No</th>
+                        <th>x</th>
+                        <th>y</th>
+                        <th>z</th>
+                        <th>Diagnóstico</th>
+                    </tr>
+                    <tr ng-repeat="diag in iec156Diags">
+                        <td>{{ diag.casoN }}</td>
+                        <td>{{ diag.x }}</td>
+                        <td>{{ diag.y }}</td>
+                        <td>{{ diag.z }}</td>
+                        <td>{{ diag.diagnostico }}</td>
+                    </tr>
+                </table>
+                
+
+                <h2>Diagnóstico Iec156:</h2>
+                <table class = 'table table-striped'>
+                    <tr>
+                        <th></th>
+                        <th>x</th>
+                        <th>y</th>
+                        <th>z</th>
+                        <th>Diagnóstico</th>
+                    </tr>
+                    <tr>
+                        <th>R</th>
+                        <td>{{ x(analise) | number:1}}</td>
+                        <td>{{ y(analise) | number:1}}</td>
+                        <td>{{ z(analise) | number:1}}</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <th>código</th>
+                        <td>{{ nx(analise) }}</td>
+                        <td>{{ ny(analise) }}</td>
+                        <td>{{ nz(analise) }}</td>
+                        <td>{{ diagnostico(analise).diagnostico }}</td>
+                        <!-- <td>{{ diagnostico(analise).diagnostico }}</td> -->
+                    </tr>
+                </table>
+
+            </div><!-- FIM IEC156 CONTROLLER -->
+        </tab><!-- FIM IEC156 TAB -->
         <tab heading="Laborelec">Under Construction...</tab>
         <tab heading="Pugh">Under Construction...</tab>
         

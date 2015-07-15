@@ -214,3 +214,86 @@ diagServ.service('RogersService', function() {
         
     };     
 });
+
+//simple service for creating Iec156 diagnostics
+diagServ.service('Iec156Service', function() {
+
+    this.x = function(c2h2, c2h4) {
+        return +c2h2 / +c2h4;
+    };
+
+    this.y = function(ch4, h2) {
+        return +ch4 / +h2;
+    };
+
+    this.z = function(c2h4, c2h6) {
+        return +c2h4 / +c2h6;
+    };
+
+
+    this.n_x = function(c2h2, c2h4) {
+        var iec156_x = this.x(c2h2, c2h4);
+        if (iec156_x < 0.1) {
+            return 0;
+        }
+        else if (iec156_x >= 0.1 && iec156_x < 1.0) {
+            return 1;
+        }
+        else if (iec156_x >= 1 && iec156_x < 3) {
+            return 1;
+        }
+        else {
+            return 2;
+        }
+    };
+
+    this.n_y = function(ch4, h2) {
+        var iec156_y = this.x(ch4, h2);
+        if (iec156_y < 0.1) {
+            return 1;
+        }
+        else if (iec156_y >= 0.1 && iec156_y < 1.0) {
+            return 0;
+        }
+        else if (iec156_y >= 1 && iec156_y < 3) {
+            return 2;
+        }
+        else {
+            return 2;
+        }
+    };
+
+    this.n_z = function(c2h4, c2h6) {
+        var iec156_z = this.x(c2h4, c2h6);
+        if (iec156_z < 0.1) {
+            return 0;
+        }
+        else if (iec156_z >= 0.1 && iec156_z < 1.0) {
+            return 0;
+        }
+        else if (iec156_z >= 1 && iec156_z < 3) {
+            return 1;
+        }
+        else {
+            return 2;
+        }
+    };
+    
+    this.diagnostico = function(h2, ch4, c2h2, c2h4, c2h6) {
+        
+        var nx = this.n_x(c2h2, c2h4);
+        var ny = this.n_y(ch4, h2);
+        var nz = this.n_z(c2h4, c2h6);
+        if      (nx == 0 && ny == 0 && nz ==0) {return {"casoN": "A", "diagnostico":"Condição Normal"};}
+        else if (nx == 0 && ny == 1 && nz ==0) {return {"casoN": "B", "diagnostico":"Descargas parciais de pequena densidade de energia"};}
+        else if (nx == 1 && ny == 1 && nz ==0) {return {"casoN": "C", "diagnostico":"Descargas parciais de alta intensidade de energia"};}
+        else if ((nx >= 1 && nx <= 2) && ny == 0 && (nz >=1 && nz <= 2)) {return {"casoN": "D", "diagnostico":"Descargas elétricas de energia reduzida (Arco)"};}
+        else if (nx == 1 && ny == 0 && nz ==2) {return {"casoN": "E", "diagnostico":"Descargas elétricas de alta energia (Arco)"};}
+        else if (nx == 0 && ny == 0 && nz ==1) {return {"casoN": "F", "diagnostico":"Falha técnica de baixa temperatura <150oC"};}
+        else if (nx == 0 && ny == 2 && nz ==0) {return {"casoN": "G", "diagnostico":"Falha técnica de baixa temperatura entre 150oC e 300oC"};}
+        else if (nx == 0 && ny == 2 && nz ==1) {return {"casoN": "H", "diagnostico":"Falha técnica de média temperatura entre 300oC e 700oC"};}
+        else if (nx == 0 && ny == 2 && nz ==2) {return {"casoN": "I", "diagnostico":"Falha técnica de alta temperatura >700oC"};}
+        else {return '-'};
+        
+    };     
+});
