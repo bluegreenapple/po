@@ -310,27 +310,10 @@ app.controller('LaborelecController', ['$scope','$filter','LaborelecService','An
 
 app.controller('DiagController', ["limitToFilter", "$http", '$scope','Analises' ,function (limitToFilter,$http,$scope, Analises) {
 
-
-
-  // $scope.tag= "2313";
   $scope.loading = true;
-
-  // console.log('lalalal'+ $scope.tag);  
-
-  // $scope.findUltimaAnalise = function() {
-  //   alert('piro');
-  //   console.log('touch');
-  //     Analises.getByTag($scope.tag)
-  //     .success(function(data) {
-  //       $scope.analise =  _.last(_.sortBy(data, 'dataDaAnalise'));
-  //       $scope.loading = false;
-  //     });
-  // };
-
-
-  
   $scope.tags = [];
   $scope.analises = [];
+
   Analises.get()
     .success(function(data) {
       
@@ -345,31 +328,32 @@ app.controller('DiagController', ["limitToFilter", "$http", '$scope','Analises' 
       $scope.tags =  _.pluck($scope.analises, 'tagDoEquipamento');
       $scope.tags = _.uniq($scope.tags,true);
       
-      $scope.changedValue();
+      $scope.changedValue;
     });
 
     
   $scope.changedValue = function() {
       
     $scope.analise = _.find($scope.analises, function(aAnalise){ return aAnalise.tagDoEquipamento == $scope.selectedTag;  });
+
     if ($scope.analise == undefined) {
       $scope.loading = true;
     }
     else{
       $scope.loading = false;
+      console.log('changedValue new tag: '+$scope.analise.tagDoEquipamento);
     }
   };   
 
   if(!angular.isUndefined(window.equipamento)){
     $scope.selectedTag = window.equipamento.tag;
-    
-    $scope.changedValue();
+    console.log('tagFromWindow: '+window.equipamento.tag);
+    $scope.changedValue;
   }
   
-  // Analises.getByTag($scope.tag)
-  //     .success(function(data) {
-  //       console.log('lalalal');
-  //       $scope.analise =  _.last(_.sortBy(data, 'dataDaAnalise'));
-  //       // console.log('analise: ' + $scope.analise.tagDoEquipamento);
-  //     });
+  $scope.change = function(){
+    $scope.selectedTag = window.equipamento.tag;
+    $scope.changedValue;
+  }
+
 }]);
