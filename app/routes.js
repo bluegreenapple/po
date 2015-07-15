@@ -1,5 +1,6 @@
 var Equipamento = require('./models/equipamento');
 var Qs = require('qs');
+var _ = require('underscore');
 
 function getEquipamentos(res){
 	Equipamento.find(function(err, equipamentos) {
@@ -16,7 +17,20 @@ function getEquipamentos(res){
 module.exports = function(app) {
 
 	// // application -------------------------------------------------------------
-	
+	app.get('/api/equipamentos/tags/', function(req, res) {
+
+		// use mongoose to get all tags (good for cadastro de analise)
+		// return them in alphabetical order
+		Equipamento.find({ }, {_id: 0, tag: 1}, function(err, equipamentoTagObjects) {
+
+			// if there is an error retrieving, send the error. nothing after res.send(err) will execute			
+			if (err)
+				res.send(err)
+			var tags = _.pluck(equipamentoTagObjects,'tag');
+
+			res.json(tags.sort()); // return all equipamentos in JSON format
+		});
+	});
 
 
 	app.get('/api/equipamentos/tags/:equipamento_tags_queryString', function(req, res) {

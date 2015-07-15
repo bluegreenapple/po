@@ -1,4 +1,4 @@
-var app = angular.module('ui.bootstrap.demo2', ['ui.bootstrap','analiseService']);
+var app = angular.module('ui.bootstrap.demo2', ['ui.bootstrap','analiseService','equipamentoService']);
 app.controller('ModalDemoCtrl2', ['$scope','$http','Analises', '$modal', '$log',function ($scope,$http,Analises, $modal, $log) {
 
   $scope.formData = {};
@@ -76,10 +76,17 @@ app.controller('ModalDemoCtrl2', ['$scope','$http','Analises', '$modal', '$log',
 
 }]);
 
-app.controller('ModalInstanceCtrl2',['$scope','$http','Analises', '$modalInstance', 'items', function ($scope,$http,Analises, $modalInstance, items) {
+app.controller('ModalInstanceCtrl2',['$scope','$http','Analises','Equipamentos', '$modalInstance', 'items', function ($scope,$http,Analises,Equipamentos,  $modalInstance, items) {
   $scope.verbo = 'Cadastrar';
   $scope.formData = {};
   $scope.loading = true;
+
+  //get tags for populating tag selector
+  Equipamentos.getAllTags()
+        .success(function(data) {
+          $scope.tags = data;
+        }); 
+  
 // CREATE ==================================================================
   // when submitting the add form, send the text to the node API
   $scope.createAnalise = function() {
@@ -113,12 +120,19 @@ app.controller('ModalInstanceCtrl2',['$scope','$http','Analises', '$modalInstanc
   };
 }]);
 
-app.controller('ModalInstanceCtrlUpdate2',['$scope','$http','Analises', '$modalInstance', 'analiseData', function ($scope,$http,Analises, $modalInstance, analiseData) {
+app.controller('ModalInstanceCtrlUpdate2',['$scope','$http','Analises','Equipamentos', '$modalInstance', 'analiseData', function ($scope,$http,Analises,Equipamentos, $modalInstance, analiseData) {
   $scope.verbo = 'Editar';
   $scope.formData = analiseData;
   $scope.formData.dataDaAnalise = new Date(analiseData.dataDaAnalise);
   $scope.loading = true;
   
+  //get tags for populating tag selector
+  Equipamentos.getAllTags()
+        .success(function(data) {
+          $scope.tags = data;
+        }); 
+
+
 // CREATE ==================================================================
   // when submitting the add form, send the text to the node API
   $scope.updateAnalise = function() {
