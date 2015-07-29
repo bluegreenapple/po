@@ -9,6 +9,7 @@ function getEquipamentos(res){
 			if (err)
 				res.send(err)
 
+			// equipamentos = _.sortBy(equipamentos, function(equipamento){ return equipamento.tag; });
 			res.json(equipamentos); // return all equipamentos in JSON format
 		});
 };

@@ -89,7 +89,7 @@
 				   	<th>Opções</th>
 				   	
 				 </tr>
-				  <tr ng-repeat="equipamento in equipamentos | filter: searchString">
+				  <tr ng-repeat="equipamento in equipamentos | filter: searchString | orderBy:'tag'">
 				    <!-- <td>{{ equipamento._id }}</td> -->
 				    <td>{{ equipamento.tag }}</td>
 				    <td>{{ equipamento.nSerie }}</td>
