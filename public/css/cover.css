@@ -19,6 +19,11 @@ a:hover {
   border: 1px solid #fff;
 }
 
+.upperRightImage {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
 
 /*
  * Base structure
