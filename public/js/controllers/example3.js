@@ -2,7 +2,7 @@ var app = angular.module('ui.bootstrap.demo3', ['ui.bootstrap','analiseService',
 
 var _ = require('underscore');
 
-app.controller('ModalDemoCtrl3', ['$scope','$http','Analises','Equipamentos','DuvalService', '$modal', '$log',function ($scope,$http,Analises,Equipamentos,DuvalService, $modal, $log) {
+app.controller('ModalDemoCtrl3', ['$scope','$http','Analises','Equipamentos','DuvalService','RogersService', 'DornemburgService','LaborelecService','Iec156Service', '$modal', '$log',function ($scope,$http,Analises,Equipamentos,DuvalService,RogersService,DornemburgService,LaborelecService,Iec156Service, $modal, $log) {
 
   $scope.loading = true;
 
@@ -45,9 +45,23 @@ app.controller('ModalDemoCtrl3', ['$scope','$http','Analises','Equipamentos','Du
       return "Duval: " + DuvalService.diagnostico(aAnalise.ch4,aAnalise.c2h2,aAnalise.c2h6);
   };
 
+  $scope.diagnosticoRogers = function(aAnalise) {
+      return "Rogers: " + RogersService.diagnostico(aAnalise.h2,aAnalise.ch4,aAnalise.c2h2,aAnalise.c2h4,aAnalise.c2h6);
+  };  
+
+  $scope.diagnosticoDornemburg = function(aAnalise) {
+      return "Dornemburg: " + DornemburgService.diagnostico(aAnalise.h2,aAnalise.ch4,aAnalise.c2h2,aAnalise.c2h4,aAnalise.c2h6);
+  };
+
+  $scope.diagnosticoIec156 = function(aAnalise) {
+      return "Iec156: " + Iec156Service.diagnostico(aAnalise.h2,aAnalise.ch4,aAnalise.c2h2,aAnalise.c2h4,aAnalise.c2h6).diagnostico;
+  };
+
+  $scope.diagnosticoLaborelec = function(aAnalise) {
+      return "Laborelec: " + LaborelecService.diagnostico(aAnalise.h2,aAnalise.co,aAnalise.ch4,aAnalise.c2h2,aAnalise.c2h4,aAnalise.c2h6,aAnalise.tgg).diagnostico;
+  };
+
   
-
-
 
   // DELETE ==================================================================
   // delete a analise after checking it
