@@ -97,7 +97,7 @@
 					<th>Laboratório</th>
 				 </tr>
 				  <tr ng-repeat="analise in analises | filter: searchString">
-				  	<td>{{ analise.dataDaAnalise | date: "dd/MM/yyyy"}}</td>
+				  	<td>{{ analise.dataDaAnalise | date: "dd/MM/yyyy" : "UTC"}}</td>
 				  	<td>{{ analise.tagDoEquipamento }}</td>
 				  	<td>{{ equipamento(analise).tipo}}</td>
 				  	<td>{{ equipamento(analise).local}}</td>

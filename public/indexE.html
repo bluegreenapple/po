@@ -96,7 +96,7 @@
 				    <td>{{ equipamento.tipo }}</td>
 				    <td>{{ equipamento.fabricante }}</td>
 				    <td>{{ equipamento.local }}</td>
-				    <td>{{ equipamento.dataDeFabricacao | date: "dd/MM/yyyy" }}</td>
+				    <td>{{ equipamento.dataDeFabricacao | date: "dd/MM/yyyy" : "UTC"}}</td>
 				    <th>
 				    			    <!-- Single button -->
 						<div class="btn-group" dropdown is-open="status.isopen">

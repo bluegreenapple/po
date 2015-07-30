@@ -95,9 +95,9 @@
 				   	<th>Opções</th>
 				   	
 				 </tr>
-				  <tr ng-repeat="analise in analises | filter: searchString | orderBy: 'dataDaAnalise'" >
+				  <tr ng-repeat="analise in analises | filter: searchString | orderBy: 'dataDaAnalise' :true" >
 				  	<td>{{ analise.tagDoEquipamento }}</td>
-				    <td>{{ analise.dataDaAnalise | date: "dd/MM/yyyy"}}</td>
+				    <td>{{ analise.dataDaAnalise | date: "dd/MM/yyyy" : "UTC"}}</td>
 				  	<td>{{ analise.nDaAnaliseDoLaboratorio }}</td>
 				    <td>{{ analise.laboratorio }}</td>
 				    

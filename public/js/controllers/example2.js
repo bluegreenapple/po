@@ -1,7 +1,7 @@
 var app = angular.module('ui.bootstrap.demo2', ['ui.bootstrap','analiseService','equipamentoService']);
 app.controller('ModalDemoCtrl2', ['$scope','$http','Analises', '$modal', '$log',function ($scope,$http,Analises, $modal, $log) {
 
-  $scope.formData = {};
+  
   $scope.loading = true;
 
   // GET =====================================================================
@@ -26,7 +26,7 @@ app.controller('ModalDemoCtrl2', ['$scope','$http','Analises', '$modal', '$log',
       });
   };
 
-  $scope.items = ['item1', 'item2', 'item3'];
+  
   $scope.animationsEnabled = true;
 
   $scope.open = function (size) {
@@ -67,7 +67,7 @@ app.controller('ModalDemoCtrl2', ['$scope','$http','Analises', '$modal', '$log',
     });
 
     modalInstance.result.then(function (selectedItem) {
-      $scope.selected = selectedItem;
+      // $scope.selected = selectedItem;
     }, function () {
       $log.info('Modal dismissed at: ' + new Date());
     });
