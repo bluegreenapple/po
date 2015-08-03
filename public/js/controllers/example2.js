@@ -27,12 +27,11 @@ app.controller('ModalDemoCtrl2', ['$scope','$http','Analises', '$modal', '$log',
   };
 
   
-  $scope.animationsEnabled = true;
+
 
   $scope.open = function (size) {
 
     var modalInstance = $modal.open({
-      animation: $scope.animationsEnabled,
       templateUrl: 'myModalContent2.html',
       controller: 'ModalInstanceCtrl2',
       windowClass: 'center-modal',
@@ -55,7 +54,6 @@ app.controller('ModalDemoCtrl2', ['$scope','$http','Analises', '$modal', '$log',
   $scope.openUpdate = function (aAnaliseData) {
 
     var modalInstance = $modal.open({
-      animation: $scope.animationsEnabled,
       templateUrl: 'myModalContent2.html',
       controller: 'ModalInstanceCtrlUpdate2',
       windowClass: 'center-modal',
