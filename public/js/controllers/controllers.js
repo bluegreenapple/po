@@ -292,27 +292,27 @@ app.controller('LaborelecController', ['$scope','$filter','LaborelecService','An
 
     $scope.ppm_h2 = function(analise) {
       if (angular.isUndefined(analise)) {return '-'};
-      return LaborelecService.ppm_h2(analise.h2, analise.tgg);
+      return LaborelecService.ppm_h2(analise.h2);
     };
     $scope.ppm_x = function(analise) {
       if (angular.isUndefined(analise)) {return '-'};
-      return LaborelecService.ppm_x(analise.ch4, analise.c2h4, analise.c2h6, analise.tgg);
+      return LaborelecService.ppm_x(analise.ch4, analise.c2h4, analise.c2h6);
     };
     $scope.ppm_y = function(analise) {
       if (angular.isUndefined(analise)) {return '-'};
-      return LaborelecService.ppm_y(analise.ch4, analise.h2, analise.tgg);
+      return LaborelecService.ppm_y(analise.ch4, analise.h2);
     };
     $scope.ppm_co = function(analise) {
       if (angular.isUndefined(analise)) {return '-'};
-      return LaborelecService.ppm_co(analise.co, analise.tgg);
+      return LaborelecService.ppm_co(analise.co);
     };
     $scope.ppm_c2h2 = function(analise) {
       if (angular.isUndefined(analise)) {return '-'};
-      return LaborelecService.ppm_c2h2(analise.c2h2, analise.tgg);
+      return LaborelecService.ppm_c2h2(analise.c2h2);
     };
     $scope.diagnostico = function(analise) {
       if (angular.isUndefined(analise)) {return '-'};
-      return LaborelecService.diagnostico(analise.h2, analise.co, analise.ch4, analise.c2h2, analise.c2h4, analise.c2h6, analise.tgg);
+      return LaborelecService.diagnostico(analise.h2, analise.co, analise.ch4, analise.c2h2, analise.c2h4, analise.c2h6);
     };
 
 }]);

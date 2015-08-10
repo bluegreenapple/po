@@ -327,34 +327,34 @@ diagServ.service('Iec156Service', function() {
 diagServ.service('LaborelecService', function() {
 
 
-    this.ppm_h2 = function(h2, tgg) {
-        return +h2 / +tgg *1000000.;
+    this.ppm_h2 = function(h2) {
+        return +h2;
     };
 
-    this.ppm_x = function(ch4, c2h4, c2h6, tgg) {
-        return (+ch4 + +c2h4 + +c2h6) / +tgg *1000000.;
+    this.ppm_x = function(ch4, c2h4, c2h6) {
+        return (+ch4 + +c2h4 + +c2h6);
     };
 
-    this.ppm_y = function(ch4, h2, tgg) {
-        return +ch4 / +h2 / +tgg;
+    this.ppm_y = function(ch4, h2) {
+        return +ch4 / +h2;
     };
 
-    this.ppm_c2h2 = function(c2h2, tgg) {
-        return +c2h2 / +tgg *1000000.;
+    this.ppm_c2h2 = function(c2h2) {
+        return +c2h2;
     };
 
-    this.ppm_co = function(co, tgg) {
-        return +co / +tgg *1000000.;
+    this.ppm_co = function(co) {
+        return +co;
     };
 
     
-    this.diagnostico = function(h2, co, ch4, c2h2, c2h4, c2h6 ,tgg) {
+    this.diagnostico = function(h2, co, ch4, c2h2, c2h4, c2h6) {
         
-        var ppm_h2 = this.ppm_h2(h2, tgg);
-        var ppm_x = this.ppm_x(ch4, c2h4, c2h6, tgg);
-        var ppm_y = this.ppm_y(ch4, h2, tgg);
-        var ppm_co = this.ppm_co(co, tgg);
-        var ppm_c2h2 = this.ppm_c2h2(c2h2, tgg);
+        var ppm_h2 = this.ppm_h2(h2);
+        var ppm_x = this.ppm_x(ch4, c2h4, c2h6);
+        var ppm_y = this.ppm_y(ch4, h2);
+        var ppm_co = this.ppm_co(co);
+        var ppm_c2h2 = this.ppm_c2h2(c2h2);
         
         if      (ppm_h2 <= 200 && ppm_x <= 300 && ppm_co <= 400) {return {"indice": "A", "diagnostico":"Normal", "recomendacao": "Evolução Normal"};}
         
