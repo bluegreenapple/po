@@ -98,7 +98,7 @@ diagServ.service('DornemburgService', function() {
 
     this.diagnostico = function(h2, ch4, c2h2, c2h4, c2h6) {
         
-        if (!this.isValid(h2, ch4, c2h2, c2h4, c2h6)) {return 'critério não válido'};
+        if (!this.isValid(h2, ch4, c2h2, c2h4, c2h6)) {return 'critério não se aplica'};
 
         var dornemburg_w = this.w(ch4, h2);
         var dornemburg_x = this.x(c2h2, c2h4);

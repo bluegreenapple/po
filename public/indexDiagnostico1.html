@@ -517,7 +517,7 @@
                     <img src="images/diagnosticos/dornemburg_02.jpg" height="153" width="530">
                 </div>
                     <h4>Dornemburg Modificado</h4>
-                <img src="images/diagnosticos/dornemburg_03.jpg" height="153" width="531">
+                <img src="images/diagnosticos/dornemburg_03.png" height="200" width="500">
 
 
                 <h2>Validade (Dornemburg Original)</h2> 
@@ -534,15 +534,15 @@
                     </tr>
                 </table>
 
-                <h2>Diagnóstico Dornemburg:</h2>
+                <h2>Diagnóstico Dornemburg (Original):</h2>
 
                 <table class = 'table table-striped'>
                     <tr>
                         <th></th>
-                        <th>w</th>
-                        <th>x</th>
-                        <th>y</th>
-                        <th>z</th>   
+                        <th>CH4/H2</th>
+                        <th>C2H2/C2H4</th>
+                        <th>C2H6/C2H2</th>
+                        <th>C2H2/CH4</th>   
                         <th>diagnóstico</th>   
                     </tr>
                     <tr>
@@ -553,6 +553,19 @@
                         <td>{{ z(analise) | number:3}}</td>
                         <td>{{ diagnostico(analise) }}</td>
                     </tr>
+                </table>
+
+                <h2>Diagnóstico Dornemburg (Modificado):</h2>
+
+                <table class = 'table table-striped'>
+                    <tr>
+                        <th></th>
+                        <th>CH4/H2*0.127</th>
+                        <th>C2H2/C2H4*1.44</th>
+                        <th>C2H6/C2H2*0.47</th>
+                        <th>C2H2/CH4*0.359</th>   
+                        <th>diagnóstico</th>   
+                    </tr>
                     <tr>
                         <th>Dornemburg modificado</th>
                         <td>{{ wMod(analise) | number:3}}</td>
@@ -562,7 +575,6 @@
                         <td>{{ diagnosticoMod(analise) }}</td>
                     </tr>
                 </table>
-
                 
 
             </div><!-- FIM DORNEMBURG CONTROLLER -->
