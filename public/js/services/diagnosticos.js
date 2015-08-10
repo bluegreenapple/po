@@ -73,8 +73,33 @@ diagServ.service('DornemburgService', function() {
         return this.z(c2h2, ch4)*0.359;
     };
     
+    this.isValidPrincipal = function(h2, ch4, c2h2, c2h4, c2h6) {
+        return (h2>2*100 || ch4>2*120 || c2h6>2*65 || c2h4>2*50 || c2h2>2*35);
+    };
+
+    this.isValidAuxiliar = function(ch4, c2h2, c2h4, c2h6) {
+        return (c2h6>65 || c2h4>50 || c2h2>35);
+    };
+
+    this.isValidPrincipal2= function(h2, ch4, c2h2, c2h4, c2h6) {
+        if (this.isValidPrincipal(h2, ch4, c2h2, c2h4, c2h6)) {return 'sim'};
+        return 'não';
+    };
+
+    this.isValidAuxiliar2 = function(ch4, c2h2, c2h4, c2h6) {
+        if (this.isValidAuxiliar(ch4, c2h2, c2h4, c2h6)) {return 'sim'};
+        return 'não';
+    };
+
+    this.isValid = function(h2, ch4, c2h2, c2h4, c2h6) {
+        return this.isValidPrincipal(h2, ch4, c2h2, c2h4, c2h6) && this.isValidAuxiliar(ch4, c2h2, c2h4, c2h6);
+    };
+
+
     this.diagnostico = function(h2, ch4, c2h2, c2h4, c2h6) {
         
+        if (!this.isValid(h2, ch4, c2h2, c2h4, c2h6)) {return 'critério não válido'};
+
         var dornemburg_w = this.w(ch4, h2);
         var dornemburg_x = this.x(c2h2, c2h4);
         var dornemburg_y = this.y(c2h6, c2h2);
@@ -90,7 +115,7 @@ diagServ.service('DornemburgService', function() {
             return "Outros tipos de descarga";
         }
         else{
-            return "-";
+            return "Normal";
         }
     };     
 
@@ -111,7 +136,7 @@ diagServ.service('DornemburgService', function() {
             return "Descargas Elétricas (exceto descargas internas)";
         }
         else{
-            return "-";
+            return "normal";
         }
     }; 
 });

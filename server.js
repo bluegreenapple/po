@@ -66,3 +66,4 @@ app.get('/historico', function (req, res) {
 // listen (start app with node server.js) ======================================
 app.listen(port);
 console.log("App listening on port " + port);
+

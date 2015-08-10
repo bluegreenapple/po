@@ -429,7 +429,11 @@
                 <h2>Descrição:</h2>
 
                 <div>
-                    
+                    Baseado em diagnostico  genéricos  para identificação de pontos quentes, descargas elétricas (exceto descargas internas) e descargas parciais  que ocorrem em bolhas de ar.
+                    Deve ser usado sempre com  Rogers e Loboretec para investigações  de falhas incipientes 
+                    O método original não estabelece  critérios para a identificação de condições normais do isolamento, mas estabelece as condições de validade para aplicação desse método de diagnóstico em função das concentrações individuais dos gases componentes das relações. 
+                    Método  Modificado não utiliza regras de validação.
+
                 </div>
 
                 
@@ -506,7 +510,7 @@
                     </tr>
                         
                 </table> -->
-                <h4>Dornemburg</h4>
+                <h4>Dornemburg (Tabela de Validação)</h4>
                 <img src="images/diagnosticos/dornemburg_01.jpg" height="87" width="499">
                 <div>
                     <h4>Dornemburg Original</h4>
@@ -514,6 +518,21 @@
                 </div>
                     <h4>Dornemburg Modificado</h4>
                 <img src="images/diagnosticos/dornemburg_03.jpg" height="153" width="531">
+
+
+                <h2>Validade (Dornemburg Original)</h2> 
+                <table class = 'table table-striped'>
+                    <tr>
+                        <th>Checagem de Validade (Dornemburg original)</th>
+                        <th>Principal</th>   
+                        <th>Auxiliar</th>   
+                    </tr>
+                    <tr>
+                        <th>É válido</th>
+                        <td>{{ isValidPrincipal2(analise) }}</td>
+                        <td>{{ isValidAuxiliar2(analise) }}</td>
+                    </tr>
+                </table>
 
                 <h2>Diagnóstico Dornemburg:</h2>
 
@@ -543,6 +562,8 @@
                         <td>{{ diagnosticoMod(analise) }}</td>
                     </tr>
                 </table>
+
+                
 
             </div><!-- FIM DORNEMBURG CONTROLLER -->
         </tab><!-- FIM DORNEMBURG TAB -->

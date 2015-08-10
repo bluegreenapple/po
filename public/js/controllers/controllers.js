@@ -58,6 +58,15 @@ app.controller('DornemburgController', ['$scope','$filter','DornemburgService','
       return DornemburgService.zMod(analise.c2h2, analise.ch4);
     };
 
+    $scope.isValidPrincipal2 = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return DornemburgService.isValidPrincipal2(analise.h2,analise.ch4, analise.c2h2, analise.c2h4, analise.c2h6);
+    };
+    $scope.isValidAuxiliar2 = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return DornemburgService.isValidAuxiliar2(analise.h2,analise.ch4, analise.c2h2, analise.c2h4, analise.c2h6);
+    };
+
     $scope.diagnostico = function(analise) {
       if (angular.isUndefined(analise)) {return '-'};
       return DornemburgService.diagnostico(analise.h2,analise.ch4, analise.c2h2, analise.c2h4, analise.c2h6);
