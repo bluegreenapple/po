@@ -54,7 +54,7 @@ app.controller('ModalDemoCtrl3', ['$scope','$http','Analises','Equipamentos','Du
   };
 
   $scope.diagnosticoIec156 = function(aAnalise) {
-      return "Iec156: " + Iec156Service.diagnostico(aAnalise.h2,aAnalise.ch4,aAnalise.c2h2,aAnalise.c2h4,aAnalise.c2h6).diagnostico;
+      return "Iec60599: " + Iec156Service.diagnostico(aAnalise.h2,aAnalise.ch4,aAnalise.c2h2,aAnalise.c2h4,aAnalise.c2h6).diagnostico;
   };
 
   $scope.diagnosticoLaborelec = function(aAnalise) {
