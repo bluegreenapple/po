@@ -38,6 +38,39 @@ diagServ.service('DuvalService', function() {
     };     
 });
 
+//simple service for creating Doble diagnostics
+diagServ.service('DobleService', function() {
+
+    this.h2 = function(h2, tgc) {
+        return +h2 / +tgc *100.;
+    };
+
+    this.ch4 = function(ch4, tgc) {
+        return +ch4 / +tgc *100.;
+    };
+
+    this.c2h4 = function(c2h4, tgc) {
+        return +c2h4 / +tgc *100.;
+    };
+
+    this.c2h6 = function(c2h6, tgc) {
+        return +c2h6 / +tgc *100.;
+    };
+
+    this.c2h2 = function(c2h2, tgc) {
+        return +c2h2 / +tgc *100.;
+    };
+
+    this.co = function(co, tgc) {
+        return +co / +tgc *100.;
+    };
+    
+    this.diagnostico = function(h2, ch4, c2h2, c2h4, c2h6, tgc) {
+        
+        
+    };     
+});
+
 //simple service for creating Dornemburg diagnostics
 diagServ.service('DornemburgService', function() {
 

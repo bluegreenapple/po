@@ -22,6 +22,40 @@ app.controller('DuvalController', ['$scope','$filter','DuvalService','Analises' 
 
 }]);
 
+app.controller('DobleController', ['$scope','$filter','DobleService','Analises' ,function ($scope,$filter, DobleService, Analises) {
+    
+    $scope.h2 = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return DobleService.h2(analise.h2,analise.tgc);
+    };
+    $scope.ch4 = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return DobleService.ch4(analise.ch4,analise.tgc);
+    };
+    $scope.c2h4 = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return DobleService.c2h4(analise.c2h4,analise.tgc);
+    };
+    $scope.c2h6 = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return DobleService.c2h6(analise.c2h6,analise.tgc);
+    };
+    $scope.c2h2 = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return DobleService.c2h2(analise.c2h2,analise.tgc);
+    };
+    $scope.co = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return DobleService.co(analise.co,analise.tgc);
+    };
+
+    $scope.diagnostico = function(analise) {
+      if (angular.isUndefined(analise)) {return '-'};
+      return DobleService.diagnostico(analise.ch4, analise.c2h2, analise.c2h4);
+    };
+
+}]);
+
 app.controller('DornemburgController', ['$scope','$filter','DornemburgService','Analises' ,function ($scope,$filter, DornemburgService, Analises) {
     
     $scope.w = function(analise) {

@@ -98,11 +98,11 @@
                 <h2>Descrição:</h2>
                 <div>
         Este critério é um método especial para diagnóstico de falhas já que está
-    baseado na visualização da localização dos gases dissolvidos em um mapa
-    triangular. Unicamente três gases dissolvidos são necessários CH4, C2H4 e C2H2.
-    Este critério permite diagnosticar quatro tipos de falhas que são descargas
+    baseado na visualização da localização dos gáses dissolvidos em um mapa
+    triangular. Unicamente três gáses dissolvidos são necessários CH4, C2H4 e C2H2.
+    Este critério permite diagnosticar quatro tipos de falhas que são descargás
     parciais, arco de alta e baixa energia e pontos quentes de várias faixas de
-    temperatura, relacionando os percentuais obtidos para os gases
+    temperatura, relacionando os percentuais obtidos para os gáses
     característicos utilizando as seguintes relações: 
                 </div>
 
@@ -129,7 +129,7 @@
                         <td>0-84</td>
                         <td>16-100</td>
                         <td>0-25</td>
-                        <td>Descargas Internas</td>
+                        <td>Descargás Internas</td>
                     </tr>
                 </table> -->
                 <img src="images/diagnosticos/duval_02.jpg" height="126" width="572">
@@ -137,7 +137,7 @@
 
 
                 <div>
-        Visto que neste critério não é indicada nenhuma condição de envelhecimento normal, a implementação cuidadosa deste critério resulta sempre em diagnóstico de uma das três falhas. Devido a este problema, antes de aplicar este método deve ser verificado se a evolução dos gases está dentro dos limites considerados normais pela empresa.
+        Visto que neste critério não é indicada nenhuma condição de envelhecimento normal, a implementação cuidadosa deste critério resulta sempre em diagnóstico de uma das três falhas. Devido a este problema, antes de aplicar este método deve ser verificado se a evolução dos gáses está dentro dos limites considerados normais pela empresa.
                 </div>
                 <h2>Diagnóstico Duval:</h2>
 
@@ -171,7 +171,73 @@
             </div> <!-- FIM DUVAL CONTROLLER --> 
         </tab><!-- FIM DUVAL TAB --> 
         <tab heading="Doble">
-            <img src="images/diagnosticos/doble_01.jpg" height="469" width="711">
+            <div ng-controller='DobleController'><!-- DOBLE CONTROLLER -->
+
+            <h2>Descrição:</h2>
+                <div>
+                    Este método, mais conhecido como “método do gás chave”, baseia-se no fato de que quando há uma falha incipiente (defeito) em evolução no transformador, a concentração dos gáses a ela associados ultrapassa os valores normais de degradação da isolação estabelecidos em ensaios de laboratório (MILASCH, 1984). O gás que caracteriza o tipo de falha incipiente é chamado de gás chave, e a sua correlação com os tipos de falhas são mostrados a seguir:
+                    <ul>
+                        <li>
+                            Arco: gás-chave acetileno (C2H2). Formam-se grandes quantidades de Hidrogênio (H2) e Acetileno (C2H2), acompanhado de pequena evolução de Metano (CH4) e Etileno (C2H4). Se a celulose for envolvida também haverá aumento de Monóxido de Carbono (CO) e Dióxido de Carbono (CO2). Sob a ação do arco o óleo se decompõe por pirólise, com formação de carbono coloidal, que se dispersa no óleo;
+                        </li>
+                        <li>
+                            Corona: Gás chave Hidrogênio (H2). Sob a ação de descargás elétricas de baixa energia formam-se grandes quantidades de Hidrogênio (H2) e em menor escala haverá a formação de Metano (CH4). Se as descargás atingirem a celulose haverá evolução de Monóxido de Carbono (CO) e Dióxido de Carbono (CO2), e os gáses indicadores são Hidrogênio (H2) e Monóxido de Carbono (CO);
+                        </li>
+                        <li>
+                            A evolução de grande quantidade de Hidrogênio (H2), sem que haja evolução anormal de Metano (CH4), pode caracterizar eletrólise da água existente no óleo. Não confundir este tipo de falha com o de corona;
+                        </li>
+                        <li>
+                            Superaquecimento do óleo: gás-chave Etileno (C2H4). Sob efeito de altas temperaturas o óleo isolante se decompõe, formando Etileno (C2H4) e Metano (CH4), junto com pequenas quantidades de Hidrogênio (H2) e Etano (C2H6). Se o ponto quente apresenta temperatura acima de 700oC, haverá formação de pequenas quantidades de Acetileno (C2H2);
+                        </li>
+                        <li>
+                            Superaquecimento da celulose: gás-chave Monóxido de Carbono (CO). Sob o efeito de altas temperaturas, a celulose libera grandes quantidades de Monóxido de Carbono (CO) e Dióxido de Carbono (CO2). Estando o isolamento celulósico impregnado com óleo mineral, haverá pequena evolução de Metano
+                            (CH4) e Etileno (C2H4).
+                        </li>
+                        
+                    </ul>
+                    
+                    A aplicação destes métodos não permite uma interpretação perfeita e completa e a combinação de vários critérios resulta quase sempre em diagnósticos diferentes, consequentemente a aplicação de técnicas de IA pode ser utilizada para tratar essas desvantagens (Thang et al., 2000).
+                    
+                    Uma implementação correta deste critério requer a disponibilidade dos valores das concentrações normais dos gases dissolvidos. Se uma grande base de dados de DGA é disponível, valores de concentrações típicas de 90% são sugeridos como valores normais pela IEC. Outras informações dos transformadores também devem ser levadas em consideração para a tomada de decisão sobre o estado operativo dos mesmos, como o tipo, família, idade, condições de operação, e outros. Em conclusão, os critérios de interpretação dos dados de DGA disponíveis estão longe de ser satisfatórios e completos. Consequentemente, diagnósticos de falhas baseados em DGA são ainda pesadamente dependentes da experiência dos especialistas humanos.
+
+                    
+                </div>
+            
+                <img src="images/diagnosticos/doble_01.jpg" height="469" width="711">
+
+                <h2>Diagnóstico Doble:</h2>
+                <table class = 'table table-striped'>
+                    <tr>
+                        <th>gás</th>
+                        <th>Concentração (%)</th>
+                    </tr>
+                    <tr>
+                        <th>h2</th>
+                        <td>{{h2(analise) | number:2}}</td>
+                    </tr>
+                    <tr>
+                        <th>ch4</th>
+                        <td>{{ch4(analise) | number:2}}</td>
+                    </tr>
+                    <tr>
+                        <th>c2h6</th>
+                        <td>{{c2h6(analise) | number:2}}</td>
+                    </tr>
+                    <tr>
+                        <th>c2h4</th>
+                        <td>{{c2h4(analise) | number:2}}</td>
+                    </tr>
+                    <tr>
+                        <th>c2h2</th>
+                        <td>{{c2h2(analise)| number:2}}</td>
+                    </tr>
+                    <tr>
+                        <th>co</th>
+                        <td>{{co(analise)| number:2}}</td>
+                    </tr>
+                </table>
+
+            </div> <!-- FIM DOBLE CONTROLLER --> 
         </tab>
         
         <tab heading="Iec 156"><!-- IEC 156 TAB -->
@@ -183,12 +249,12 @@
 
                 <h2>Descrição:</h2>
                 <div>
-                    Este critério utiliza as seguintes relações: CH4/H2, C2H4/C2H6, C2H2/C2H4 e C2H6/CH4. O diagnóstico de falhas é emitido por meio de um esquema de codificações simples baseado em faixas de relações. Por este critério são detectáveis quatro condições que são o envelhecimento normal, descargas parciais, falhas térmicas e falhas elétricas de vários graus de severidade. Este método é melhor do que o método de Dörnemburg, já que abrange uma faixa maior de combinações de razões, reduzindo significativamente o número de casos sem interpretação; todavia que nenhuma consideração seja dada para gases dissolvidos abaixo das concentrações normais. Portanto a utilização unicamente deste método pode levar a interpretações erradas. Este critério está baseado em duas tabelas (4.2 e 4.3.) que fornecem as relações entre os gases característicos e os diagnósticos.
+                    Este critério utiliza as seguintes relações: CH4/H2, C2H4/C2H6, C2H2/C2H4 e C2H6/CH4. O diagnóstico de falhas é emitido por meio de um esquema de codificações simples baseado em faixas de relações. Por este critério são detectáveis quatro condições que são o envelhecimento normal, descargás parciais, falhas térmicas e falhas elétricas de vários graus de severidade. Este método é melhor do que o método de Dörnemburg, já que abrange uma faixa maior de combinações de razões, reduzindo significativamente o número de casos sem interpretação; todavia que nenhuma consideração seja dada para gáses dissolvidos abaixo das concentrações normais. Portanto a utilização unicamente deste método pode levar a interpretações erradas. Este critério está baseado em duas tabelas (4.2 e 4.3.) que fornecem as relações entre os gáses característicos e os diagnósticos.
                 </div>
 
                 <!-- <table class = 'table table-striped'>
                     <tr>
-                        <th rowspan="2">Relação entre os gases característicos</th>
+                        <th rowspan="2">Relação entre os gáses característicos</th>
                         <th colspan="3">Código</th> 
                     </tr>
                     <tr>
@@ -333,12 +399,12 @@
 
                 <h2>Descrição:</h2>
                 <div>
-                    Este critério utiliza as seguintes relações: CH4/H2, C2H4/C2H6, C2H2/C2H4 e C2H6/CH4. O diagnóstico de falhas é emitido por meio de um esquema de codificações simples baseado em faixas de relações. Por este critério são detectáveis quatro condições que são o envelhecimento normal, descargas parciais, falhas térmicas e falhas elétricas de vários graus de severidade. Este método é melhor do que o método de Dörnemburg, já que abrange uma faixa maior de combinações de razões, reduzindo significativamente o número de casos sem interpretação; todavia que nenhuma consideração seja dada para gases dissolvidos abaixo das concentrações normais. Portanto a utilização unicamente deste método pode levar a interpretações erradas. Este critério está baseado em duas tabelas (4.2 e 4.3.) que fornecem as relações entre os gases característicos e os diagnósticos.
+                    Este critério utiliza as seguintes relações: CH4/H2, C2H4/C2H6, C2H2/C2H4 e C2H6/CH4. O diagnóstico de falhas é emitido por meio de um esquema de codificações simples baseado em faixas de relações. Por este critério são detectáveis quatro condições que são o envelhecimento normal, descargás parciais, falhas térmicas e falhas elétricas de vários graus de severidade. Este método é melhor do que o método de Dörnemburg, já que abrange uma faixa maior de combinações de razões, reduzindo significativamente o número de casos sem interpretação; todavia que nenhuma consideração seja dada para gáses dissolvidos abaixo das concentrações normais. Portanto a utilização unicamente deste método pode levar a interpretações erradas. Este critério está baseado em duas tabelas (4.2 e 4.3.) que fornecem as relações entre os gáses característicos e os diagnósticos.
                 </div>
 
                 <!-- <table class = 'table table-striped'>
                     <tr>
-                        <th>Relação de Gases</th>
+                        <th>Relação de gáses</th>
                         <th>Faixa de Variação</th> 
                         <th>Código</th>   
                           
@@ -429,9 +495,9 @@
                 <h2>Descrição:</h2>
 
                 <div>
-                    Baseado em diagnostico  genéricos  para identificação de pontos quentes, descargas elétricas (exceto descargas internas) e descargas parciais  que ocorrem em bolhas de ar.
+                    Baseado em diagnostico  genéricos  para identificação de pontos quentes, descargás elétricas (exceto descargás internas) e descargás parciais  que ocorrem em bolhas de ar.
                     Deve ser usado sempre com  Rogers e Loboretec para investigações  de falhas incipientes 
-                    O método original não estabelece  critérios para a identificação de condições normais do isolamento, mas estabelece as condições de validade para aplicação desse método de diagnóstico em função das concentrações individuais dos gases componentes das relações. 
+                    O método original não estabelece  critérios para a identificação de condições normais do isolamento, mas estabelece as condições de validade para aplicação desse método de diagnóstico em função das concentrações individuais dos gáses componentes das relações. 
                     Método  Modificado não utiliza regras de validação.
 
                 </div>
@@ -495,14 +561,14 @@
                         <td>&lt0.1</td>  
                     </tr>
                     <tr>
-                        <td>Descargas internas(**)</td> 
+                        <td>Descargás internas(**)</td> 
                         <td>&lt0.01</td>   
                         <td>-</td>
                         <td>&gt0.2</td> 
                         <td>&lt0.1</td>  
                     </tr>
                     <tr>
-                        <td>Descargas Elétricas (exceto descargas internas)</td> 
+                        <td>Descargás Elétricas (exceto descargás internas)</td> 
                         <td>&lt0.1 e &gt0.01(*)</td>   
                         <td>&gt1.</td>
                         <td>&lt0.2</td> 
