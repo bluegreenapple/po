@@ -80,23 +80,25 @@
 			  <table class = 'table table-striped'>
 				<tr>
 					<!-- <th>id</th> -->
-					<th>tag</th>
 					<th>Número de Série</th>
+					<th>tag</th>
 					<th>Tipo</th>
 					<th>Fabricante</th>
 					<th>Local</th>
 				   	<th>Data Último Teste</th>
+				   	<th>Comentários</th>
 				   	<th>Opções</th>
 				   	
 				 </tr>
 				  <tr ng-repeat="equipamento in equipamentos | filter: searchString | orderBy:'tag'">
 				    <!-- <td>{{ equipamento._id }}</td> -->
-				    <td>{{ equipamento.tag }}</td>
 				    <td>{{ equipamento.nSerie }}</td>
+				    <td>{{ equipamento.tag }}</td>
 				    <td>{{ equipamento.tipo }}</td>
 				    <td>{{ equipamento.fabricante }}</td>
 				    <td>{{ equipamento.local }}</td>
 				    <td>{{ equipamento.dataDeFabricacao | date: "dd/MM/yyyy" : "UTC"}}</td>
+				    <td>{{ equipamento.comentarios }}</td>
 				    <th>
 				    			    <!-- Single button -->
 						<div class="btn-group" dropdown is-open="status.isopen">

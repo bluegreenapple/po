@@ -108,6 +108,7 @@ module.exports = function(app) {
     		tipoDeOleo: req.body.tipoDeOleo,  
     		volumeDeOleo: req.body.volumeDeOleo,  
     		sistemaDePrevencao: req.body.sistemaDePrevencao,
+    		comentarios: req.body.comentarios,
 			done : false
 		}, function(err, equipamento) {
 			if (err)
@@ -142,6 +143,7 @@ module.exports = function(app) {
     		equipamento.tipoDeOleo= req.body.tipoDeOleo;  
     		equipamento.volumeDeOleo= req.body.volumeDeOleo;  
     		equipamento.sistemaDePrevencao= req.body.sistemaDePrevencao;
+    		equipamento.comentarios= req.body.comentarios;
 
             // save the equipamento
             equipamento.save(function(err) {
