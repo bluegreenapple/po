@@ -1,8 +1,15 @@
-var app = angular.module('ui.bootstrap.demo', ['ui.bootstrap','equipamentoService','diagnosticosServices']);
+var app = angular.module('ui.bootstrap.demo', ['ui.bootstrap','equipamentoService','diagnosticosServices','smart-table']);
 var moment = require('moment');
 
 
 app.controller('ModalDemoCtrl', ['$scope','$http','Equipamentos', '$modal', '$log',function ($scope,$http,Equipamentos, $modal, $log) {
+
+  //added for smarttable sort does not work with date strings
+  $scope.getters={
+   dataFab:function(row){
+      return new Date(row.dataDeFabricacao);
+   }
+  }
 
   $scope.formData = {};
   $scope.loading = true;
