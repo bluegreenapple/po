@@ -57,6 +57,9 @@ app.get('/alarmes', function (req, res) {
 app.get('/historico', function (req, res) {
   res.sendfile('./public/indexHistorico1.html');
 });
+app.get('/favoritos', function (req, res) {
+  res.sendfile('./public/favoritos.html');
+});
 
 
 // read/write equipamentos
