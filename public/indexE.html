@@ -88,7 +88,7 @@
 
 				<tr>
 					
-					<!-- <th>id</th> -->
+					<th></th>
 					<th st-sort="nSerie" st-sort-default="true">Número de Série</th>
 					<th st-sort="tag">tag</th>
 					<th st-sort='tipo'>Tipo</th>
@@ -102,6 +102,7 @@
 				 <tr ng-repeat="equipamento in displayedEquipamentos">
 				  <!-- <tr ng-repeat="equipamento in displayedEquipamentos | filter: searchString | orderBy:'tag'"> -->
 				    <!-- <td>{{ equipamento._id }}</td> -->
+				    <td><input type="checkbox" ng-model='equipamento.isFavorite' ng-change='toggleCheckbox(equipamento)'></td>
 				    <td>{{ equipamento.nSerie }}</td>
 				    <td>{{ equipamento.tag }}</td>
 				    <td>{{ equipamento.tipo }}</td>

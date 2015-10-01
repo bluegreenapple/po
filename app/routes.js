@@ -109,6 +109,7 @@ module.exports = function(app) {
     		volumeDeOleo: req.body.volumeDeOleo,  
     		sistemaDePrevencao: req.body.sistemaDePrevencao,
     		comentarios: req.body.comentarios,
+    		isFavorite: req.body.isFavorite,
 			done : false
 		}, function(err, equipamento) {
 			if (err)
@@ -144,6 +145,7 @@ module.exports = function(app) {
     		equipamento.volumeDeOleo= req.body.volumeDeOleo;  
     		equipamento.sistemaDePrevencao= req.body.sistemaDePrevencao;
     		equipamento.comentarios= req.body.comentarios;
+    		equipamento.isFavorite= req.body.isFavorite;
 
             // save the equipamento
             equipamento.save(function(err) {

@@ -83,9 +83,6 @@ app.controller('ModalDemoCtrl', ['$scope','$http','Equipamentos', '$modal', '$lo
         equipamentoData: function () {
           return aEquipamentoData;
         },
-        equipamentoData: function () {
-          return aEquipamentoData;
-        },
       }
     });
 
@@ -96,7 +93,10 @@ app.controller('ModalDemoCtrl', ['$scope','$http','Equipamentos', '$modal', '$lo
     });
   };
   
-
+  $scope.toggleCheckbox = function(aEquipamento) {  
+    // update the checkbox
+    Equipamentos.update(aEquipamento)
+    };
 
 }]);
 
@@ -135,6 +135,27 @@ app.controller('ModalInstanceCtrl',['$scope','$http','Equipamentos', '$modalInst
   $scope.cancel = function () {
     $modalInstance.dismiss('cancel');
   };
+
+  $scope.updateEquipamento = function() {
+    // alert('I update');
+    // validate the formData to make sure that something is there
+    // if form is empty, nothing will happen
+    if ($scope.formData.tag != undefined) {
+      $scope.loading = true;
+      
+      // call the create function from our service (returns a promise object)
+      Equipamentos.update($scope.formData)
+
+        // if successful creation, call our get function to get all the new equipamentos
+        .success(function(data) {
+          $scope.loading = false;
+          $scope.formData = {}; // clear the form so our user is ready to enter another
+          $scope.equipamentos = data; // assign our new list of equipamentos
+          $modalInstance.close($scope.equipamentos);
+        });
+    }
+  };
+
 
 
 }]);

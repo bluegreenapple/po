@@ -17,6 +17,7 @@ var equipamentoSchema = new Schema({
     tipoDeOleo: { type: String, required: true },  
     volumeDeOleo: { type: String, required: true },  
     sistemaDePrevencao: { type: String, required: true },
-    comentarios: { type: String, required: true },  
+    comentarios: { type: String, required: false },
+    isFavorite: { type: Boolean, required: true}, 
 });
 module.exports = mongoose.model('Equipamento', equipamentoSchema);
