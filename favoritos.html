@@ -1,14 +1,19 @@
 <!doctype html>
-<html ng-app="ui.bootstrap.demo2">
+<html ng-app="ui.bootstrap.demo">
   <head>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.js"></script>
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
-    <script src="js/controllers/example2.js"></script>
-    <script src="js/bundleAnalises.js"></script> <!-- load our todo service -->
+    <!-- // <script src="js/controllers/example.js"></script> -->
+    <!-- <script src="js/services/equipamentos.js"></script> -->
     <script src="js/bundle.js"></script>
+    <script src="js/bundle1.js"></script>
+    <script src="js/services/diagnosticos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-smart-table/2.1.3/smart-table.js"></script>
+    
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link href="css/modal.css" rel="stylesheet">
+    <link href="css/smarttable.css" rel="stylesheet">
   </head>
 
 
@@ -46,95 +51,104 @@
   </div>
 </nav><!-- FIM NAVBAR PRINCIPAL -->	
 
-<div ng-controller="ModalDemoCtrl2" class = "mainContainer">
+<div ng-controller="ModalDemoCtrl" class = "mainContainer">
 	<!-- CONTAINER GERAL -->
 	<div class="container">
 
 		<form>
 		<!-- TABS CROMA E FQ -->
 		<div class="bs-docs-section">
-		  <h1 id="tabs" class="page-header">Análises</h1>
+		  <h1 id="tabs" class="page-header">Equipamentos</h1>
 
 		  
 
 		  <!-- CAIXA DADOS GERAIS -->
 		  <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
-			  
+			  <!-- <h2 id="tabs" class="bs-docs-after">Dados Gerais</h2> -->
 
-			<ul class="navbar-right list-unstyled">   
-			    <img ng-src="images/xls.png" class="imageButton" ng-click="open(lg)">
-			    <img ng-src="images/pdf.png" class="imageButton" ng-click="open(lg)">
-			</ul>  
-		  
-	        <ul class="navbar-right list-unstyled">   
-	        <li><button type="submit" class="btn btn-primary" ng-click="open(lg)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>	</li>
-	        </ul>  
-	      
-	        <ul class="navbar-right list-unstyled">   
-	          <li><input type="text" class="form-control" placeholder="Buscar..." ng-model='searchString' autofocus></li>
-	        </ul>  
-	      
+		    <!-- SMART-TABLE -->
+	      	<div st-safe-src="equipamentos" st-table='displayedEquipamentos'>
 
-	      
-		  
-	         
-	      
+	      		<form class="form-group">
+			        <ul class="navbar-right list-unstyled">   
+			        <li><button type="submit" class="btn btn-primary" ng-click="open(lg)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>	</li>
+			        </ul>  
+			    </form>
+
+		      	<form class="form-group">
+		        	<ul class="navbar-right list-unstyled">   
+		          		<li><input st-search="" st-delay='0' type="search" class="form-control" placeholder="Buscar..." autofocus></li>
+		          	</ul> 
+	        	</form>
+
+			  <!-- TABELA DE EQUIPAMENTOS-->
+			  <table  class = 'table table-striped'>
+
+		  	    
 
 
-			  <!-- TABELA DE AnaliseS-->
-			  <table class = 'table table-striped'>
 				<tr>
-					<!-- <th>id</th> -->
-					<th>Número de Série do Equipamento</th>
-					<!-- <th>Tag do Equipamento</th> -->
-					<th>Data da Análise</th>
-					<th>Número da Análise</th>
-					<th>Laboratório</th>
 					
-					<!-- <th>Modelo</th>
-					<th>Fabricante</th>
-					<th>Local</th> -->
+					<th></th>
+					<th st-sort="nSerie" st-sort-default="true">Número de Série</th>
+					<th st-sort="tag">tag</th>
+					<th st-sort='tipo'>Tipo</th>
+					<th st-sort='fabricante'>Fabricante</th>
+					<th st-sort='local'>Local</th>
+				   	<th st-sort='getters.dataFab'>Data Último Teste</th>
+				   	<th>Comentários</th>
 				   	<th>Opções</th>
 				   	
 				 </tr>
-				  <tr ng-repeat="analise in analises | filter: searchString | orderBy: 'dataDaAnalise' :true" >
-				  	<td>{{ analise.nSerieDoEquipamento }}</td>
-				  	<!-- <td>{{ analise.tagDoEquipamento }}</td> -->
-				    <td>{{ analise.dataDaAnalise | date: "dd/MM/yyyy" : "UTC"}}</td>
-				  	<td>{{ analise.nDaAnaliseDoLaboratorio }}</td>
-				    <td>{{ analise.laboratorio }}</td>
-				    
-				    
-				    
-				    
+				 <tr ng-repeat="equipamento in displayedEquipamentos">
+				  <!-- <tr ng-repeat="equipamento in displayedEquipamentos | filter: searchString | orderBy:'tag'"> -->
+				    <!-- <td>{{ equipamento._id }}</td> -->
+				    <td><input type="checkbox" ng-model='equipamento.isFavorite' ng-change='toggleCheckbox(equipamento)'></td>
+				    <td>{{ equipamento.nSerie }}</td>
+				    <td>{{ equipamento.tag }}</td>
+				    <td>{{ equipamento.tipo }}</td>
+				    <td>{{ equipamento.fabricante }}</td>
+				    <td>{{ equipamento.local }}</td>
+				    <td>{{ equipamento.dataDeFabricacao | date: "dd/MM/yyyy" : "UTC"}}</td>
+				    <td>{{ equipamento.comentarios }}</td>
 				    <th>
 				    			    <!-- Single button -->
 						<div class="btn-group" dropdown is-open="status.isopen">
 						  <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled"><span class="glyphicon glyphicon-list"></span>
 						  </button>
 						  <ul class="dropdown-menu" role="menu">
-						    <li><a href="" ng-click = "openUpdate(analise)">Editar</a></li>
-						    <li><a href="#">Diagnóstico</a></li>
-
+						    <li><a href="" ng-click = "openUpdate(equipamento)">Editar</a></li>
+						    <li><a href="" ng-click = "openDiagnostico(equipamento)">Diagnóstico</a></li>
+						    <li><a href="#">Histórico de Análises</a></li>
 						    <li class="divider"></li>
-						    <li><a href="" ng-click = "deleteAnalise(analise._id)">Deletar</a></li>
+						    <li><a href="" ng-click = "deleteEquipamento(equipamento._id)">Deletar</a></li>
 						  </ul>
 						</div>
+
 				    </th>
 
 				  </tr>
-				</table><!-- FIM TABELA DE AnaliseS-->
+				</table><!-- FIM TABELA DE EQUIPAMENTOS-->
+
+
+				</div>
+				<!-- FIM SMARTTABLE -->
 
 				<p class="text-center" ng-show="loading">
 					<span class="fa fa-spinner fa-spin fa-3x"></span>
 				</p>
-
 		  </div><!-- FIM CAIXA DADOS GERAIS -->
 
 		 
 
 		</div><!-- FIM TABS CROMA E FQ -->
 		</form>
+
+
+
+
+
+
 
 
 	</div><!-- FIM CONTAINER GERAL -->
@@ -146,6 +160,9 @@
 
 
 	</div>
+
+
+
   </body>
 </html>
 

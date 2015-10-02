@@ -16,7 +16,60 @@ function getEquipamentos(res){
 
 module.exports = function(app) {
 
-	// // application -------------------------------------------------------------
+	// // application nSerie-------------------------------------------------------------
+	app.get('/api/equipamentos/nseries/', function(req, res) {
+
+		// use mongoose to get all nSeries (good for cadastro de analise)
+		// return them in alphabetical order
+		Equipamento.find({ }, {_id: 0, nSerie: 1}, function(err, equipamentoNSerieObjects) {
+
+			// if there is an error retrieving, send the error. nothing after res.send(err) will execute			
+			if (err)
+				res.send(err)
+			var nSeries = _.pluck(equipamentoNSerieObjects,'nSerie');
+
+			res.json(nSeries.sort()); // return all equipamentos in JSON format
+		});
+	});
+
+
+	app.get('/api/equipamentos/nseries/:equipamento_nseries_queryString', function(req, res) {
+
+		// use mongoose to get one specific todo in the database
+		var queryObj = Qs.parse(req.params.equipamento_nseries_queryString);
+
+		// console.log('equipamento_tags_queryString: '+req.params.equipamento_tags_queryString);
+		// console.log('queryObj: '+queryObj.tag);
+
+		Equipamento.find({"nSerie":{"$in":queryObj.nSerie}}, function(err, equipamento) {
+
+			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
+			if (err)
+				res.send(err)
+
+			res.json(equipamento); // return the todo in JSON format
+		});
+	});
+
+	app.get('/api/equipamentos/nserie/:equipamento_nserie', function(req, res) {
+
+		// use mongoose to get one specific todo in the database
+		var queryObj = Qs.parse(req.params.equipamento_nserie);
+
+		// console.log('equipamentoTag: '+req.params.equipamento_tag);
+		// console.log('queryObj: '+queryObj.tag);
+
+		Equipamento.findOne({nserie : queryObj.nserie}, function(err, equipamento) {
+
+			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
+			if (err)
+				res.send(err)
+
+			res.json(equipamento); // return the todo in JSON format
+		});
+	});
+
+	// // application tags-------------------------------------------------------------
 	app.get('/api/equipamentos/tags/', function(req, res) {
 
 		// use mongoose to get all tags (good for cadastro de analise)

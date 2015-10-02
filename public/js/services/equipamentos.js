@@ -41,6 +41,9 @@ equipService.factory('Equipamentos', ['$http',function($http) {
 			getAllTags : function() {
 				return $http.get('/api/equipamentos/tags/');
 			},
+			getAllNSeries : function() {
+				return $http.get('/api/equipamentos/nseries/');
+			},
 			create : function(equipamentoData) {
 				return $http.post('/api/equipamentos', equipamentoData);
 			},

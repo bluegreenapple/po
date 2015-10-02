@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 
 var analiseSchema = new Schema({  
     tagDoEquipamento: { type: String, required: true },
+    nSerieDoEquipamento: { type: String, required: true },
     nDaAnaliseDoLaboratorio: { type: String, required: true },  
     laboratorio: { type: String, required: true },  
     dataDaAnalise: { type: Date, required: true },  

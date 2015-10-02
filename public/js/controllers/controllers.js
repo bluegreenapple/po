@@ -354,7 +354,7 @@ app.controller('LaborelecController', ['$scope','$filter','LaborelecService','An
 app.controller('DiagController', ["limitToFilter", "$http", '$scope','Analises' ,function (limitToFilter,$http,$scope, Analises) {
 
   $scope.loading = true;
-  $scope.tags = [];
+  $scope.nSeries = [];
   $scope.analises = [];
 
   Analises.get()
@@ -363,13 +363,13 @@ app.controller('DiagController', ["limitToFilter", "$http", '$scope','Analises' 
       //first sort data by most recent date (descending order)
       $scope.analises = _.sortBy(data, 'dataDaAnalise').reverse();
 
-      //(optional) second only take the first (most recent) Analise for each tagDoEquipamento
+      //(optional) second only take the first (most recent) Analise for each nSerieDoEquipamento
       //there is a bug in underscore: when isSorted = true, it doesnt work at all!
-      $scope.analises = _.uniq($scope.analises,false, function(aAnalise){ return aAnalise.tagDoEquipamento; });
+      $scope.analises = _.uniq($scope.analises,false, function(aAnalise){ return aAnalise.nSerieDoEquipamento; });
 
-      //third get the tags array for requesting the equipamentos
-      $scope.tags =  _.pluck($scope.analises, 'tagDoEquipamento');
-      $scope.tags = _.uniq($scope.tags,true);
+      //third get the nSeries array for requesting the equipamentos
+      $scope.nSeries =  _.pluck($scope.analises, 'nSerieDoEquipamento');
+      $scope.nSeries = _.uniq($scope.nSeries,true);
       
       $scope.changedValue;
     });
@@ -377,25 +377,25 @@ app.controller('DiagController', ["limitToFilter", "$http", '$scope','Analises' 
     
   $scope.changedValue = function() {
       
-    $scope.analise = _.find($scope.analises, function(aAnalise){ return aAnalise.tagDoEquipamento == $scope.selectedTag;  });
+    $scope.analise = _.find($scope.analises, function(aAnalise){ return aAnalise.nSerieDoEquipamento == $scope.selectedNSerie;  });
 
     if ($scope.analise == undefined) {
       $scope.loading = true;
     }
     else{
       $scope.loading = false;
-      console.log('changedValue new tag: '+$scope.analise.tagDoEquipamento);
+      console.log('changedValue new nSerie: '+$scope.analise.nSerieDoEquipamento);
     }
   };   
 
   if(!angular.isUndefined(window.equipamento)){
-    $scope.selectedTag = window.equipamento.tag;
-    console.log('tagFromWindow: '+window.equipamento.tag);
+    $scope.selectedNSerie = window.equipamento.nSerie;
+    console.log('nSerieFromWindow: '+window.equipamento.nSerie);
     $scope.changedValue;
   }
   
   $scope.change = function(){
-    $scope.selectedTag = window.equipamento.tag;
+    $scope.selectedNSerie = window.equipamento.nSerie;
     $scope.changedValue;
   }
 

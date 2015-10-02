@@ -51,6 +51,42 @@ app.get('/api/analises/tags/:analise_tags_queryString', function(req, res) {
 		});
 	});
 
+	app.get('/api/analises/nseries/:analise_nseries_queryString', function(req, res) {
+
+		// use mongoose to get one specific todo in the database
+		var queryObj = Qs.parse(req.params.analise_nseries_queryString);
+
+		// console.log('analise_nseries_queryString: '+req.params.analise_nseries_queryString);
+		// console.log('queryObj: '+queryObj.nserie);
+
+		Analise.find({"nSerieDoEquipamento":{"$in":queryObj.nSerie}}, function(err, analise) {
+
+			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
+			if (err)
+				res.send(err)
+
+			res.json(analise); // return the todo in JSON format
+		});
+	});
+
+	app.get('/api/analises/nserie/:analise_nSerie', function(req, res) {
+
+		// use mongoose to get one specific todo in the database
+		var queryObj = Qs.parse(req.params.analise_nSerie);
+
+		// console.log('analiseTag: '+req.params.analise_tag);
+		// console.log('queryObj: '+queryObj.tag);
+
+		Analise.find({nSerieDoEquipamento : queryObj.nSerie}, function(err, analise) {
+
+			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
+			if (err)
+				res.send(err)
+
+			res.json(analise); // return the todo in JSON format
+		});
+	});
+
 
 	app.get('/api/analises/:analise_id', function(req, res) {
 
@@ -77,7 +113,7 @@ app.get('/api/analises/tags/:analise_tags_queryString', function(req, res) {
 
 		// create a analise, information comes from AJAX request from Angular
 		Analise.create({
-			tagDoEquipamento: req.body.tagDoEquipamento,  
+			nSerieDoEquipamento: req.body.nSerieDoEquipamento,  
 		    nDaAnaliseDoLaboratorio: req.body.nDaAnaliseDoLaboratorio,  
 		    laboratorio: req.body.laboratorio,  
 		    dataDaAnalise: req.body.dataDaAnalise,  
@@ -123,7 +159,7 @@ app.get('/api/analises/tags/:analise_tags_queryString', function(req, res) {
             if (err)
                 res.send(err);
 
-            analise.tagDoEquipamento = req.body.tagDoEquipamento;  
+            analise.nSerieDoEquipamento = req.body.nSerieDoEquipamento;  
 		    analise.nDaAnaliseDoLaboratorio = req.body.nDaAnaliseDoLaboratorio;    
 		    analise.laboratorio = req.body.laboratorio;    
 		    analise.dataDaAnalise = req.body.dataDaAnalise;    

@@ -79,10 +79,10 @@ app.controller('ModalInstanceCtrl2',['$scope','$http','Analises','Equipamentos',
   $scope.formData = {};
   $scope.loading = true;
 
-  //get tags for populating tag selector
-  Equipamentos.getAllTags()
+  //get nSeries for populating nSerie selector
+  Equipamentos.getAllNSeries()
         .success(function(data) {
-          $scope.tags = data;
+          $scope.nSeries = data;
         }); 
   
 // CREATE ==================================================================
@@ -91,7 +91,7 @@ app.controller('ModalInstanceCtrl2',['$scope','$http','Analises','Equipamentos',
     // alert('I submit');
     // validate the formData to make sure that something is there
     // if form is empty, nothing will happen
-    if ($scope.formData.tagDoEquipamento != undefined) {
+    if ($scope.formData.nSerieDoEquipamento != undefined) {
       $scope.loading = true;
 
       // call the create function from our service (returns a promise object)
@@ -124,10 +124,10 @@ app.controller('ModalInstanceCtrlUpdate2',['$scope','$http','Analises','Equipame
   $scope.formData.dataDaAnalise = new Date(analiseData.dataDaAnalise);
   $scope.loading = true;
   
-  //get tags for populating tag selector
-  Equipamentos.getAllTags()
+  //get nSeries for populating nSerie selector
+  Equipamentos.getAllNSeries()
         .success(function(data) {
-          $scope.tags = data;
+          $scope.nSeries = data;
         }); 
 
 
@@ -137,7 +137,7 @@ app.controller('ModalInstanceCtrlUpdate2',['$scope','$http','Analises','Equipame
     // alert('I update');
     // validate the formData to make sure that something is there
     // if form is empty, nothing will happen
-    if ($scope.formData.tagDoEquipamento != undefined) {
+    if ($scope.formData.nSerieDoEquipamento != undefined) {
       $scope.loading = true;
       
       // call the create function from our service (returns a promise object)

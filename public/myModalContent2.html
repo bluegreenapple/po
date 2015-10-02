@@ -6,13 +6,16 @@
 	<div class="col-xs-11">
 	  <h1 id="tabs" >{{verbo}} Análise</h1>
 <br>
-	  <!-- TAG DO EQUIPAMENTO -->
+	  <!-- nSerie DO EQUIPAMENTO -->
 	  <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
-		  <label><strong>Tag do Equipamento:</strong></label>	
+		  
+		  <label><strong>Número de Série do Equipamento:</strong></label>	
+		  <select class="form-control text-left input-lg" ng-model="formData.nSerieDoEquipamento" ng-options="nSerie for nSerie in nSeries track by nSerie"><option value="" autofocus></option></select>
+
+		  <!-- <label><strong>Tag do Equipamento:</strong></label>	 -->
 		  
 		  <!-- <input type="text" class="form-control input-lg text-left " ng-model="formData.tagDoEquipamento" autofocus ng-required=true></input> -->
-
-		  <select class="form-control text-left input-lg" ng-model="formData.tagDoEquipamento" ng-options="tag for tag in tags track by tag"><option value="" autofocus></option></select>
+		  <!-- <select class="form-control text-left input-lg" ng-model="formData.tagDoEquipamento" ng-options="tag for tag in tags track by tag"><option value="" autofocus></option></select> -->
 
 
 		  <label><strong>Laboratório:</strong></label>	
