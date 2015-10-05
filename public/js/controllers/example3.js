@@ -52,6 +52,9 @@ app.controller('ModalDemoCtrl3', ['$scope','$filter','$http','Analises','Equipam
       tipo: function (aAnalise) {
           return $scope.equipamento(aAnalise).tipo;
       },
+      emOperacao: function (aAnalise) {
+          return $scope.equipamento(aAnalise).emOperacao;
+      },
   };
 
   $scope.diagnosticoDuval = function(aAnalise) {

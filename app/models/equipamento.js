@@ -19,5 +19,6 @@ var equipamentoSchema = new Schema({
     sistemaDePrevencao: { type: String, required: true },
     comentarios: { type: String, required: false },
     isFavorite: { type: Boolean, required: true}, 
+    emOperacao: { type: String, required: false},
 });
 module.exports = mongoose.model('Equipamento', equipamentoSchema);

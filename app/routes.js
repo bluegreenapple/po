@@ -163,6 +163,7 @@ module.exports = function(app) {
     		sistemaDePrevencao: req.body.sistemaDePrevencao,
     		comentarios: req.body.comentarios,
     		isFavorite: req.body.isFavorite,
+    		emOperacao: req.body.emOperacao,
 			done : false
 		}, function(err, equipamento) {
 			if (err)
@@ -199,6 +200,7 @@ module.exports = function(app) {
     		equipamento.sistemaDePrevencao= req.body.sistemaDePrevencao;
     		equipamento.comentarios= req.body.comentarios;
     		equipamento.isFavorite= req.body.isFavorite;
+    		equipamento.emOperacao= req.body.emOperacao;
 
             // save the equipamento
             equipamento.save(function(err) {
