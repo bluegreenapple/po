@@ -13,6 +13,7 @@ var analiseSchema = new Schema({
     emOperacao: { type: String, required: true },  
     pontoDeColeta: { type: String, required: true },  
     temperaturaDoOleo   : { type: String, required: true },  
+    recomendacao   : { type: String, required: false },  
 
 
     // cromatográfico

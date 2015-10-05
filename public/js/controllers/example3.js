@@ -1,8 +1,8 @@
-var app = angular.module('ui.bootstrap.demo3', ['ui.bootstrap','analiseService','equipamentoService','diagnosticosServices']);
+var app = angular.module('ui.bootstrap.demo3', ['ui.bootstrap','analiseService','equipamentoService','diagnosticosServices','smart-table']);
 
 var _ = require('underscore');
 
-app.controller('ModalDemoCtrl3', ['$scope','$http','Analises','Equipamentos','DuvalService','RogersService', 'DornemburgService','LaborelecService','Iec156Service', '$modal', '$log',function ($scope,$http,Analises,Equipamentos,DuvalService,RogersService,DornemburgService,LaborelecService,Iec156Service, $modal, $log) {
+app.controller('ModalDemoCtrl3', ['$scope','$filter','$http','Analises','Equipamentos','DuvalService','RogersService', 'DornemburgService','LaborelecService','Iec156Service', '$modal', '$log',function ($scope,$filter,$http,Analises,Equipamentos,DuvalService,RogersService,DornemburgService,LaborelecService,Iec156Service, $modal, $log) {
 
   $scope.loading = true;
 
@@ -38,7 +38,20 @@ app.controller('ModalDemoCtrl3', ['$scope','$http','Analises','Equipamentos','Du
   
 
   $scope.equipamento = function(aAnalise) {
-      return _.findWhere($scope.equipamentos, {tag: aAnalise.tagDoEquipamento});
+      return _.findWhere($scope.equipamentos, {nSerie: aAnalise.nSerieDoEquipamento});
+  };
+
+  $scope.getters = {
+      tag: function (aAnalise) {
+          return $scope.equipamento(aAnalise).tag;
+      }
+      ,
+      local: function (aAnalise) {
+          return $scope.equipamento(aAnalise).local;
+      },
+      tipo: function (aAnalise) {
+          return $scope.equipamento(aAnalise).tipo;
+      },
   };
 
   $scope.diagnosticoDuval = function(aAnalise) {

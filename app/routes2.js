@@ -122,6 +122,7 @@ app.get('/api/analises/tags/:analise_tags_queryString', function(req, res) {
 		    emOperacao: req.body.emOperacao,  
 		    pontoDeColeta: req.body.pontoDeColeta,  
 		    temperaturaDoOleo   : req.body.temperaturaDoOleo,  
+		    recomendacao: req.body.recomendacao,  
 
 		    //cromatográfico
 		    h2: req.body.h2,  
@@ -168,6 +169,7 @@ app.get('/api/analises/tags/:analise_tags_queryString', function(req, res) {
 		    analise.emOperacao = req.body.emOperacao;    
 		    analise.pontoDeColeta = req.body.pontoDeColeta;    
 		    analise.temperaturaDoOleo = req.body.temperaturaDoOleo;   
+		    analise.recomendacao = req.body.recomendacao;   
 
 			// cromatográfico
 		    analise.h2 = req.body.h2;  
