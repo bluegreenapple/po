@@ -95,6 +95,7 @@
 					<th st-sort='tipo'>Tipo</th>
 					<th st-sort='fabricante'>Fabricante</th>
 					<th st-sort='local'>Local</th>
+					<th st-sort='emOperacao'>Status</th>
 				   	<th st-sort='getters.dataFab'>Data Último Teste</th>
 				   	<th>Comentários</th>
 				   	<th>Opções</th>
@@ -109,6 +110,7 @@
 				    <td>{{ equipamento.tipo }}</td>
 				    <td>{{ equipamento.fabricante }}</td>
 				    <td>{{ equipamento.local }}</td>
+				    <td>{{ equipamento.emOperacao }}</td>
 				    <td>{{ equipamento.dataDeFabricacao | date: "dd/MM/yyyy" : "UTC"}}</td>
 				    <td>{{ equipamento.comentarios }}</td>
 				    <th>

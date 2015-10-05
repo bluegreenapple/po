@@ -10,6 +10,7 @@ app.controller('ModalDemoCtrl', ['$scope','$http','Equipamentos', '$modal', '$lo
       return new Date(row.dataDeFabricacao);
    }
   }
+  
 
   $scope.formData = {};
   $scope.loading = true;
