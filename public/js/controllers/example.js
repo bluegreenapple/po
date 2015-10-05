@@ -8,6 +8,9 @@ app.controller('ModalDemoCtrl', ['$scope','$http','Equipamentos', '$modal', '$lo
   $scope.getters={
    dataFab:function(row){
       return new Date(row.dataDeFabricacao);
+   },
+   dataRep:function(row){
+      return new Date(row.dataDoUltimoReparo);
    }
   }
   
