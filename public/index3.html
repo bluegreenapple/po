@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link href="css/modal.css" rel="stylesheet">
     <link href="css/smarttable.css" rel="stylesheet">
+    <link href="css/alarmes.css" rel="stylesheet">
 
   </head>
 
@@ -111,13 +112,13 @@
 				  	<td>{{ equipamento(analise).tag}}</td>
 				  	<!-- <td>{{ equipamento(analise).emOperacao}}</td> -->
 				  	<td>
-				  		<ul>
-						  <li>{{ diagnosticoDuval(analise)}}</li>
-						  <li>{{ diagnosticoRogers(analise)}}</li>
-						  <li>{{ diagnosticoDornemburg(analise)}}</li>
-						  <li>{{ diagnosticoIec156(analise)}}</li>
-						  <li>{{ diagnosticoLaborelec(analise)}}</li>
-						</ul>
+				  		<table>
+						  <tr><td>{{ diagnosticoDuval(analise)}}</td></tr>
+						  <tr><td ng-class='diagRogersClass(analise)'>{{ diagnosticoRogers(analise)}}</td></tr>
+						  <tr><td>{{ diagnosticoDornemburg(analise)}}</td></tr>
+						  <tr><td>{{ diagnosticoIec156(analise)}}</td></tr>
+						  <tr><td>{{ diagnosticoLaborelec(analise)}}</td></tr>
+						</table>
 				  	</td>
 				  	<td>
 				  		<textarea ng-model="analise.recomendacao" class="form-control " rows="5" placeholder="Escreva uma recomendação..." id="comment" ng-required=true>

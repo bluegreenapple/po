@@ -27,10 +27,10 @@ diagServ.service('DuvalService', function() {
             return "Arcos de Alta Energia";
         }
         else if ((duval_m >=0 && duval_m <=84) && (duval_a >=16 && duval_a <=100) && (duval_y >=0 && duval_y <=25)) {
-            return "Arcos de Baixa Energia";
+            return "Arco de Baixa Energia";
         }
         else if ((duval_m >=96 && duval_m <=100) && (duval_a >=0 && duval_a <=4) && (duval_y >=0 && duval_y <=4)) {
-            return "Arcos de Baixa Energia";
+            return "Descargas internas";
         }
         else{
             return "-";
@@ -245,32 +245,82 @@ diagServ.service('RogersService', function() {
         }
     };
     
-    this.diagnostico = function(h2, ch4, c2h2, c2h4, c2h6) {
+    this.diagnosticoCod = function(h2, ch4, c2h2, c2h4, c2h6) {
         
         var nw = this.n_w(ch4,h2);
         var nx = this.n_x(c2h6,ch4);
         var ny = this.n_y(c2h4,c2h6);
         var nz = this.n_z(c2h2,c2h4);
-        if      (nw == 2 && nx == 0 && ny == 0 && nz ==0) {return "Deterioração Normal";}
-        else if (nw == 1 && nx == 0 && ny == 0 && nz ==0) {return "Descargas Parcias (Corona)";}
-        else if (nw == 3 && nx == 0 && ny == 0 && nz ==0) {return "Pequeno Sobreaquecimento - abaixo de 150oC";}
-        else if (nw == 4 && nx == 0 && ny == 0 && nz ==0) {return "Pequeno Sobreaquecimento - abaixo de 150oC";}
-        else if (nw == 3 && nx == 1 && ny == 0 && nz ==0) {return "Sobreaquecimento de 150oC- 200oC";}
-        else if (nw == 4 && nx == 1 && ny == 0 && nz ==0) {return "Sobreaquecimento de 150oC- 200oC";}
-        else if (nw == 2 && nx == 1 && ny == 0 && nz ==0) {return "Sobreaquecimento de 200oC- 300oC";}
-        else if (nw == 2 && nx == 0 && ny == 1 && nz ==0) {return "Sobreaquecimento geral nos condutores";}
-        else if (nw == 3 && nx == 0 && ny == 1 && nz ==0) {return "Correntes de circulação nos enrolamentos";}
-        else if (nw == 3 && nx == 0 && ny == 2 && nz ==0) {return "Correntes de circulação no núcleo e tanque, sobreaquecimento em conexões";}
-        else if (nw == 2 && nx == 0 && ny == 0 && nz ==1) {return "Descarga Parcial com baixa densidade de energia";}
-        else if (nw == 2 && nx == 0 && ny == 1 && nz ==1) {return "Arco com alta densidade de energia";}
-        else if (nw == 2 && nx == 0 && ny == 1 && nz ==2) {return "Arco com alta densidade de energia";}
-        else if (nw == 2 && nx == 0 && ny == 2 && nz ==1) {return "Arco com alta densidade de energia";}
-        else if (nw == 2 && nx == 0 && ny == 2 && nz ==2) {return "Descarga contínua de baixo potencial";}
-        else if (nw == 1 && nx == 0 && ny == 0 && nz ==1) {return "Descarga Parcial envolvendo o papel";}
-        else if (nw == 1 && nx == 0 && ny == 0 && nz ==2) {return "Descarga Parcial envolvendo o papel";}
+        if      (nw == 2 && nx == 0 && ny == 0 && nz ==0) {return 1;}
+        else if (nw == 1 && nx == 0 && ny == 0 && nz ==0) {return 2;}
+        else if (nw == 3 && nx == 0 && ny == 0 && nz ==0) {return 3;}
+        else if (nw == 4 && nx == 0 && ny == 0 && nz ==0) {return 4;}
+        else if (nw == 3 && nx == 1 && ny == 0 && nz ==0) {return 5;}
+        else if (nw == 4 && nx == 1 && ny == 0 && nz ==0) {return 6;}
+        else if (nw == 2 && nx == 1 && ny == 0 && nz ==0) {return 7;}
+        else if (nw == 2 && nx == 0 && ny == 1 && nz ==0) {return 8;}
+        else if (nw == 3 && nx == 0 && ny == 1 && nz ==0) {return 9;}
+        else if (nw == 3 && nx == 0 && ny == 2 && nz ==0) {return 10;}
+        else if (nw == 2 && nx == 0 && ny == 0 && nz ==1) {return 11;}
+        else if (nw == 2 && nx == 0 && ny == 1 && nz ==1) {return 12;}
+        else if (nw == 2 && nx == 0 && ny == 1 && nz ==2) {return 13;}
+        else if (nw == 2 && nx == 0 && ny == 2 && nz ==1) {return 14;}
+        else if (nw == 2 && nx == 0 && ny == 2 && nz ==2) {return 15;}
+        else if (nw == 1 && nx == 0 && ny == 0 && nz ==1) {return 16;}
+        else if (nw == 1 && nx == 0 && ny == 0 && nz ==2) {return 17;}
+        else {return 0;};
+        
+    };   
+
+    this.diagnostico = function(h2, ch4, c2h2, c2h4, c2h6) {
+        
+        var cod = this.diagnosticoCod(h2, ch4, c2h2, c2h4, c2h6);
+
+        if      (cod == 1) {return "Deterioração Normal";}
+        else if (cod == 2) {return "Descargas Parcias (Corona)";}
+        else if (cod == 3) {return "Pequeno Sobreaquecimento - abaixo de 150oC";}
+        else if (cod == 4) {return "Pequeno Sobreaquecimento - abaixo de 150oC";}
+        else if (cod == 5) {return "Sobreaquecimento de 150oC- 200oC";}
+        else if (cod == 6) {return "Sobreaquecimento de 150oC- 200oC";}
+        else if (cod == 7) {return "Sobreaquecimento de 200oC- 300oC";}
+        else if (cod == 8) {return "Sobreaquecimento geral nos condutores";}
+        else if (cod == 9) {return "Correntes de circulação nos enrolamentos";}
+        else if (cod == 10) {return "Correntes de circulação no núcleo e tanque, sobreaquecimento em conexões";}
+        else if (cod == 11) {return "Descarga Parcial com baixa densidade de energia";}
+        else if (cod == 12) {return "Arco com alta densidade de energia";}
+        else if (cod == 13) {return "Arco com alta densidade de energia";}
+        else if (cod == 14) {return "Arco com alta densidade de energia";}
+        else if (cod == 15) {return "Descarga contínua de baixo potencial";}
+        else if (cod == 16) {return "Descarga Parcial envolvendo o papel";}
+        else if (cod == 17) {return "Descarga Parcial envolvendo o papel";}
         else {return '-'};
         
-    };     
+    }; 
+
+    this.diagnosticoClass = function(h2, ch4, c2h2, c2h4, c2h6) {
+        
+        var cod = this.diagnosticoCod(h2, ch4, c2h2, c2h4, c2h6);
+
+        if      (cod == 1) {return "rogers_01";}
+        else if (cod == 2) {return "rogers_02";}
+        else if (cod == 3) {return "rogers_03";}
+        else if (cod == 4) {return "rogers_04";}
+        else if (cod == 5) {return "rogers_05";}
+        else if (cod == 6) {return "rogers_06";}
+        else if (cod == 7) {return "rogers_07";}
+        else if (cod == 8) {return "rogers_08";}
+        else if (cod == 9) {return "rogers_09";}
+        else if (cod == 10) {return "rogers_10";}
+        else if (cod == 11) {return "rogers_11";}
+        else if (cod == 12) {return "rogers_12";}
+        else if (cod == 13) {return "rogers_13";}
+        else if (cod == 14) {return "rogers_14";}
+        else if (cod == 15) {return "rogers_15";}
+        else if (cod == 16) {return "rogers_16";}
+        else if (cod == 17) {return "rogers_17";}
+        else {return 'rogers_00'};
+        
+    }; 
 });
 
 //simple service for creating Iec156 diagnostics

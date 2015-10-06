@@ -77,6 +77,22 @@ app.controller('ModalDemoCtrl3', ['$scope','$filter','$http','Analises','Equipam
       return "Laborelec: " + LaborelecService.diagnostico(aAnalise.h2,aAnalise.co,aAnalise.ch4,aAnalise.c2h2,aAnalise.c2h4,aAnalise.c2h6,aAnalise.tgg).diagnostico;
   };
 
+  $scope.diagDuvalClass = function(aAnalise) {
+      var duval = $scope.diagnosticoDuval(aAnalise);
+      if (duval == 'Duval: Pontos Quentes') {
+        return 'duval_01';
+      } else if (duval == 'Duval: Arcos de Alta Energia') {
+        return 'duval_02';
+      } else if (duval == 'Duval: Arcos de Baixa Energia') {
+        return 'duval_03';
+      }
+      return 'duval_00';
+  };
+
+  $scope.diagRogersClass = function(aAnalise) {
+        return RogersService.diagnosticoClass(aAnalise.h2,aAnalise.ch4,aAnalise.c2h2,aAnalise.c2h4,aAnalise.c2h6);
+  };
+
   
 
   // DELETE ==================================================================
