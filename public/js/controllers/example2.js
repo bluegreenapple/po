@@ -1,7 +1,12 @@
-var app = angular.module('ui.bootstrap.demo2', ['ui.bootstrap','analiseService','equipamentoService']);
-app.controller('ModalDemoCtrl2', ['$scope','$http','Analises', '$modal', '$log',function ($scope,$http,Analises, $modal, $log) {
+var app = angular.module('ui.bootstrap.demo2', ['ui.bootstrap','analiseService','equipamentoService','smart-table']);
+app.controller('ModalDemoCtrl2', ['$scope','$filter','$http','Analises', '$modal', '$log',function ($scope,$filter,$http,Analises, $modal, $log) {
 
-  
+  $scope.getters={
+   dataAnal:function(row){
+      return new Date(row.dataDaAnalise);
+   }
+  }
+
   $scope.loading = true;
 
   // GET =====================================================================
