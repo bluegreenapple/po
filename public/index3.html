@@ -113,7 +113,7 @@
 				  	<!-- <td>{{ equipamento(analise).emOperacao}}</td> -->
 				  	<td>
 				  		<table>
-						  <tr><td class='duval_00'>{{ diagnosticoDuval(analise)}}</td></tr>
+						  <tr><td ng-class='diagDuvalClass(analise)'>{{ diagnosticoDuval(analise)}}</td></tr>
 						  <tr><td ng-class='diagRogersClass(analise)'>{{ diagnosticoRogers(analise)}}</td></tr>
 						  <tr class='dornemburg_00'><td>{{ diagnosticoDornemburg(analise)}}</td></tr>
 						  <tr class = 'iec156_00'><td>{{ diagnosticoIec156(analise)}}</td></tr>

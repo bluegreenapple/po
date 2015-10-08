@@ -15,27 +15,49 @@ diagServ.service('DuvalService', function() {
         return (100. * +c2h4) / (+ch4 + +c2h2 + +c2h4);
     };
     
-    this.diagnostico = function(ch4, c2h2, c2h4) {
+    this.diagnosticoCod = function(ch4, c2h2, c2h4) {
         
         var duval_m = this.m(ch4,c2h2,c2h4);
         var duval_a = this.a(ch4,c2h2,c2h4);
         var duval_y = this.y(ch4,c2h2,c2h4);
         if ((duval_m >=0 && duval_m <=96) && (duval_a >=0 && duval_a <=16) && (duval_y >=0 && duval_y <=100)) {
-            return "Pontos Quentes";
+            return 1;
         }
         else if ((duval_m >=0 && duval_m <=59) && (duval_a >=16 && duval_a <=75) && (duval_y >=25 && duval_y <=84)) {
-            return "Arcos de Alta Energia";
+            return 2;
         }
         else if ((duval_m >=0 && duval_m <=84) && (duval_a >=16 && duval_a <=100) && (duval_y >=0 && duval_y <=25)) {
-            return "Arco de Baixa Energia";
+            return 3;
         }
         else if ((duval_m >=96 && duval_m <=100) && (duval_a >=0 && duval_a <=4) && (duval_y >=0 && duval_y <=4)) {
-            return "Descargas internas";
+            return 4;
         }
         else{
-            return "-";
+            return 5;
         }
-    };     
+    };   
+
+    this.diagnostico = function(ch4, c2h2, c2h4) {
+        
+        var cod = this.diagnosticoCod(ch4, c2h2, c2h4);
+        if      (cod == 1) { return 'Pontos Quentes';}
+        else if (cod == 2) { return 'Arcos de Alta Energia';}
+        else if (cod == 3) { return 'Arcos de Baixa Energia';}
+        else if (cod == 4) { return 'Arcos de Baixa Energia';}
+        else               { return '-';}
+    };
+
+    this.diagnosticoClass = function(ch4, c2h2, c2h4) {
+        
+        return 'duval_01';
+        var cod = this.diagnosticoCod(ch4, c2h2, c2h4);
+
+        if      (cod == 1) { return 'duval_01';}
+        else if (cod == 2) { return 'duval_02';}
+        else if (cod == 3) { return 'duval_03';}
+        else if (cod == 4) { return 'duval_04';}
+        else               { return 'duval_00';}
+    };      
 });
 
 //simple service for creating Doble diagnostics

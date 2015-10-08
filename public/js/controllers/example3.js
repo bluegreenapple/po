@@ -78,15 +78,7 @@ app.controller('ModalDemoCtrl3', ['$scope','$filter','$http','Analises','Equipam
   };
 
   $scope.diagDuvalClass = function(aAnalise) {
-      var duval = $scope.diagnosticoDuval(aAnalise);
-      if (duval == 'Duval: Pontos Quentes') {
-        return 'duval_01';
-      } else if (duval == 'Duval: Arcos de Alta Energia') {
-        return 'duval_02';
-      } else if (duval == 'Duval: Arcos de Baixa Energia') {
-        return 'duval_03';
-      }
-      return 'duval_00';
+      return DuvalService.diagnosticoClass(aAnalise.ch4,aAnalise.c2h2,aAnalise.c2h6);
   };
 
   $scope.diagRogersClass = function(aAnalise) {
