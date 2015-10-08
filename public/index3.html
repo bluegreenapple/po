@@ -113,11 +113,11 @@
 				  	<!-- <td>{{ equipamento(analise).emOperacao}}</td> -->
 				  	<td>
 				  		<table>
-						  <tr><td>{{ diagnosticoDuval(analise)}}</td></tr>
+						  <tr><td class='duval_00'>{{ diagnosticoDuval(analise)}}</td></tr>
 						  <tr><td ng-class='diagRogersClass(analise)'>{{ diagnosticoRogers(analise)}}</td></tr>
-						  <tr><td>{{ diagnosticoDornemburg(analise)}}</td></tr>
-						  <tr><td>{{ diagnosticoIec156(analise)}}</td></tr>
-						  <tr><td>{{ diagnosticoLaborelec(analise)}}</td></tr>
+						  <tr class='dornemburg_00'><td>{{ diagnosticoDornemburg(analise)}}</td></tr>
+						  <tr class = 'iec156_00'><td>{{ diagnosticoIec156(analise)}}</td></tr>
+						  <tr class = 'laborelec_00'><td>{{ diagnosticoLaborelec(analise)}}</td></tr>
 						</table>
 				  	</td>
 				  	<td>
