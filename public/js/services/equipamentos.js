@@ -38,6 +38,11 @@ equipService.factory('Equipamentos', ['$http',function($http) {
 				console.log(queryString);
 				return $http.get('/api/equipamentos/tags/' + queryString);
 			},
+			getByNSeries : function(aNSeries) {
+				var queryString = Qs.stringify(aNseries);
+				console.log(queryString);
+				return $http.get('/api/equipamentos/nseries/' + queryString);
+			},
 			getAllTags : function() {
 				return $http.get('/api/equipamentos/tags/');
 			},
