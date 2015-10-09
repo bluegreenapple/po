@@ -67,29 +67,28 @@
 
 		  
 
+
 		  <!-- CAIXA DADOS GERAIS -->
 		  <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
-			  
+			
+			<!-- SMART TABLE -->
+	        <div st-safe-src="analises" st-table='displayedAnalises'>  
 
 			<ul class="navbar-right list-unstyled">   
 			    <img ng-src="images/xls.png" class="imageButton" ng-click="open(lg)">
 			    <img ng-src="images/pdf.png" class="imageButton" ng-click="open(lg)">
 			</ul>  
 		  
-	        <!-- <ul class="navbar-right list-unstyled">   
-	        <li><button type="submit" class="btn btn-primary" ng-click="open(lg)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>	</li>
-	        </ul>   -->
 	      
 	        <ul class="navbar-right list-unstyled">   
-	          <li><input ng-model='searchString' type="text" class="form-control" placeholder="Buscar..." autofocus></li>
+	          <li><input st-search="" st-delay='0' type="text" class="form-control" placeholder="Buscar..." autofocus></li>
 	        </ul>  
 	      
 
 	      
 		  
 	         
-			<!-- SMART TABLE -->
-	        <div st-safe-src="analises" st-table='displayedAnalises'>
+			
 
 			  <!-- TABELA DE Alarmes-->
 			  <table class = 'table table-striped'>
