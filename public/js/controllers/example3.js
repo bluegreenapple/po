@@ -91,7 +91,7 @@ app.controller('ModalDemoCtrl3', ['$scope','$filter','$http','Analises','Equipam
   };
 
   $scope.diagIec156Class = function(aAnalise) {
-      return 'iec156_01';
+      // return 'iec156_01';
       return Iec156Service.diagnosticoClass(aAnalise.h2,aAnalise.ch4,aAnalise.c2h2,aAnalise.c2h4,aAnalise.c2h6).diagnostico;
   };
 

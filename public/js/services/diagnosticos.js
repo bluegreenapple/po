@@ -448,21 +448,54 @@ diagServ.service('Iec156Service', function() {
     
     this.diagnostico = function(h2, ch4, c2h2, c2h4, c2h6) {
         
+        var cod = this.diagnosticoCod(h2, ch4, c2h2, c2h4, c2h6);
+
+        if      (cod == 1) {return {"casoN": "A", "diagnostico":"Condição Normal"};}
+        else if (cod == 2) {return {"casoN": "B", "diagnostico":"Descargas parciais de pequena densidade de energia"};}
+        else if (cod == 3) {return {"casoN": "C", "diagnostico":"Descargas parciais de alta intensidade de energia"};}
+        else if (cod == 4) {return {"casoN": "D", "diagnostico":"Descargas elétricas de energia reduzida (Arco)"};}
+        else if (cod == 5) {return {"casoN": "E", "diagnostico":"Descargas elétricas de alta energia (Arco)"};}
+        else if (cod == 6) {return {"casoN": "F", "diagnostico":"Falha técnica de baixa temperatura <150oC"};}
+        else if (cod == 7) {return {"casoN": "G", "diagnostico":"Falha técnica de baixa temperatura entre 150oC e 300oC"};}
+        else if (cod == 8) {return {"casoN": "H", "diagnostico":"Falha técnica de média temperatura entre 300oC e 700oC"};}
+        else if (cod) {return {"casoN": "I", "diagnostico":"Falha técnica de alta temperatura >700oC"};}
+        else {return '-';}
+        
+    };    
+
+    this.diagnosticoCod = function(h2, ch4, c2h2, c2h4, c2h6) {
+        
         var nx = this.n_x(c2h2, c2h4);
         var ny = this.n_y(ch4, h2);
         var nz = this.n_z(c2h4, c2h6);
-        if      (nx == 0 && ny == 0 && nz ==0) {return {"casoN": "A", "diagnostico":"Condição Normal"};}
-        else if (nx == 0 && ny == 1 && nz ==0) {return {"casoN": "B", "diagnostico":"Descargas parciais de pequena densidade de energia"};}
-        else if (nx == 1 && ny == 1 && nz ==0) {return {"casoN": "C", "diagnostico":"Descargas parciais de alta intensidade de energia"};}
-        else if ((nx >= 1 && nx <= 2) && ny == 0 && (nz >=1 && nz <= 2)) {return {"casoN": "D", "diagnostico":"Descargas elétricas de energia reduzida (Arco)"};}
-        else if (nx == 1 && ny == 0 && nz ==2) {return {"casoN": "E", "diagnostico":"Descargas elétricas de alta energia (Arco)"};}
-        else if (nx == 0 && ny == 0 && nz ==1) {return {"casoN": "F", "diagnostico":"Falha técnica de baixa temperatura <150oC"};}
-        else if (nx == 0 && ny == 2 && nz ==0) {return {"casoN": "G", "diagnostico":"Falha técnica de baixa temperatura entre 150oC e 300oC"};}
-        else if (nx == 0 && ny == 2 && nz ==1) {return {"casoN": "H", "diagnostico":"Falha técnica de média temperatura entre 300oC e 700oC"};}
-        else if (nx == 0 && ny == 2 && nz ==2) {return {"casoN": "I", "diagnostico":"Falha técnica de alta temperatura >700oC"};}
-        else {return '-'};
+        if      (nx == 0 && ny == 0 && nz ==0) {return 1;}
+        else if (nx == 0 && ny == 1 && nz ==0) {return 2;}
+        else if (nx == 1 && ny == 1 && nz ==0) {return 3;}
+        else if ((nx >= 1 && nx <= 2) && ny == 0 && (nz >=1 && nz <= 2)) {return 4;}
+        else if (nx == 1 && ny == 0 && nz ==2) {return 5;}
+        else if (nx == 0 && ny == 0 && nz ==1) {return 6;}
+        else if (nx == 0 && ny == 2 && nz ==0) {return 7;}
+        else if (nx == 0 && ny == 2 && nz ==1) {return 8;}
+        else if (nx == 0 && ny == 2 && nz ==2) {return 9;}
+        else {return 0;}
         
-    };     
+    };  
+
+     this.diagnosticoClass = function(h2, ch4, c2h2, c2h4, c2h6) {
+        
+        return 'iec156_01';
+        if      (nx == 0 && ny == 0 && nz ==0) {return 1;}
+        else if (nx == 0 && ny == 1 && nz ==0) {return 2;}
+        else if (nx == 1 && ny == 1 && nz ==0) {return 3;}
+        else if ((nx >= 1 && nx <= 2) && ny == 0 && (nz >=1 && nz <= 2)) {return 4;}
+        else if (nx == 1 && ny == 0 && nz ==2) {return 5;}
+        else if (nx == 0 && ny == 0 && nz ==1) {return 6;}
+        else if (nx == 0 && ny == 2 && nz ==0) {return 7;}
+        else if (nx == 0 && ny == 2 && nz ==1) {return 8;}
+        else if (nx == 0 && ny == 2 && nz ==2) {return 9;}
+        else {return 0;}
+        
+    };  
 });
 
 //simple service for creating Iec156 diagnostics
