@@ -213,7 +213,7 @@ diagServ.service('DornemburgService', function() {
         }
     }; 
 
-    this.diagnosticoMod = function(ch4, c2h2, c2h4) {
+    this.diagnosticoMod = function(h2, ch4, c2h2, c2h4, c2h6) {
         
         var cod = this.diagnosticoModCod(h2, ch4, c2h2, c2h4, c2h6);
         if      (cod == 1) { return 'Pontos Quentes';}
@@ -222,7 +222,7 @@ diagServ.service('DornemburgService', function() {
         else               { return 'Normal';}
     };
 
-    this.diagnosticoModClass = function(ch4, c2h2, c2h4) {
+    this.diagnosticoModClass = function(h2, ch4, c2h2, c2h4, c2h6) {
         
         var cod = this.diagnosticoModCod(h2, ch4, c2h2, c2h4, c2h6);
 
@@ -629,7 +629,7 @@ diagServ.service('LaborelecService', function() {
         else {return 0;}
         
     };   
- 
+
     this.diagnosticoClass = function(h2, co, ch4, c2h2, c2h4, c2h6) {
         return "laborelec_01";
         var cod = this.diagnosticoCod(h2, co, ch4, c2h2, c2h4, c2h6);
