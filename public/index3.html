@@ -115,9 +115,9 @@
 				  		<table>
 						  <tr><td ng-class='diagDuvalClass(analise)'>{{ diagnosticoDuval(analise)}}</td></tr>
 						  <tr><td ng-class='diagRogersClass(analise)'>{{ diagnosticoRogers(analise)}}</td></tr>
-						  <tr class='dornemburg_00'><td>{{ diagnosticoDornemburg(analise)}}</td></tr>
-						  <tr class = 'iec156_00'><td>{{ diagnosticoIec156(analise)}}</td></tr>
-						  <tr class = 'laborelec_00'><td>{{ diagnosticoLaborelec(analise)}}</td></tr>
+						  <tr ng-class='diagDornemburgClass(analise)'><td>{{ diagnosticoDornemburg(analise)}}</td></tr>
+						  <tr ng-class='diagIec156Class(analise)'><td>{{ diagnosticoIec156(analise)}}</td></tr>
+						  <tr ng-class='diagLaborelecClass(analise)'><td>{{ diagnosticoLaborelec(analise)}}</td></tr>
 						</table>
 				  	</td>
 				  	<td>

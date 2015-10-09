@@ -49,7 +49,6 @@ diagServ.service('DuvalService', function() {
 
     this.diagnosticoClass = function(ch4, c2h2, c2h4) {
         
-        return 'duval_01';
         var cod = this.diagnosticoCod(ch4, c2h2, c2h4);
 
         if      (cod == 1) { return 'duval_01';}
@@ -151,7 +150,7 @@ diagServ.service('DornemburgService', function() {
     };
 
 
-    this.diagnostico = function(h2, ch4, c2h2, c2h4, c2h6) {
+    this.diagnosticoCod = function(h2, ch4, c2h2, c2h4, c2h6) {
         
         if (!this.isValid(h2, ch4, c2h2, c2h4, c2h6)) {return 'critério não se aplica'};
 
@@ -161,20 +160,39 @@ diagServ.service('DornemburgService', function() {
         var dornemburg_z = this.z(c2h2, ch4);
 
         if (dornemburg_w >1 && dornemburg_x <0.75 && dornemburg_y >0.4 && dornemburg_z <0.3) {
-            return "Pontos Quentes";
+            return 1;
         }
         else if (dornemburg_w >1 && dornemburg_y >0.4 && dornemburg_z <0.3) {
-            return "Descarga Parcial";
+            return 2;
         }
         else if ((dornemburg_w >0.1 && dornemburg_w <1) && dornemburg_x >0.75 && dornemburg_y <0.4 && dornemburg_z >0.3) {
-            return "Outros tipos de descarga";
+            return 3;
         }
         else{
-            return "Normal";
+            return 0;
         }
     };     
 
-    this.diagnosticoMod = function(h2, ch4, c2h2, c2h4, c2h6) {
+    this.diagnostico = function(h2, ch4, c2h2, c2h4, c2h6) {
+        
+        var cod = this.diagnosticoCod(h2, ch4, c2h2, c2h4, c2h6);
+        if      (cod == 1) { return 'Pontos Quentes';}
+        else if (cod == 2) { return 'Descarga Parcial';}
+        else if (cod == 3) { return 'Outros tipos de descarga';}
+        else               { return 'Normal';}
+    };
+
+    this.diagnosticoClass = function(h2, ch4, c2h2, c2h4, c2h6) {
+        
+        var cod = this.diagnosticoCod(h2, ch4, c2h2, c2h4, c2h6);
+
+        if      (cod == 1) { return 'dornemburg_01';}
+        else if (cod == 2) { return 'dornemburg_02';}
+        else if (cod == 3) { return 'dornemburg_03';}
+        else               { return 'dornemburg_00';}
+    };   
+
+    this.diagnosticoModCod = function(h2, ch4, c2h2, c2h4, c2h6) {
         
         var dornemburg_w = this.wMod(ch4, h2);
         var dornemburg_x = this.xMod(c2h2, c2h4);
@@ -182,18 +200,37 @@ diagServ.service('DornemburgService', function() {
         var dornemburg_z = this.zMod(c2h2, ch4);
 
         if (dornemburg_w >0.1 && dornemburg_x <1.0 && dornemburg_y >0.2 && dornemburg_z <0.1) {
-            return "Pontos Quentes";
+            return 1;
         }
         else if (dornemburg_w <0.01 && dornemburg_y >0.2 && dornemburg_z <0.1) {
-            return "Descarga Internas";
+            return 2;
         }
         else if ((dornemburg_w >0.01 && dornemburg_w <0.1) && dornemburg_x >1 && dornemburg_y <0.2 && dornemburg_z <0.1) {
-            return "Descargas Elétricas (exceto descargas internas)";
+            return 3;
         }
         else{
-            return "normal";
+            return 0;
         }
     }; 
+
+    this.diagnosticoMod = function(ch4, c2h2, c2h4) {
+        
+        var cod = this.diagnosticoModCod(h2, ch4, c2h2, c2h4, c2h6);
+        if      (cod == 1) { return 'Pontos Quentes';}
+        else if (cod == 2) { return 'Descarga Parcial';}
+        else if (cod == 3) { return 'Outros tipos de descarga';}
+        else               { return 'Normal';}
+    };
+
+    this.diagnosticoModClass = function(ch4, c2h2, c2h4) {
+        
+        var cod = this.diagnosticoModCod(h2, ch4, c2h2, c2h4, c2h6);
+
+        if      (cod == 1) { return 'dornemburg_01';}
+        else if (cod == 2) { return 'dornemburg_02';}
+        else if (cod == 3) { return 'dornemburg_03';}
+        else               { return 'dornemburg_00';}
+    };   
 });
 
 //simple service for creating Rogers diagnostics

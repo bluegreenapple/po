@@ -85,7 +85,20 @@ app.controller('ModalDemoCtrl3', ['$scope','$filter','$http','Analises','Equipam
         return RogersService.diagnosticoClass(aAnalise.h2,aAnalise.ch4,aAnalise.c2h2,aAnalise.c2h4,aAnalise.c2h6);
   };
 
-  
+  $scope.diagDornemburgClass = function(aAnalise) {
+    // return 'dornemburg_01';
+      return DornemburgService.diagnosticoClass(aAnalise.h2,aAnalise.ch4,aAnalise.c2h2,aAnalise.c2h4,aAnalise.c2h6);
+  };
+
+  $scope.diagIec156Class = function(aAnalise) {
+      return 'iec156_01';
+      return Iec156Service.diagnosticoClass(aAnalise.h2,aAnalise.ch4,aAnalise.c2h2,aAnalise.c2h4,aAnalise.c2h6).diagnostico;
+  };
+
+  $scope.diagLaborelecClass = function(aAnalise) {
+    return 'laborelec_01';
+      return LaborelecService.diagnosticoClass(aAnalise.h2,aAnalise.co,aAnalise.ch4,aAnalise.c2h2,aAnalise.c2h4,aAnalise.c2h6,aAnalise.tgg).diagnostico;
+  };
 
   // DELETE ==================================================================
   // delete a analise after checking it
