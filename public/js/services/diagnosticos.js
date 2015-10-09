@@ -483,17 +483,19 @@ diagServ.service('Iec156Service', function() {
 
      this.diagnosticoClass = function(h2, ch4, c2h2, c2h4, c2h6) {
         
-        return 'iec156_01';
-        if      (nx == 0 && ny == 0 && nz ==0) {return 1;}
-        else if (nx == 0 && ny == 1 && nz ==0) {return 2;}
-        else if (nx == 1 && ny == 1 && nz ==0) {return 3;}
-        else if ((nx >= 1 && nx <= 2) && ny == 0 && (nz >=1 && nz <= 2)) {return 4;}
-        else if (nx == 1 && ny == 0 && nz ==2) {return 5;}
-        else if (nx == 0 && ny == 0 && nz ==1) {return 6;}
-        else if (nx == 0 && ny == 2 && nz ==0) {return 7;}
-        else if (nx == 0 && ny == 2 && nz ==1) {return 8;}
-        else if (nx == 0 && ny == 2 && nz ==2) {return 9;}
-        else {return 0;}
+        // return 'iec156_01';
+        var cod = this.diagnosticoCod(h2, ch4, c2h2, c2h4, c2h6);
+
+        if      (cod == 0) {return 'iec156_01';}
+        else if (cod == 1) {return 'iec156_02';}
+        else if (cod == 2) {return 'iec156_03';}
+        else if (cod == 3) {return 'iec156_04';}
+        else if (cod == 4) {return 'iec156_05';}
+        else if (cod == 5) {return 'iec156_06';}
+        else if (cod == 6) {return 'iec156_07';}
+        else if (cod == 7) {return 'iec156_08';}
+        else if (cod == 8) {return 'iec156_09';}
+        else {return 'iec156_00';}
         
     };  
 });
@@ -525,56 +527,146 @@ diagServ.service('LaborelecService', function() {
     
     this.diagnostico = function(h2, co, ch4, c2h2, c2h4, c2h6) {
         
+        var cod = this.diagnosticoCod(h2, co, ch4, c2h2, c2h4, c2h6);
+
+        if      (cod == 1) {return {"indice": "A", "diagnostico":"Normal", "recomendacao": "Evolução Normal"};}
+        
+        else if (cod == 2) {return {"indice": "B1", "diagnostico":"Descargas parciais (óleo) - Média", "recomendacao": "Próximo controle: Entre 6 e 12 meses"};}
+        else if (cod == 3) {return {"indice": "B2", "diagnostico":"Centelhamento (óleo) - Média", "recomendacao": "Próximo controle: Entre 6 e 12 meses"};}
+        else if (cod == 4) {return {"indice": "B3", "diagnostico":"Centelhamento (óleo) ou Gás proveniente do comutador - Média", "recomendacao": "Próximo controle: Entre 6 e 12 meses"};}
+        
+        else if (cod == 5) {return {"indice": "B4", "diagnostico":"Térmica (óleo) - Média", "recomendacao": "Próximo controle: Entre 6 e 12 meses"};}
+        else if (cod == 6) {return {"indice": "B5", "diagnostico":"Térmica (óleo + papel) - Média", "recomendacao": "Próximo controle: Entre 6 e 12 meses"};}
+        else if (cod == 7) {return {"indice": "B6", "diagnostico":"Térmica (óleo) ou Gás proveniente do comutador - Média", "recomendacao": "Próximo controle: Entre 6 e 12 meses"};}
+        else if (cod == 8) {return {"indice": "B7", "diagnostico":"Térmica (óleo+papel) ou Gás proveniente do comutador - Média", "recomendacao": "Próximo controle: Entre 6 e 12 meses"};}
+        
+        else if (cod == 9) {return {"indice": "B3", "diagnostico":"Centelhamento (óleo) ou Gás proveniente do comutador - Média", "recomendacao": "Próximo controle: Entre 6 e 12 meses"};}
+        else if (cod == 10) {return {"indice": "B4", "diagnostico":"Térmica (óleo) - Média", "recomendacao": "Próximo controle: Entre 6 e 12 meses"};}
+        
+        else if (cod == 11) {return {"indice": "B9", "diagnostico":"Térmica (papel) - Média", "recomendacao": "Próximo controle: Entre 6 e 12 meses"};}
+        
+        else if (cod == 12) {return {"indice": "C1", "diagnostico":"Descargas parciais (óleo) – Importante", "recomendacao": "Próximo controle: Entre 3 e 6 meses"};}
+        else if (cod == 13) {return {"indice": "C2", "diagnostico":"Centelhamento (óleo) – Importante", "recomendacao": "Próximo controle: Entre 3 e 6 meses"};}
+        else if (cod == 14) {return {"indice": "C3", "diagnostico":"Centelhamento (óleo) ou Gás proveniente do comutador – Importante", "recomendacao": "Próximo controle: Entre 3 e 6 meses"};}
+    
+        else if (cod == 15) {return {"indice": "C4", "diagnostico":"Térmica (óleo) – Importante", "recomendacao": "Próximo controle: Entre 3 e 6 meses"};}
+        else if (cod == 16) {return {"indice": "C5", "diagnostico":"Térmica (óleo + papel) – Importante", "recomendacao": "Próximo controle: Entre 3 e 6 meses"};}
+        else if (cod == 17) {return {"indice": "C6", "diagnostico":"Térmica (óleo) ou Gás proveniente do comutador – Importante", "recomendacao": "Próximo controle: Entre 3 e 6 meses"};}
+        else if (cod == 18) {return {"indice": "C7", "diagnostico":"Térmica (óleo+papel) ou Gás proveniente do comutador – Importante", "recomendacao": "Próximo controle: Entre 3 e 6 meses"};}
+        
+        else if (cod == 19) {return {"indice": "C8", "diagnostico":"Arco no óleo ou Gás proveniente do comutador – Importante", "recomendacao": "Próximo controle: Entre 3 e 6 meses"};}
+        else if (cod == 20) {return {"indice": "C4", "diagnostico":"Térmica (óleo) – Importante", "recomendacao": "Próximo controle: Entre 3 e 6 meses"};}
+        else if (cod == 21) {return {"indice": "C5", "diagnostico":"Térmica (óleo + papel) – Importante", "recomendacao": "Próximo controle: Entre 3 e 6 meses"};}
+        
+        else if (cod == 22) {return {"indice": "D1", "diagnostico":"Descargas parciais (óleo) – Muito", "recomendacao": "Para todos os índices “D” – próximo controle entre 1 e 3 meses/Nova medição do nível de descargas parciais no transformador"};}
+        else if (cod == 23) {return {"indice": "D2",  "diagnostico":"Centelhamento (óleo) – Muito", "recomendacao": "Para todos os índices “D” – próximo controle entre 1 e 3 meses/Possíveis gases formados no LTC, senão, inspecionar as conexões do transformador"};}
+        else if (cod == 24) {return {"indice": "D3", "diagnostico":"Centelhamento (óleo) ou Gás proveniente do comutador – Muito", "recomendacao": "Para todos os índices “D” – próximo controle entre 1 e 3 meses/Possíveis gases formados no LTC, senão, inspecionar as conexões do transformador"};}
+
+        else if (cod == 25) {return {"indice": "D4", "diagnostico":"Térmica (óleo) – Muito", "recomendacao": "Para todos os índices “D” – próximo controle entre 1 e 3 meses/Possíveis gases formados no LTC, senão, inspecionar as conexões (pontos quentes) e revisão no sistema de resfriamento"};}
+        else if (cod == 26) {return {"indice": "D5", "diagnostico":"Térmica (óleo + papel) – Muito", "recomendacao": "Para todos os índices “D” – próximo controle entre 1 e 3 meses/Possíveis gases formados no LTC, senão, inspecionar as conexões (pontos quentes) e revisão no sistema de resfriamento"};}
+        else if (cod == 27) {return {"indice": "D6", "diagnostico":"Térmica (óleo) ou Gás proveniente do comutador – Muito", "recomendacao": "Para todos os índices “D” – próximo controle entre 1 e 3 meses/Possíveis gases formados no LTC, senão, inspecionar as conexões (pontos quentes) e revisão no sistema de resfriamento"};}
+        else if (cod == 28) {return {"indice": "D7", "diagnostico":"Térmica (óleo+papel) ou Gás proveniente do comutador – Muito", "recomendacao": "Para todos os índices “D” – próximo controle entre 1 e 3 meses/Possíveis gases formados no LTC, senão, inspecionar as conexões (pontos quentes) e revisão no sistema de resfriamento"};}
+
+        else if (cod == 29) {return {"indice": "D8", "diagnostico":"Arco no óleo ou Gás proveniente do comutador – Muito", "recomendacao": "Para todos os índices “D” – próximo controle entre 1 e 3 meses/Inspeção nas conexões/determinação da resistência de isolamento (se valor baixo, considerar um reparo em oficina). Para o transformador reentrar em operação promover desgaseificação e retornar ao esquema de amostragem normal."};}
+        else if (cod == 30) {return {"indice": "D4", "diagnostico":"Térmica (óleo) – Muito", "recomendacao": "Para todos os índices “D” – próximo controle entre 1 e 3 meses/Possíveis gases formados no LTC, senão, inspecionar as conexões (pontos quentes) e revisão no sistema de resfriamento"};}
+        else if (cod == 31) {return {"indice": "D5", "diagnostico":"Térmica (óleo + papel) – Muito", "recomendacao": "Térmica (óleo + papel)", "recomendacao":"Para todos os índices “D” – próximo controle entre 1 e 3 meses/Possíveis gases formados no LTC, senão, inspecionar as conexões (pontos quentes) e revisão no sistema de resfriamento"};}
+
+        else {return {"indice":"-","diagnostico":"-", "recomendacao": "-"}};
+        
+    }; 
+
+    this.diagnosticoCod = function(h2, co, ch4, c2h2, c2h4, c2h6) {
+        
         var ppm_h2 = this.ppm_h2(h2);
         var ppm_x = this.ppm_x(ch4, c2h4, c2h6);
         var ppm_y = this.ppm_y(ch4, h2);
         var ppm_co = this.ppm_co(co);
         var ppm_c2h2 = this.ppm_c2h2(c2h2);
         
-        if      (ppm_h2 <= 200 && ppm_x <= 300 && ppm_co <= 400) {return {"indice": "A", "diagnostico":"Normal", "recomendacao": "Evolução Normal"};}
+        if      (ppm_h2 <= 200 && ppm_x <= 300 && ppm_co <= 400) {return 1;}
         
-        else if ((ppm_h2 >= 201 && ppm_h2 <= 300) && ppm_x <= 300 && ppm_y<=0.15) {return {"indice": "B1", "diagnostico":"Descargas parciais (óleo) - Média", "recomendacao": "Próximo controle: Entre 6 e 12 meses"};}
-        else if ((ppm_h2 >= 201 && ppm_h2 <= 300) && ppm_x <= 300 && (ppm_y>=0.16 && ppm_y<=1) && ppm_c2h2<=20) {return {"indice": "B2", "diagnostico":"Centelhamento (óleo) - Média", "recomendacao": "Próximo controle: Entre 6 e 12 meses"};}
-        else if ((ppm_h2 >= 201 && ppm_h2 <= 300) && ppm_x <= 300 && (ppm_y>=0.16 && ppm_y<=1) && ppm_c2h2>20) {return {"indice": "B3", "diagnostico":"Centelhamento (óleo) ou Gás proveniente do comutador - Média", "recomendacao": "Próximo controle: Entre 6 e 12 meses"};}
+        else if ((ppm_h2 >= 201 && ppm_h2 <= 300) && ppm_x <= 300 && ppm_y<=0.15) {return 2;}
+        else if ((ppm_h2 >= 201 && ppm_h2 <= 300) && ppm_x <= 300 && (ppm_y>=0.16 && ppm_y<=1) && ppm_c2h2<=20) {return 3;}
+        else if ((ppm_h2 >= 201 && ppm_h2 <= 300) && ppm_x <= 300 && (ppm_y>=0.16 && ppm_y<=1) && ppm_c2h2>20) {return 4;}
         
-        else if (ppm_h2 <= 200 && (ppm_x >= 301 && ppm_x <= 400) && ppm_y>=0.61 && ppm_co<=400) {return {"indice": "B4", "diagnostico":"Térmica (óleo) - Média", "recomendacao": "Próximo controle: Entre 6 e 12 meses"};}
-        else if (ppm_h2 <= 200 && (ppm_x >= 301 && ppm_x <= 400) && ppm_y>=0.61 && ppm_co>400) {return {"indice": "B5", "diagnostico":"Térmica (óleo + papel) - Média", "recomendacao": "Próximo controle: Entre 6 e 12 meses"};}
-        else if (ppm_h2 <= 200 && (ppm_x >= 301 && ppm_x <= 400) && ppm_y>=0.60 && ppm_c2h2>20 && ppm_co<=400) {return {"indice": "B6", "diagnostico":"Térmica (óleo) ou Gás proveniente do comutador - Média", "recomendacao": "Próximo controle: Entre 6 e 12 meses"};}
-        else if (ppm_h2 <= 200 && (ppm_x >= 301 && ppm_x <= 400) && ppm_y>=0.60 && ppm_c2h2>20 && ppm_co>400) {return {"indice": "B7", "diagnostico":"Térmica (óleo+papel) ou Gás proveniente do comutador - Média", "recomendacao": "Próximo controle: Entre 6 e 12 meses"};}
+        else if (ppm_h2 <= 200 && (ppm_x >= 301 && ppm_x <= 400) && ppm_y>=0.61 && ppm_co<=400) {return 5;}
+        else if (ppm_h2 <= 200 && (ppm_x >= 301 && ppm_x <= 400) && ppm_y>=0.61 && ppm_co>400) {return 6;}
+        else if (ppm_h2 <= 200 && (ppm_x >= 301 && ppm_x <= 400) && ppm_y>=0.60 && ppm_c2h2>20 && ppm_co<=400) {return 7;}
+        else if (ppm_h2 <= 200 && (ppm_x >= 301 && ppm_x <= 400) && ppm_y>=0.60 && ppm_c2h2>20 && ppm_co>400) {return 8;}
         
-        else if ((ppm_h2 >= 201 && ppm_h2 <= 300) && ppm_x <= 300 && ppm_c2h2>20) {return {"indice": "B3", "diagnostico":"Centelhamento (óleo) ou Gás proveniente do comutador - Média", "recomendacao": "Próximo controle: Entre 6 e 12 meses"};}
-        else if ((ppm_h2 >= 201 && ppm_h2 <= 300) && ppm_x <= 300 && ppm_c2h2<=20) {return {"indice": "B4", "diagnostico":"Térmica (óleo) - Média", "recomendacao": "Próximo controle: Entre 6 e 12 meses"};}
+        else if ((ppm_h2 >= 201 && ppm_h2 <= 300) && ppm_x <= 300 && ppm_c2h2>20) {return 9;}
+        else if ((ppm_h2 >= 201 && ppm_h2 <= 300) && ppm_x <= 300 && ppm_c2h2<=20) {return 10;}
         
-        else if (ppm_h2 <= 200 && ppm_x <= 300 && ppm_co > 400) {return {"indice": "B9", "diagnostico":"Térmica (papel) - Média", "recomendacao": "Próximo controle: Entre 6 e 12 meses"};}
+        else if (ppm_h2 <= 200 && ppm_x <= 300 && ppm_co > 400) {return 11;}
         
-        else if ((ppm_h2 >= 301 && ppm_h2 <= 600) && ppm_x <= 400 && ppm_y<=0.15) {return {"indice": "C1", "diagnostico":"Descargas parciais (óleo) – Importante", "recomendacao": "Próximo controle: Entre 3 e 6 meses"};}
-        else if ((ppm_h2 >= 301 && ppm_h2 <= 600) && ppm_x <= 400 && (ppm_y>=0.16 && ppm_y<=1) && ppm_c2h2 <=50) {return {"indice": "C2", "diagnostico":"Centelhamento (óleo) – Importante", "recomendacao": "Próximo controle: Entre 3 e 6 meses"};}
-        else if ((ppm_h2 >= 301 && ppm_h2 <= 600) && ppm_x <= 400 && (ppm_y>=0.16 && ppm_y<=1) && ppm_c2h2 >50) {return {"indice": "C3", "diagnostico":"Centelhamento (óleo) ou Gás proveniente do comutador – Importante", "recomendacao": "Próximo controle: Entre 3 e 6 meses"};}
+        else if ((ppm_h2 >= 301 && ppm_h2 <= 600) && ppm_x <= 400 && ppm_y<=0.15) {return 12;}
+        else if ((ppm_h2 >= 301 && ppm_h2 <= 600) && ppm_x <= 400 && (ppm_y>=0.16 && ppm_y<=1) && ppm_c2h2 <=50) {return 13;}
+        else if ((ppm_h2 >= 301 && ppm_h2 <= 600) && ppm_x <= 400 && (ppm_y>=0.16 && ppm_y<=1) && ppm_c2h2 >50) {return 14;}
         
-        else if (ppm_h2 <= 300 && (ppm_x >= 401 && ppm_x <= 800) && ppm_y>=0.61 && ppm_co<=500) {return {"indice": "C4", "diagnostico":"Térmica (óleo) – Importante", "recomendacao": "Próximo controle: Entre 3 e 6 meses"};}
-        else if (ppm_h2 <= 300 && (ppm_x >= 401 && ppm_x <= 800) && ppm_y>=0.61 && ppm_co>500) {return {"indice": "C5", "diagnostico":"Térmica (óleo + papel) – Importante", "recomendacao": "Próximo controle: Entre 3 e 6 meses"};}
-        else if (ppm_h2 <= 300 && (ppm_x >= 401 && ppm_x <= 800) && ppm_y>=0.60 && ppm_c2h2>50 && ppm_co<=500) {return {"indice": "C6", "diagnostico":"Térmica (óleo) ou Gás proveniente do comutador – Importante", "recomendacao": "Próximo controle: Entre 3 e 6 meses"};}
-        else if (ppm_h2 <= 300 && (ppm_x >= 401 && ppm_x <= 800) && ppm_y>=0.60 && ppm_c2h2>50 && ppm_co>500) {return {"indice": "C7", "diagnostico":"Térmica (óleo+papel) ou Gás proveniente do comutador – Importante", "recomendacao": "Próximo controle: Entre 3 e 6 meses"};}
+        else if (ppm_h2 <= 300 && (ppm_x >= 401 && ppm_x <= 800) && ppm_y>=0.61 && ppm_co<=500) {return 15;}
+        else if (ppm_h2 <= 300 && (ppm_x >= 401 && ppm_x <= 800) && ppm_y>=0.61 && ppm_co>500) {return 16;}
+        else if (ppm_h2 <= 300 && (ppm_x >= 401 && ppm_x <= 800) && ppm_y>=0.60 && ppm_c2h2>50 && ppm_co<=500) {return 17;}
+        else if (ppm_h2 <= 300 && (ppm_x >= 401 && ppm_x <= 800) && ppm_y>=0.60 && ppm_c2h2>50 && ppm_co>500) {return 18;}
         
-        else if ((ppm_h2 >= 301 && ppm_h2 <= 600) && (ppm_x >= 401 && ppm_x <= 800) && ppm_c2h2>50) {return {"indice": "C8", "diagnostico":"Arco no óleo ou Gás proveniente do comutador – Importante", "recomendacao": "Próximo controle: Entre 3 e 6 meses"};}
-        else if ((ppm_h2 >= 301 && ppm_h2 <= 600) && (ppm_x >= 401 && ppm_x <= 800) && ppm_c2h2<=50 && ppm_co<=500) {return {"indice": "C4", "diagnostico":"Térmica (óleo) – Importante", "recomendacao": "Próximo controle: Entre 3 e 6 meses"};}
-        else if ((ppm_h2 >= 301 && ppm_h2 <= 600) && (ppm_x >= 401 && ppm_x <= 800) && ppm_c2h2<=50 && ppm_co>500) {return {"indice": "C5", "diagnostico":"Térmica (óleo + papel) – Importante", "recomendacao": "Próximo controle: Entre 3 e 6 meses"};}
+        else if ((ppm_h2 >= 301 && ppm_h2 <= 600) && (ppm_x >= 401 && ppm_x <= 800) && ppm_c2h2>50) {return 19;}
+        else if ((ppm_h2 >= 301 && ppm_h2 <= 600) && (ppm_x >= 401 && ppm_x <= 800) && ppm_c2h2<=50 && ppm_co<=500) {return 20;}
+        else if ((ppm_h2 >= 301 && ppm_h2 <= 600) && (ppm_x >= 401 && ppm_x <= 800) && ppm_c2h2<=50 && ppm_co>500) {return 21;}
         
-        else if (ppm_h2 >= 601 && ppm_x <= 800 && ppm_y<=0.15) {return {"indice": "D1", "diagnostico":"Descargas parciais (óleo) – Muito", "recomendacao": "Para todos os índices “D” – próximo controle entre 1 e 3 meses/Nova medição do nível de descargas parciais no transformador"};}
-        else if (ppm_h2 >= 601 && ppm_x <= 800 && (ppm_y>=0.16 && ppm_y<=1) && ppm_c2h2<=50) {return {"indice": "D2",  "diagnostico":"Centelhamento (óleo) – Muito", "recomendacao": "Para todos os índices “D” – próximo controle entre 1 e 3 meses/Possíveis gases formados no LTC, senão, inspecionar as conexões do transformador"};}
-        else if (ppm_h2 >= 601 && ppm_x <= 800 && (ppm_y>=0.16 && ppm_y<=1) && ppm_c2h2>50) {return {"indice": "D3", "diagnostico":"Centelhamento (óleo) ou Gás proveniente do comutador – Muito", "recomendacao": "Para todos os índices “D” – próximo controle entre 1 e 3 meses/Possíveis gases formados no LTC, senão, inspecionar as conexões do transformador"};}
+        else if (ppm_h2 >= 601 && ppm_x <= 800 && ppm_y<=0.15) {return 22;}
+        else if (ppm_h2 >= 601 && ppm_x <= 800 && (ppm_y>=0.16 && ppm_y<=1) && ppm_c2h2<=50) {return 23;}
+        else if (ppm_h2 >= 601 && ppm_x <= 800 && (ppm_y>=0.16 && ppm_y<=1) && ppm_c2h2>50) {return 24;}
 
-        else if (ppm_h2 <= 600 && ppm_x >= 801 && ppm_y>=0.61 && ppm_co<=700) {return {"indice": "D4", "diagnostico":"Térmica (óleo) – Muito", "recomendacao": "Para todos os índices “D” – próximo controle entre 1 e 3 meses/Possíveis gases formados no LTC, senão, inspecionar as conexões (pontos quentes) e revisão no sistema de resfriamento"};}
-        else if (ppm_h2 <= 600 && ppm_x >= 801 && ppm_y>=0.61 && ppm_co>700) {return {"indice": "D5", "diagnostico":"Térmica (óleo + papel) – Muito", "recomendacao": "Para todos os índices “D” – próximo controle entre 1 e 3 meses/Possíveis gases formados no LTC, senão, inspecionar as conexões (pontos quentes) e revisão no sistema de resfriamento"};}
-        else if (ppm_h2 <= 600 && ppm_x >= 801 && ppm_y>=0.60 && ppm_c2h2>50 && ppm_co<=700) {return {"indice": "D6", "diagnostico":"Térmica (óleo) ou Gás proveniente do comutador – Muito", "recomendacao": "Para todos os índices “D” – próximo controle entre 1 e 3 meses/Possíveis gases formados no LTC, senão, inspecionar as conexões (pontos quentes) e revisão no sistema de resfriamento"};}
-        else if (ppm_h2 <= 600 && ppm_x >= 801 && ppm_y>=0.60 && ppm_c2h2>50 && ppm_co>700) {return {"indice": "D7", "diagnostico":"Térmica (óleo+papel) ou Gás proveniente do comutador – Muito", "recomendacao": "Para todos os índices “D” – próximo controle entre 1 e 3 meses/Possíveis gases formados no LTC, senão, inspecionar as conexões (pontos quentes) e revisão no sistema de resfriamento"};}
+        else if (ppm_h2 <= 600 && ppm_x >= 801 && ppm_y>=0.61 && ppm_co<=700) {return 25;}
+        else if (ppm_h2 <= 600 && ppm_x >= 801 && ppm_y>=0.61 && ppm_co>700) {return 26;}
+        else if (ppm_h2 <= 600 && ppm_x >= 801 && ppm_y>=0.60 && ppm_c2h2>50 && ppm_co<=700) {return 27;}
+        else if (ppm_h2 <= 600 && ppm_x >= 801 && ppm_y>=0.60 && ppm_c2h2>50 && ppm_co>700) {return 28;}
 
-        else if (ppm_h2 >= 601 && ppm_x >= 801 && ppm_c2h2>100) {return {"indice": "D8", "diagnostico":"Arco no óleo ou Gás proveniente do comutador – Muito", "recomendacao": "Para todos os índices “D” – próximo controle entre 1 e 3 meses/Inspeção nas conexões/determinação da resistência de isolamento (se valor baixo, considerar um reparo em oficina). Para o transformador reentrar em operação promover desgaseificação e retornar ao esquema de amostragem normal."};}
-        else if (ppm_h2 >= 601 && ppm_x >= 801 && ppm_c2h2<=100 && ppm_co<=700) {return {"indice": "D4", "diagnostico":"Térmica (óleo) – Muito", "recomendacao": "Para todos os índices “D” – próximo controle entre 1 e 3 meses/Possíveis gases formados no LTC, senão, inspecionar as conexões (pontos quentes) e revisão no sistema de resfriamento"};}
-        else if (ppm_h2 >= 601 && ppm_x >= 801 && ppm_c2h2<=100 && ppm_co>700) {return {"indice": "D5", "diagnostico":"Térmica (óleo + papel) – Muito", "recomendacao": "Térmica (óleo + papel)", "recomendacao":"Para todos os índices “D” – próximo controle entre 1 e 3 meses/Possíveis gases formados no LTC, senão, inspecionar as conexões (pontos quentes) e revisão no sistema de resfriamento"};}
+        else if (ppm_h2 >= 601 && ppm_x >= 801 && ppm_c2h2>100) {return 29;}
+        else if (ppm_h2 >= 601 && ppm_x >= 801 && ppm_c2h2<=100 && ppm_co<=700) {return 30;}
+        else if (ppm_h2 >= 601 && ppm_x >= 801 && ppm_c2h2<=100 && ppm_co>700) {return 31;}
 
 
-        else {return {"indice":"-","diagnostico":"-", "recomendacao": "-"}};
+        else {return 0;}
         
-    };     
+    };   
+ 
+    this.diagnosticoClass = function(h2, co, ch4, c2h2, c2h4, c2h6) {
+        return "laborelec_01";
+        var cod = this.diagnosticoCod(h2, co, ch4, c2h2, c2h4, c2h6);
+
+        if      (cod == 1) {return "laborelec_01";}
+        else if (cod == 2) {return "laborelec_02";}
+        else if (cod == 3) {return "laborelec_03";}
+        else if (cod == 4) {return "laborelec_04";}
+        else if (cod == 5) {return "laborelec_05";}
+        else if (cod == 6) {return "laborelec_06";}
+        else if (cod == 7) {return "laborelec_07";}
+        else if (cod == 8) {return "laborelec_08";}
+        else if (cod == 9) {return "laborelec_09";}
+        else if (cod == 10) {return "laborelec_10";}
+        else if (cod == 11) {return "laborelec_11";}
+        else if (cod == 12) {return "laborelec_12";}
+        else if (cod == 13) {return "laborelec_13";}
+        else if (cod == 14) {return "laborelec_14";}
+        else if (cod == 15) {return "laborelec_15";}
+        else if (cod == 16) {return "laborelec_16";}
+        else if (cod == 17) {return "laborelec_17";}
+        else if (cod == 18) {return "laborelec_18";}
+        else if (cod == 19) {return "laborelec_19";}
+        else if (cod == 20) {return "laborelec_20";}
+        else if (cod == 21) {return "laborelec_21";}
+        else if (cod == 22) {return "laborelec_22";}
+        else if (cod == 23) {return "laborelec_23";}
+        else if (cod == 24) {return "laborelec_24";}
+        else if (cod == 25) {return "laborelec_25";}
+        else if (cod == 26) {return "laborelec_26";}
+        else if (cod == 27) {return "laborelec_27";}
+        else if (cod == 28) {return "laborelec_28";}
+        else if (cod == 29) {return "laborelec_29";}
+        else if (cod == 30) {return "laborelec_30";}
+        else if (cod == 31) {return "laborelec_31";}
+
+        else {return "laborelec_00";}
+        
+    };   
 });
