@@ -41,9 +41,9 @@ diagServ.service('DuvalService', function() {
         
         var cod = this.diagnosticoCod(ch4, c2h2, c2h4);
         if      (cod == 1) { return 'Pontos Quentes';}
-        else if (cod == 2) { return 'Arcos de Alta Energia';}
-        else if (cod == 3) { return 'Arcos de Baixa Energia';}
-        else if (cod == 4) { return 'Arcos de Baixa Energia';}
+        else if (cod == 2) { return 'Arco de Alta Energia';}
+        else if (cod == 3) { return 'Arco de Baixa Energia';}
+        else if (cod == 4) { return 'Descargas internas';}
         else               { return '-';}
     };
 
