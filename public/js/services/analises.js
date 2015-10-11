@@ -26,6 +26,16 @@ analService.factory('Analises', ['$http',function($http) {
 				console.log(queryString);
 				return $http.get('/api/analises/tags/' + queryString);
 			},
+			getByNSerie : function(aNSerie) {
+				var queryString = Qs.stringify({"nSerie": aNSerie});
+				console.log("queryString: /api/analises/nserie/" + queryString);
+				return $http.get('/api/analises/nserie/' + queryString);
+			},
+			getByNSeries : function(aNSeries) {
+				var queryString = Qs.stringify({"nSerie": aNSeries});
+				console.log(queryString);
+				return $http.get('/api/analises/nseries/' + queryString);
+			},
 			create : function(analiseData) {
 				return $http.post('/api/analises', analiseData);
 			},
