@@ -1,6 +1,11 @@
-var app = angular.module('ui.bootstrap.demo3', ['ui.bootstrap','analiseService','equipamentoService','diagnosticosServices','smart-table']);
+var app = angular.module('ui.bootstrap.demo3', ['ui.bootstrap','analiseService','equipamentoService','diagnosticosServices','smart-table','xeditable']);
 
 var _ = require('underscore');
+
+app.run(function(editableOptions) {
+  editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
+});
+
 
 app.controller('ModalDemoCtrl3', ['$scope','$filter','$http','Analises','Equipamentos','DuvalService','RogersService', 'DornemburgService','LaborelecService','Iec156Service', '$modal', '$log',function ($scope,$filter,$http,Analises,Equipamentos,DuvalService,RogersService,DornemburgService,LaborelecService,Iec156Service, $modal, $log) {
 
@@ -37,7 +42,7 @@ app.controller('ModalDemoCtrl3', ['$scope','$filter','$http','Analises','Equipam
     });
   
   $scope.updateAnalise = function(aAnalise) {  
-    // update the checkbox
+    // update the Analise
     Analises.update(aAnalise);
   };
 
