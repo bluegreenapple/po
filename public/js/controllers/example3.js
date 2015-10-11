@@ -17,25 +17,29 @@ app.controller('ModalDemoCtrl3', ['$scope','$filter','$http','Analises','Equipam
       //first sort data by most recent date (descending order)
       $scope.analises = _.sortBy(data, 'dataDaAnalise').reverse();
 
-      //(optional) second only take the first (most recent) Analise for each tagDoEquipamento
-      $scope.analises = _.uniq($scope.analises,false, function(analise){ return analise.tagDoEquipamento; });
+      //(optional) second only take the first (most recent) Analise for each nSerieDoEquipamento
+      $scope.analises = _.uniq($scope.analises,false, function(analise){ return analise.nSerieDoEquipamento; });
       // console.log('analises: '+ $scope.analises);
 
       //third get the tags array for requesting the equipamentos,then create an object with it for stringify
-      var tags = _.pluck($scope.analises, 'tagDoEquipamento');
-      tags = { "tag": tags};
-      // console.log('obj: '+ tags);
+      var nSeries = _.pluck($scope.analises, 'nSerieDoEquipamento');
+      nSeries = { "nSerie": nSeries};
+      // console.log('obj: '+ nSeries);
       
       //get equipamentos
-      Equipamentos.getByTags(tags)
+      Equipamentos.getByNSeries(nSeries)
         .success(function(data2) {
-          // alert(data2[0].tag);
+          // alert(data2[0].nSerie);
           $scope.equipamentos = data2;
           $scope.loading = false;
           // console.log('equipamentos: '+ data2);
         });
     });
   
+  $scope.updateAnalise = function(aAnalise) {  
+    // update the checkbox
+    Analises.update(aAnalise);
+  };
 
   $scope.equipamento = function(aAnalise) {
       return _.findWhere($scope.equipamentos, {nSerie: aAnalise.nSerieDoEquipamento});
