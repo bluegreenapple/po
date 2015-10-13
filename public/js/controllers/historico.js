@@ -20,7 +20,7 @@ app.controller('HistoricoController', ["$http", '$scope','Analises','Equipamento
       
       $scope.changedValue;
       console.log('success!');
-      console.log(_.first($scope.equipamentos));
+      // console.log(_.first($scope.equipamentos));
       
       Analises.getByNSeries($scope.nSeries)
         .success(function(data2) {
@@ -37,9 +37,13 @@ app.controller('HistoricoController', ["$http", '$scope','Analises','Equipamento
   $scope.changedValue = function() {
       
     $scope.equipamento = _.find($scope.equipamentos, function(aEquipamento){ return aEquipamento.nSerie == $scope.selectedNSerie;  });
-    $scope.selectedAnalises = _.find($scope.analises, function(aAnalise){ return aAnalise.nSerieDoEquipamento == $scope.selectedNSerie;  });
+    console.log('selected: '+$scope.selectedNSerie);
+    console.log('selectedEquipamento: ',$scope.equipamento);
+
+    $scope.selectedAnalises = _.filter($scope.analises, function(aAnalise){ return aAnalise.nSerieDoEquipamento == $scope.selectedNSerie;  });
+    console.log('selectedAnalises: ',$scope.selectedAnalises);
+    console.log('first Analise n: ',_.first($scope.selectedAnalises));
     
-    console.log(_.first($scope.selectedAnalises));
 
     if ($scope.equipamento == undefined) {
       $scope.loading = true;

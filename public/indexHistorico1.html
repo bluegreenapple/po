@@ -96,18 +96,12 @@
         <div st-safe-src="analises" st-table='displayedAnalises'>
 
           
-           <!-- 
+           
           
-            <ul class="navbar-right list-unstyled">   
+            <!-- <ul class="navbar-right list-unstyled">   
               <li><input st-search='' st-delay='0' type="text" class="form-control" placeholder="Buscar..." autofocus></li>
             </ul>   -->
           
-
-          
-          
-             
-          
-
 
               <!-- TABELA DE AnaliseS-->
               <table class = 'table table-striped'>
@@ -126,7 +120,7 @@
                     
                     
                  </tr>
-                  <tr ng-repeat="analise in analises">
+                  <tr ng-repeat="analise in selectedAnalises">
                     
                     <td>{{ analise.tagDoEquipamento }}</td>
                     <td>{{ analise.dataDaAnalise | date: "dd/MM/yyyy" : "UTC"}}</td>
