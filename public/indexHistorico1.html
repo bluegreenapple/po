@@ -56,7 +56,7 @@
     <div class="bs-docs-section">
       <h1 class="page-header">Equipamento:</h1>
 
-        <div class = "">
+        <div>
             <form class="form-inline" role="form">
               <div class="form-group">
                 <h4>Número de Série:</h4>
@@ -112,6 +112,11 @@
                     <th st-sort="" st-sort-default="reverse">Tag</th>
                     <th st-sort="getters.dataAnal" st-sort-default="reverse">Data da Análise</th>
                     <th st-sort="nDaAnaliseDoLaboratorio">Número da Análise</th>
+                    <th st-sort="temperaturaDoOleo">Temperatura do Óleo</th>
+                    <th st-sort="h2">H<sub>2</sub></th>
+                    <th st-sort="o2">O<sub>2</sub></th>
+                    <th st-sort="n2">N<sub>2</sub></th>
+                    <th st-sort="ch4">CH<sub>4</sub></th>
                     <!-- <th st-sort="laboratorio">Laboratório</th> -->
                     
                     <!-- <th>Modelo</th>
@@ -125,6 +130,12 @@
                     <td>{{ analise.tagDoEquipamento }}</td>
                     <td>{{ analise.dataDaAnalise | date: "dd/MM/yyyy" : "UTC"}}</td>
                     <td>{{ analise.nDaAnaliseDoLaboratorio }}</td>
+                    <td>{{ analise.temperaturaDoOleo }}</td>
+                    <td>{{ analise.h2 }}</td>
+                    <td>{{ analise.o2 }}</td>
+                    <td>{{ analise.n2 }}</td>
+                    <td>{{ analise.ch4 }}</td>
+                    
                     <!-- <td>{{ analise.laboratorio }}</td> -->
                     
               
