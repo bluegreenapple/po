@@ -1,7 +1,7 @@
 var app = angular.module('appHist', ['ui.bootstrap','analiseService','equipamentoService']);
 var _ = require('underscore');
 
-app.controller('HistoricoController', ["$http", '$scope','Analises','Equipamentos' ,function ($http,$scope,Analises, Equipamentos) {
+app.controller('HistoricoController', ["$http", '$filter','$scope','Analises','Equipamentos' ,function ($http,$filter,$scope,Analises, Equipamentos) {
 
   $scope.loading = true;
   $scope.nSeries = [];
@@ -64,5 +64,23 @@ app.controller('HistoricoController', ["$http", '$scope','Analises','Equipamento
     $scope.selectedNSerie = window.equipamento.nSerie;
     $scope.changedValue;
   }
+
+  $scope.getters = {
+        dataAnal:function(row){
+          return new Date(row.dataDaAnalise);
+        },
+        tag: function (aAnalise) {
+            return $scope.equipamento(aAnalise).tag;
+        },
+        local: function (aAnalise) {
+            return $scope.equipamento(aAnalise).local;
+        },
+        tipo: function (aAnalise) {
+            return $scope.equipamento(aAnalise).tipo;
+        },
+        emOperacao: function (aAnalise) {
+            return $scope.equipamento(aAnalise).emOperacao;
+        },
+    };
 
 }]);
