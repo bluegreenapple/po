@@ -77,7 +77,13 @@
 
 
                 <!-- SMART-TABLE -->
-                <div st-safe-src="selectedAnalises" st-table='displayedAnalises' ng-show="!loading">
+                <div st-safe-src="analises" st-table='displayedAnalises' ng-show="!loading">
+
+                    <form class="form-group">
+                        <ul class="navbar-right list-unstyled">   
+                            <li><input st-search="" st-delay='0' type="search" class="form-control" placeholder="Buscar..." autofocus></li>
+                        </ul> 
+                    </form>
 
                     <!-- TABELA DE AnaliseS-->
                     <table class = 'table table-striped'>
@@ -91,7 +97,7 @@
                             <th st-sort="n2">N<sub>2</sub></th>
                             <th st-sort="ch4">CH<sub>4</sub></th>
                         </tr>
-                        <tr ng-repeat="analise in selectedAnalises">
+                        <tr ng-repeat="analise in displayedAnalises">
                             <td>{{ analise.tagDoEquipamento }}</td>
                             <td>{{ analise.dataDaAnalise | date: "dd/MM/yyyy" : "UTC"}}</td>
                             <td>{{ analise.nDaAnaliseDoLaboratorio }}</td>
