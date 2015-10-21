@@ -5,7 +5,7 @@ app.controller('HistoricoController', ["limitToFilter","$filter", "$http", '$sco
 
   $scope.loading = true;
   $scope.nSeries = [];
-  $scope.analises = [];
+  $scope.allAnalises = [];
 
   Equipamentos.get()
     .success(function(data) {
@@ -23,7 +23,7 @@ app.controller('HistoricoController', ["limitToFilter","$filter", "$http", '$sco
       Analises.get()
         .success(function(data2) {
           // alert(data2[0].nSerie);
-          $scope.analises = data2;
+          $scope.allAnalises = data2;
           $scope.loading = false;
           console.log('analises0: '+ _.first(data2).nSerieDoEquipamento);
         });
@@ -31,10 +31,22 @@ app.controller('HistoricoController', ["limitToFilter","$filter", "$http", '$sco
     });
 
 
-    
+  $scope.selectedAnalises = [];
   $scope.changedValue = function() {
       
     $scope.equipamento = _.find($scope.equipamentos, function(aEquipamento){ return aEquipamento.nSerie == $scope.selectedNSerie;  });
+
+    //selectedAnalises must always return the same array otherwise an infinite loop will be triggered
+    console.log('before',$scope.selectedAnalises);
+    
+    $scope.selectedAnalises.length = 0;
+    for (var i = 0; i < $scope.allAnalises.length; i++) {
+      if ($scope.allAnalises[i].nSerieDoEquipamento == $scope.selectedNSerie) {
+          $scope.selectedAnalises.push($scope.allAnalises[i]);    
+      };
+    };
+    
+    console.log('after',$scope.selectedAnalises);
     // $scope.selectedAnalises = $scope.analises;//_.filter($scope.analises, function(aAnalise){ return aAnalise.nSerieDoEquipamento == $scope.selectedNSerie; });
     if ($scope.equipamento == undefined) {
       $scope.loading = true;
@@ -45,15 +57,15 @@ app.controller('HistoricoController', ["limitToFilter","$filter", "$http", '$sco
     }
   };   
 
-  if(!angular.isUndefined(window.equipamento)){
-    $scope.selectedNSerie = window.equipamento.nSerie;
-    console.log('nSerieFromWindow: '+window.equipamento.nSerie);
-    $scope.changedValue;
-  }
+  // if(!angular.isUndefined(window.equipamento)){
+  //   $scope.selectedNSerie = window.equipamento.nSerie;
+  //   console.log('nSerieFromWindow: '+window.equipamento.nSerie);
+  //   $scope.changedValue;
+  // }
   
-  $scope.change = function(){
-    $scope.selectedNSerie = window.equipamento.nSerie;
-    $scope.changedValue;
-  }
+  // $scope.change = function(){
+  //   $scope.selectedNSerie = window.equipamento.nSerie;
+  //   $scope.changedValue;
+  // }
 
 }]);
