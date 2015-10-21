@@ -6,10 +6,15 @@
     <script src="/js/bundle.js"></script>
     <script src="/js/bundleAnalises.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-smart-table/2.1.3/smart-table.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-chart.js/0.8.5/angular-chart.js"></script>
+    
 
     <!-- CSS -->
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/smarttable.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/angular-chart.js/0.8.5/angular-chart.css" rel="stylesheet">
+    
 </head>
 
 <!-- APP -->
@@ -109,6 +114,13 @@
                         </tr>
                     </table>
                     <!-- FIM TABELA DE AnaliseS-->
+
+                    <!-- GRÁFICO DE HISTORICO -->
+                    <canvas id="line" class="chart chart-line" chart-data="data"
+                      chart-labels="labels" chart-legend="true" chart-series="series"
+                      chart-click="onClick" >
+                    </canvas> 
+                    <!-- FIM GRÁFICO DE HISTORICO-->
 
                     <p class="text-center" ng-show="loading">
                         <span class="fa fa-spinner fa-spin fa-3x"></span>
